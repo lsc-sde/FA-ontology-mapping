@@ -1,0 +1,32 @@
+Federation Ontology Mapping — ontology content
+Copyright 2026 Lancashire Teaching Hospitals NHS Foundation Trust and contributors
+
+This directory (`/data`) contains the ontology content and is licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+This is a DIFFERENT licence to the application source code in this repository,
+which is licensed under the Apache License 2.0 (see /LICENSE).
+
+You are free to:
+  * Share  — copy and redistribute the material in any medium or format
+  * Adapt  — remix, transform, and build upon the material for any purpose,
+             including commercially
+
+Under the following terms:
+  * Attribution — You must give appropriate credit, provide a link to the
+    licence, and indicate if changes were made.
+
+Full licence text:
+  https://creativecommons.org/licenses/by/4.0/legalcode
+
+Human-readable summary:
+  https://creativecommons.org/licenses/by/4.0/
+
+ATTRIBUTION
+-----------
+When using this data, please attribute the collaboration between
+Lancashire Teaching Hospitals NHS Foundation Trust (project lead),
+the University of Liverpool, the University of Nottingham,
+and DARE UK (Data and Analytics Research Environments UK).
+
+For academic citation, please use the metadata in /CITATION.cff.

@@ -3,7 +3,7 @@
 
 cff-version: 1.2.0
 title: "FA Ontology Mapping"
-repository-code: "https://github.com/DWkirkwood/FA-ontology-mapping"
+repository-code: "https://github.com/lsc-sde/FA-ontology-mapping"
 message: >-
   If you use this work, please cite it using the metadata
   from this file.
@@ -16,7 +16,7 @@ authors:
   - family-names: Wilson
     given-names: Becca
     orcid: "https://orcid.org/0000-0003-2294-593X"
-    affiliation: "University of Liverpool, DataSHIELD"
+    affiliation: "University of Liverpool"
   - family-names: Eva
     given-names: Jonaa
     orcid: "https://orcid.org/0009-0003-2422-9360"
@@ -38,7 +38,6 @@ keywords:
   - mapping
   - federated-research
   - DARE UK
-  - DataSHIELD
   - health-data
   - public-involvement
 license: CC-BY-4.0

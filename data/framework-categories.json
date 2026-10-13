@@ -1,0 +1,30 @@
+{
+  "Five Safes": [
+    "Safe Projects",
+    "Safe People",
+    "Safe Data",
+    "Safe Settings",
+    "Safe Outputs"
+  ],
+  "FAIR": [
+    "Findable",
+    "Accessible",
+    "Interoperable",
+    "Reusable"
+  ],
+  "PEDRI": [
+    "PEDRI: Equity/Diversity",
+    "PEDRI: Data Literacy",
+    "PEDRI: Two-way Comm",
+    "PEDRI: Transparency",
+    "PEDRI: Mutual Benefit",
+    "PEDRI: Effective Involvement",
+    "PEDRI: Culture of Engagement"
+  ],
+  "SATRE": [
+    "SATRE: Info Governance",
+    "SATRE: Tech/Security",
+    "SATRE: Data Management",
+    "SATRE: Supporting Capabilities"
+  ]
+}

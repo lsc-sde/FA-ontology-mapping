@@ -1,0 +1,21 @@
+Federation Ontology Mapping
+Copyright 2026 Lancashire Teaching Hospitals NHS Foundation Trust and contributors
+
+This product includes work developed as a collaboration between:
+  * Lancashire Teaching Hospitals NHS Foundation Trust (project lead)
+  * The University of Liverpool
+  * The University of Nottingham
+  * DARE UK (Data and Analytics Research Environments UK)
+
+This work has been shaped by extensive public engagement, including the
+Lancashire and South Cumbria Data into Impact Programme (SDE) Public Advisory
+Group and the North West Secure Data Environment Public Advisory and
+Accountability Group.
+
+NOTE ON LICENSING
+-----------------
+The source code in this repository is licensed under the Apache License 2.0
+(see LICENSE).
+
+The ontology content in the /data directory is licensed separately under the
+Creative Commons Attribution 4.0 International License (see data/LICENSE-DATA.txt).

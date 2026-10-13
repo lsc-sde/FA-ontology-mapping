@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/lsc-sde/FA-ontology-mapping/data/schema/ontology.schema.json",
+  "title": "Federation Ontology Mapping — ontology",
+  "description": "A map of concepts used in federated health data research. Each concept is defined for four audiences and mapped to the Five Safes, FAIR, PEDRI and SATRE frameworks.",
+  "type": "object",
+  "additionalProperties": { "$ref": "#/$defs/ontologyNode" },
+  "$defs": {
+    "frameworkTag": {
+      "type": "string",
+      "enum": [
+        "Safe People", "Safe Projects", "Safe Settings", "Safe Data", "Safe Outputs",
+        "Findable", "Accessible", "Interoperable", "Reusable",
+        "PEDRI: Equity/Diversity", "PEDRI: Data Literacy", "PEDRI: Two-way Comm",
+        "PEDRI: Transparency", "PEDRI: Mutual Benefit", "PEDRI: Effective Involvement",
+        "PEDRI: Culture of Engagement",
+        "SATRE: Info Governance", "SATRE: Tech/Security", "SATRE: Data Management",
+        "SATRE: Supporting Capabilities"
+      ]
+    },
+    "audienceText": {
+      "type": "object",
+      "description": "The same concept expressed for four distinct audiences.",
+      "properties": {
+        "public": { "type": "string", "minLength": 1 },
+        "tech": { "type": "string", "minLength": 1 },
+        "researcher": { "type": "string", "minLength": 1 },
+        "gov": { "type": "string", "minLength": 1 },
+        "sde": { "type": "string" },
+        "dare": { "type": "string" }
+      },
+      "required": ["public", "tech", "researcher", "gov"],
+      "additionalProperties": false
+    },
+    "ontologyNode": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "subtitle": { "type": "string" },
+        "purpose": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["definition", "solution", "provider", "framework"]
+        },
+        "definitions": { "$ref": "#/$defs/audienceText" },
+        "examples": { "$ref": "#/$defs/audienceText" },
+        "essential_characteristics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": { "type": "string", "minLength": 1 },
+              "tags": { "type": "array", "items": { "$ref": "#/$defs/frameworkTag" } }
+            },
+            "required": ["description", "tags"],
+            "additionalProperties": false
+          }
+        },
+        "tags": { "type": "array", "items": { "$ref": "#/$defs/frameworkTag" } },
+        "related_terms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "term": { "type": "string", "minLength": 1 },
+              "definition": { "type": "string", "minLength": 1 }
+            },
+            "required": ["term", "definition"],
+            "additionalProperties": false
+          }
+        },
+        "children": {
+          "type": "array",
+          "description": "IDs of child nodes. Each must exist as a key in this document.",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "label", "type", "definitions", "examples"],
+      "additionalProperties": false
+    }
+  }
+}

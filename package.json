@@ -1,13 +1,37 @@
 {
-  "name": "temp-app",
+  "name": "fa-ontology-mapping",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
+  "description": "An interactive map of definitions related to the federation of data within UK health data research systems. Led by Lancashire Teaching Hospitals NHS Foundation Trust.",
+  "license": "Apache-2.0",
+  "author": "Lancashire Teaching Hospitals NHS Foundation Trust and contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsc-sde/FA-ontology-mapping.git"
+  },
+  "keywords": [
+    "ontology",
+    "federation",
+    "federated-research",
+    "health-data",
+    "trusted-research-environment",
+    "secure-data-environment",
+    "dare-uk",
+    "datashield",
+    "satre",
+    "five-safes",
+    "fair-data",
+    "pedri",
+    "public-involvement"
+  ],
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "validate:data": "node scripts/validate-data.mjs",
+    "extract:data": "node scripts/extract-data.mjs"
   },
   "dependencies": {
     "@xyflow/react": "^12.10.1",
@@ -25,6 +49,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.24",
+    "caniuse-lite": "^1.0.30001816",
     "eslint": "^9.8.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",

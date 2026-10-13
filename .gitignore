@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local-only working notes (not for publication).
+# NB: the `*.local` rule above does NOT match `.local.md`, so these are explicit.
+README.local.md
+*.local.md
+notes/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,3 +28,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# TypeScript incremental build artefacts
+*.tsbuildinfo
+

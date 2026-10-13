@@ -1,31 +1,8 @@
-import { FrameworkTag } from './ontology';
+﻿import { FrameworkTag } from './ontology';
 
-export const frameworkTagDefinitions: Record<FrameworkTag, string> = {
-    // Five Safes
-    'Safe People': 'Researchers accessing the data are trained, accredited, and trusted to handle sensitive information appropriately.',
-    'Safe Projects': 'Research projects must have ethical approval and a clear public benefit.',
-    'Safe Settings': 'Data is accessed in secure environments (such as Trusted Research Environments) that prevent unauthorized extraction or copying.',
-    'Safe Data': 'Data is treated to protect privacy—often de-identified or pseudonymized—before access is granted so individuals cannot be identified.',
-    'Safe Outputs': 'All analytical results are screened to ensure no individual can be identified before they are released from the secure setting.',
+// Plain-English definitions of each framework tag.
+// Canonical source: data/framework-tag-definitions.json (CC BY 4.0).
+import raw from '../../data/framework-tag-definitions.json';
 
-    // FAIR Principles
-    'Findable': 'Data and supplementary materials have sufficiently rich metadata and a unique, persistent identifier (e.g., DOI).',
-    'Accessible': 'Data and metadata are retrievable by their identifier using a standardized, open, and universally implementable communications protocol.',
-    'Interoperable': 'Data use formal, accessible, shared, and broadly applicable language for knowledge representation.',
-    'Reusable': 'Data and metadata are richly described with a plurality of accurate and relevant attributes, enabling integration for future use.',
-
-    // PEDRI
-    'PEDRI: Equity/Diversity': 'Ensuring diverse voices and marginalized communities are authentically included in data research decisions.',
-    'PEDRI: Data Literacy': 'Supporting the public to understand data research to enable meaningful, informed engagement.',
-    'PEDRI: Two-way Comm': 'Establishing ongoing dialogue and listening between researchers and the public, avoiding one-way broadcasting.',
-    'PEDRI: Transparency': 'Being open, clear, and proactive about how data is used, who uses it, and for what purposes.',
-    'PEDRI: Mutual Benefit': 'Research must return tangible value to the communities and public whose data makes it possible.',
-    'PEDRI: Effective Involvement': 'Public involvement actively and meaningfully shapes research design and governance, avoiding tokenism.',
-    'PEDRI: Culture of Engagement': 'Embedding public and patient engagement as a core, normalized practice across all organizational levels.',
-
-    // SATRE
-    'SATRE: Info Governance': 'The overarching legal, ethical, and administrative frameworks establishing baseline policies for data management and access.',
-    'SATRE: Tech/Security': 'Technical security controls—including authentication, encryption, and boundary protection—securing the environment.',
-    'SATRE: Data Management': 'The lifecycle management of data artifacts within the TRE, including secure storage, retention, and secure deletion.',
-    'SATRE: Supporting Capabilities': 'The necessary operational components, such as compute infrastructure, networking, and expert personnel, required to run the environment.'
-};
+export const frameworkTagDefinitions: Record<FrameworkTag, string> =
+    raw as Record<FrameworkTag, string>;
