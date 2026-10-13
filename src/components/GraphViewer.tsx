@@ -13,7 +13,7 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import { ontologyData, FrameworkTag, OntologyNode } from '../data/ontology';
-import CustomNode from './CustomNode';
+import CustomNode, { GraphNodeData } from './CustomNode';
 import PieChartBackground from './PieChartBackground';
 import SafesRing from './SafesRing';
 import PerimeterEdge from './PerimeterEdge';
@@ -21,7 +21,8 @@ import { Lock, Unlock } from 'lucide-react';
 
 interface GraphViewerProps {
     activeFilter: FrameworkTag | null;
-    onNodeSelect: (node: OntologyNode) => void;
+    // `null` clears the current selection (e.g. clicking the empty pane).
+    onNodeSelect: (node: OntologyNode | null) => void;
     searchQuery: string;
     onFilterChange: (filter: FrameworkTag | null) => void;
     selectedNode?: OntologyNode | null;
@@ -225,7 +226,7 @@ function buildEdges(nodes: Node[]): Edge[] {
         return node?.data?.nodeSize ? (node.data.nodeSize as number) / 2 : 0;
     };
 
-    const edge = (id: string, source: string, target: string, style: any, isAnimated: boolean) => ({
+    const edge = (id: string, source: string, target: string, style: React.CSSProperties, isAnimated: boolean) => ({
         id,
         source,
         target,
@@ -322,8 +323,9 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
         // Build a layer lookup for edge visibility
         const nodeLayerMap = new Map<string, number>();
         initialNodes.forEach(n => {
-            if ((n.data as any).layer !== undefined) {
-                nodeLayerMap.set(n.id, (n.data as any).layer);
+            const nd = n.data as Partial<GraphNodeData>;
+            if (nd.layer !== undefined) {
+                nodeLayerMap.set(n.id, nd.layer);
             }
         });
 
@@ -331,13 +333,13 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
             nds.map(n => {
                 // Progressive reveal for background elements
                 if (n.id === 'pie-background') {
-                    return { ...n, style: { ...(n.style as any), opacity: revealedLayer >= 1 ? 1 : 0, transition: 'opacity 0.8s ease' } };
+                    return { ...n, style: { ...(n.style as React.CSSProperties), opacity: revealedLayer >= 1 ? 1 : 0, transition: 'opacity 0.8s ease' } };
                 }
                 if (n.id === 'safes-ring') {
-                    return { ...n, style: { ...(n.style as any), opacity: revealedLayer >= 2 ? 1 : 0, transition: 'opacity 0.8s ease' } };
+                    return { ...n, style: { ...(n.style as React.CSSProperties), opacity: revealedLayer >= 2 ? 1 : 0, transition: 'opacity 0.8s ease' } };
                 }
 
-                const nd = n.data as any;
+                const nd = n.data as Partial<GraphNodeData>;
                 const hasTag = activeFilter ? nd.tags?.includes(activeFilter) : true;
                 const layerMatch = activeLayer !== null ? nd.layer === activeLayer : true;
                 const isCenterReveal = nd.layer === 0 && activeLayer !== null && activeLayer >= 2;
@@ -349,10 +351,13 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
                 let searchMatch = true;
                 if (query) {
                     const label = (nd.label || '').toLowerCase();
-                    const defLay = (nd.def_lay || '').toLowerCase();
-                    const defTech = (nd.def_tech || '').toLowerCase();
+                    // NOTE: previously read `nd.def_lay` / `nd.def_tech`, which do not
+                    // exist on OntologyNode - so definition text was never actually
+                    // searched. The real fields live under `definitions`.
+                    const defPublic = (nd.definitions?.public || '').toLowerCase();
+                    const defTech = (nd.definitions?.tech || '').toLowerCase();
                     const tags = (nd.tags || []).join(' ').toLowerCase();
-                    searchMatch = label.includes(query) || defLay.includes(query) || defTech.includes(query) || tags.includes(query);
+                    searchMatch = label.includes(query) || defPublic.includes(query) || defTech.includes(query) || tags.includes(query);
                 }
 
                 const isConnected = selectedNode ? connectedNodes.has(n.id) : true;
@@ -386,19 +391,19 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
             return {
                 ...e,
                 style: {
-                    ...(e.style as any) || {},
+                    ...(e.style as React.CSSProperties) || {},
                     opacity: !edgeRevealed ? 0 : (selectedNode && !isConnected ? 0.1 : 1),
                     transition: 'opacity 0.8s ease',
                 }
             };
         }));
 
-    }, [activeFilter, activeLayer, searchQuery, selectedNode, revealedLayer, setNodes, onEdgesChange]);
+    }, [activeFilter, activeLayer, searchQuery, selectedNode, revealedLayer, setNodes, setEdges]);
 
     const onNodeClick = useCallback(
         (_: React.MouseEvent, node: Node) => {
             if (node.id === 'pie-background' || node.id === 'safes-ring') return;
-            const data = node.data as any;
+            const data = node.data as unknown as GraphNodeData;
 
             // Progressive reveal: clicking a node on the current frontier layer reveals the next
             if (data.layer !== undefined && data.layer === revealedLayer && revealedLayer < 3) {
@@ -412,7 +417,7 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
 
     const onPaneClick = useCallback(() => {
         setActiveLayer(null);
-        onNodeSelect(null as any); // Clear selected node on pane click
+        onNodeSelect(null); // Clear selected node on pane click
     }, [onNodeSelect]);
 
     return (

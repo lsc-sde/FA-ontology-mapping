@@ -1,0 +1,30 @@
+# Normalise line endings so contributors on Windows and Linux don't produce
+# whole-file diffs. Text files are stored as LF in the repository and checked
+# out with the platform's native endings.
+* text=auto
+
+# Explicit rules for the file types in this project.
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.js      text eol=lf
+*.mjs     text eol=lf
+*.json    text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.md      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.cff     text eol=lf
+*.txt     text eol=lf
+
+# Binary assets - never normalise.
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.woff    binary
+*.woff2   binary
+
+# SVG is text, but treat it as such explicitly.
+*.svg     text eol=lf

@@ -3,14 +3,23 @@ import { OntologyNode, FrameworkTag, frameworkCategories } from '../data/ontolog
 import { tagReasons } from '../data/tagReasons';
 import clsx from 'clsx';
 
+// The render-time fields GraphViewer attaches to each ontology node. Declared
+// here (rather than cast at each use site) so both components share one source
+// of truth for the shape of `node.data`.
+export type GraphNodeData = OntologyNode & {
+    activeFilter: FrameworkTag | null;
+    dimmed: boolean;
+    layer?: number;
+    nodeSize?: number;
+    showTags?: boolean;
+    semiTransparent?: boolean;
+    isSelected?: boolean;
+    hidden?: boolean;
+    showClickMe?: boolean;
+};
+
 interface CustomNodeProps {
-    data: OntologyNode & {
-        activeFilter: FrameworkTag | null;
-        dimmed: boolean;
-        layer?: number;
-        nodeSize?: number;
-        showTags?: boolean;
-    };
+    data: GraphNodeData;
 }
 
 const frameworkColors: Record<string, { bg: string; border: string; text: string }> = {
@@ -31,10 +40,10 @@ export default function CustomNode({ data }: CustomNodeProps) {
     const isSolution = data.type === 'solution';
     const isProvider = data.type === 'provider';
     const isDimmed = data.dimmed;
-    const isSemiTransparent = (data as any).semiTransparent;
-    const isSelected = (data as any).isSelected;
-    const isHidden = (data as any).hidden;
-    const showClickMe = (data as any).showClickMe;
+    const isSemiTransparent = data.semiTransparent;
+    const isSelected = data.isSelected;
+    const isHidden = data.hidden;
+    const showClickMe = data.showClickMe;
     const size = data.nodeSize || 220;
     const showTags = data.showTags !== false;
     const isCenterNode = data.layer === 0;
@@ -104,7 +113,7 @@ export default function CustomNode({ data }: CustomNodeProps) {
                         return (
                             <div key={framework} className="node-tag-row">
                                 {tags.map(tag => {
-                                    const nodeReasons = tagReasons[(data as any).id] || {};
+                                    const nodeReasons = tagReasons[data.id] || {};
                                     const reason = nodeReasons[tag as keyof typeof nodeReasons];
                                     return (
                                         <span

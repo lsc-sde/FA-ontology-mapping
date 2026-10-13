@@ -26,7 +26,7 @@ ATTRIBUTION
 -----------
 When using this data, please attribute the collaboration between
 Lancashire Teaching Hospitals NHS Foundation Trust (project lead),
-the University of Liverpool (DataSHIELD), the University of Nottingham,
+the University of Liverpool, the University of Nottingham,
 and DARE UK (Data and Analytics Research Environments UK).
 
 For academic citation, please use the metadata in /CITATION.cff.

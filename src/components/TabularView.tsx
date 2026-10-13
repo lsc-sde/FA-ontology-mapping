@@ -95,7 +95,7 @@ export default function TabularView({ perspective, activeFilter, searchQuery }: 
                                     return (
                                         <div className="flex flex-wrap gap-1.5">
                                             {tags.map(t => (
-                                                <span key={t} title={(tagReasons[node.id] as any)?.[t] || t} className={`px-2 py-1 text-xs rounded-md border cursor-help ${colorClass}`}>
+                                                <span key={t} title={tagReasons[node.id]?.[t as FrameworkTag] || t} className={`px-2 py-1 text-xs rounded-md border cursor-help ${colorClass}`}>
                                                     {t.replace(/^(PEDRI:\s|SATRE:\s)/, '')}
                                                 </span>
                                             ))}

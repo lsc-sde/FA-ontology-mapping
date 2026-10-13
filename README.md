@@ -2,7 +2,7 @@
 
 **An interactive map of the language used to describe the federation of data within UK health data research systems.**
 
-Led by **Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with the University of Liverpool (DataSHIELD), the University of Nottingham, and DARE UK.
+Led by **Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with the University of Liverpool, the University of Nottingham, and DARE UK.
 
 > ⚠️ **Prototype.** This is a working prototype intended to support discussion. Definitions are under active review and should not yet be treated as settled or authoritative.
 
