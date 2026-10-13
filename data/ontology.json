@@ -1,0 +1,1219 @@
+{
+  "fed_ecosystem": {
+    "id": "fed_ecosystem",
+    "definitions": {
+      "public": "A secure system where multiple organizations agree to let researchers analyze their combined data, without any of the data ever leaving its original, safe location.",
+      "tech": "A comprehensive architectural and governance framework integrating decentralized storage, standardized coordination protocols, and distributed computational queries, allowing participating institutions to analyze joint datasets without transferring, co-mingling, or relinquishing sovereignty over the underlying data.",
+      "researcher": "An established network of institutions and technological systems enabling researchers to query, analyze, and combine insights from datasets held in multiple distinct locations, without needing to copy or centralize the data itself.",
+      "gov": "A formal collaboration mutually governed by shared rules, standardized access protocols, and data protection safeguards, enabling secure cross-institutional analysis while maintaining local accountability, sovereignty, and regulatory compliance."
+    },
+    "examples": {
+      "public": "A national health project linking records from 50 hospitals to find disease patterns, without ever creating a central copy of those records.",
+      "tech": "Deploying a federated learning algorithm across 15 distinct OMOP-formatted hospital databases using cryptographic secure multiparty computation.",
+      "researcher": "Running a single statistical script that simultaneously tests a hypothesis on patient data sitting securely at both King's College London and the University of Edinburgh.",
+      "gov": "A consortium executing a master Data Processing Agreement (DPA) that explicitly allows a central Data Access Committee to approve federated workflows."
+    },
+    "label": "A Federation",
+    "subtitle": "Federated Data Ecosystem",
+    "purpose": "To enable secure collaborative research and analysis across multiple independent organizations without moving or compromising control of the underlying data.",
+    "type": "definition",
+    "children": [
+      "fed_people",
+      "fed_data",
+      "fed_analytics",
+      "research_outputs"
+    ],
+    "tags": [
+      "SATRE: Info Governance",
+      "SATRE: Supporting Capabilities",
+      "Findable",
+      "Accessible",
+      "Interoperable",
+      "Safe Settings",
+      "Safe Projects"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Multiple independent parties: There must be more than one organisation, system, or data holder involved.",
+        "tags": [
+          "Safe People",
+          "Interoperable",
+          "PEDRI: Mutual Benefit",
+          "SATRE: Supporting Capabilities"
+        ]
+      },
+      {
+        "description": "Local autonomy: Each party keeps its own responsibilities, decision-making, and stewardship rather than becoming part of a single fully centralised system.",
+        "tags": [
+          "Safe Settings",
+          "Accessible",
+          "PEDRI: Effective Involvement",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "Shared rules or governance: The parties agree a common framework for how collaboration works, such as permissions, responsibilities, standards, and safeguards.",
+        "tags": [
+          "Safe Projects",
+          "Reusable",
+          "PEDRI: Transparency",
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "A common purpose for working together: The federation exists to enable something across the group, such as research, analytics, service improvement, or model development.",
+        "tags": [
+          "Safe Outputs",
+          "Findable",
+          "PEDRI: Culture of Engagement",
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Interoperability or compatible ways of working: The organisations need some shared standards, technical compatibility, or agreed processes so joint work is actually possible.",
+        "tags": [
+          "Safe Data",
+          "Interoperable",
+          "PEDRI: Data Literacy",
+          "SATRE: Tech/Security"
+        ]
+      },
+      {
+        "description": "Use of assets across the group: Data, compute, models, tools, or other resources can be used in a coordinated way across members of the federation to achieve shared goals.",
+        "tags": [
+          "Safe Data",
+          "Reusable",
+          "PEDRI: Mutual Benefit",
+          "SATRE: Supporting Capabilities"
+        ]
+      },
+      {
+        "description": "Retention of local control: A key feature is that collaboration does not require each organisation to hand over full control of its own data or resources.",
+        "tags": [
+          "Safe Settings",
+          "Accessible",
+          "PEDRI: Equity/Diversity",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "Defined accountability: It should remain clear who is responsible for what, especially for governance, access, approvals, outputs, and risk.",
+        "tags": [
+          "Safe Projects",
+          "Findable",
+          "PEDRI: Transparency",
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Not simply one technical method: Federation is broader than federated query, federated analytics, or federated learning. Those may be capabilities within a federation, but are not the whole concept.",
+        "tags": [
+          "Safe Settings",
+          "Interoperable",
+          "PEDRI: Data Literacy",
+          "SATRE: Tech/Security"
+        ]
+      }
+    ]
+  },
+  "fed_people": {
+    "id": "fed_people",
+    "definitions": {
+      "public": "A federation of people means different people or groups working together under shared rules, while each still keeps their own voice, role, or identity.",
+      "tech": "A federation of people is a structured collaborative arrangement in which distinct individuals, groups, or communities participate within a shared framework of rules, roles, and coordination, while retaining their own identity, autonomy, and local decision-making authority unless explicitly delegated.",
+      "researcher": "A federation of people is a model of human collaboration in which separate people or groups work together through agreed principles, governance, and coordination mechanisms, while remaining distinct rather than fully merging into a single unified body.",
+      "gov": "A federation of people is an arrangement in which different people, constituencies, or groups cooperate under shared rules and collective decision-making structures, while preserving defined local authority, representation, and accountability."
+    },
+    "examples": {
+      "public": "Imagine several community groups joining together to speak with a stronger voice on an issue they all care about. They agree some common rules and goals, but each group still keeps its own identity and chooses how it contributes. That is a federation of people.",
+      "tech": "A national professional network may include multiple local chapters, each with its own leadership, membership, and priorities. They adopt a common constitution, shared standards, and agreed communication channels, allowing them to coordinate campaigns, share learning, and act collectively while each chapter retains local authority. That is a federation of people.",
+      "researcher": "A federation of people can be seen in a multi-site public advisory network where different local groups contribute to a shared programme of work. Each group retains its own membership, perspective, and local context, but participates in a wider framework for joint decision-making, knowledge exchange, and coordinated action.",
+      "gov": "An organisation may create a council made up of representatives from several independent member groups. The council agrees shared policies and strategic direction, but each member group remains responsible for its own community and local governance. This is a federation of people because authority is shared rather than fully centralised."
+    },
+    "label": "Federation of People",
+    "purpose": "To enable individuals or groups to work together around shared goals without losing their own identity, voice, autonomy, or local responsibility.",
+    "type": "definition",
+    "children": [
+      "fed_gov"
+    ],
+    "tags": [
+      "Safe People",
+      "PEDRI: Mutual Benefit",
+      "PEDRI: Effective Involvement",
+      "PEDRI: Culture of Engagement"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Multiple distinct people or groups: There must be more than one person, team, community, or constituency involved.",
+        "tags": [
+          "Safe People",
+          "PEDRI: Culture of Engagement"
+        ]
+      },
+      {
+        "description": "Shared purpose: The federation exists to achieve something together that matters across the whole group.",
+        "tags": [
+          "PEDRI: Mutual Benefit"
+        ]
+      },
+      {
+        "description": "Retained identity: Members do not stop being themselves in order to participate. Their own identity, perspective, or role remains meaningful.",
+        "tags": [
+          "PEDRI: Equity/Diversity"
+        ]
+      },
+      {
+        "description": "Local autonomy: Individuals or groups keep some control over their own decisions, priorities, or actions.",
+        "tags": [
+          "PEDRI: Effective Involvement"
+        ]
+      },
+      {
+        "description": "Shared rules or agreements: There is an agreed framework for how people work together, make decisions, or resolve differences.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Coordination across difference: The federation brings together people who are not identical, but who choose to cooperate.",
+        "tags": [
+          "PEDRI: Culture of Engagement"
+        ]
+      },
+      {
+        "description": "Representation or voice: Members have a way of contributing to collective direction rather than simply being absorbed into a central authority.",
+        "tags": [
+          "PEDRI: Effective Involvement"
+        ]
+      },
+      {
+        "description": "Defined accountability: It should remain clear what is decided locally, what is decided collectively, and who is responsible for what.",
+        "tags": [
+          "SATRE: Info Governance",
+          "PEDRI: Transparency"
+        ]
+      },
+      {
+        "description": "Collective benefit without full merger: The point is to gain the benefits of acting together without requiring complete unification.",
+        "tags": [
+          "PEDRI: Mutual Benefit"
+        ]
+      }
+    ]
+  },
+  "fed_data": {
+    "id": "fed_data",
+    "definitions": {
+      "public": "Federated data means data is kept in different places, but can still be used together under agreed rules without everyone having to hand it all over to one central place.",
+      "tech": "Federated data is a distributed data arrangement in which datasets remain under the stewardship of their original holders, but can be accessed, queried, analysed, or linked in agreed ways across a shared governance and interoperability framework, without routine central pooling of source-level data.",
+      "researcher": "Federated data is data held across multiple independent organisations or systems that can be used in a coordinated way under shared rules, while each organisation retains stewardship and control over its own data.",
+      "gov": "Federated data is data held across multiple independent organisations or systems that can be used in a coordinated way under shared rules, while each organisation retains stewardship and control over its own data."
+    },
+    "examples": {
+      "public": "Several hospitals each keep their own patient records. Instead of sending all that data to one big national database, they agree shared rules so the same approved research question can be answered across all of them. The data stays with each hospital, but the research can still use the combined picture.",
+      "tech": "Five NHS trusts each hold local patient data within their own secure environments. The trusts adopt common governance, mapped data standards, and interoperable tooling so that one approved analysis can run across all five local datasets. Queries or analytic code are sent to each site, executed locally, and only agreed summary outputs are returned. The underlying source data remains under the stewardship of each trust.",
+      "researcher": "During COVID, hospitals in different parts of the country might each keep their own patient records, but agree common rules so researchers can find out how many patients were admitted, how many needed intensive care, and which treatments were linked to better outcomes. Each hospital keeps control of its own data, but the wider system can still learn from it.",
+      "gov": "Federated data allows multiple data holders to contribute to a shared analysis while keeping the source data under local stewardship."
+    },
+    "label": "Federated Data",
+    "purpose": "To let multiple organisations use data together in a coordinated way without requiring all the source data to be moved into one central place.",
+    "type": "definition",
+    "children": [
+      "fed_infra",
+      "fed_storage"
+    ],
+    "tags": [
+      "Safe Data",
+      "Findable",
+      "Accessible",
+      "Interoperable",
+      "SATRE: Tech/Security",
+      "SATRE: Data Management"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Data held in more than one place: The data remains distributed across multiple organisations, systems, or secure environments.",
+        "tags": [
+          "Safe Data",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "Multiple data stewards or controllers: Different parties remain responsible for their own datasets, rather than everything being owned or governed centrally.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Local control is retained: Each organisation keeps stewardship over its own data, including decisions about access, use, and governance.",
+        "tags": [
+          "Safe Settings"
+        ]
+      },
+      {
+        "description": "The data can be used across the group in a coordinated way: Even though the data is separate, it can still contribute to shared analysis, research, or insight.",
+        "tags": [
+          "Accessible",
+          "Reusable"
+        ]
+      },
+      {
+        "description": "Some degree of interoperability: There needs to be enough common structure, standards, mapping, or agreed meaning for work across datasets to be possible.",
+        "tags": [
+          "Interoperable"
+        ]
+      },
+      {
+        "description": "Shared rules for access and use: Federated data depends on agreed governance, permissions, and safeguards, not just technical connectivity.",
+        "tags": [
+          "Safe Projects",
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Data does not have to be routinely pooled centrally: A core feature is that useful work can happen without first moving all source-level data into one central database.",
+        "tags": [
+          "Safe Settings"
+        ]
+      },
+      {
+        "description": "Only appropriate outputs, queries, or models may move: What travels across the federation may be code, queries, parameters, or approved results rather than raw source data.",
+        "tags": [
+          "Safe Outputs"
+        ]
+      },
+      {
+        "description": "Context and provenance remain important: Because data comes from different places, it is important to preserve information about origin, quality, meaning, and local context.",
+        "tags": [
+          "Findable",
+          "PEDRI: Data Literacy"
+        ]
+      },
+      {
+        "description": "It is broader than one technical method: Federated data is not the same thing as federated query, federated analytics, or federated learning. Those are ways of working with federated data.",
+        "tags": [
+          "SATRE: Tech/Security"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Federation",
+        "definition": "the broader collaboration model"
+      },
+      {
+        "term": "Federated data",
+        "definition": "the distributed data landscape within that model"
+      },
+      {
+        "term": "Federated analytics",
+        "definition": "analysis performed across that distributed data"
+      },
+      {
+        "term": "Federated learning",
+        "definition": "training models across distributed data without routine central pooling"
+      }
+    ]
+  },
+  "fed_storage": {
+    "id": "fed_storage",
+    "definitions": {
+      "public": "A structured system where files stay exactly where they were born, but a smart computer network knows exactly where everything is so it can all be searched quickly.",
+      "tech": "A distributed persistent storage paradigm where multiple, heterogeneous, and physically separate storage nodes are virtually orchestrated and queried as a single, coherent logical namespace across different geographic boundaries.",
+      "researcher": "A setup where many different hospitals' hard drives are connected through software so you can search them all at once, even though the data is scattered everywhere.",
+      "gov": "Coordinating decentralized data assets across multiple legal entities into a unified catalog, massively shifting the risk burden away from a central target to the sovereign node operators."
+    },
+    "examples": {
+      "public": "Connecting secure hard drives from different hospitals into one seamless network directory accessible only by fully permitted researchers.",
+      "tech": "Federated S3 buckets orchestrating cross-region replication logic to maintain a unified metadata graph while respecting distinct cryptographic encryption boundaries.",
+      "researcher": "Opening a single folder on your secure desktop that seamlessly lists millions of health records that actually live in 20 different global cities.",
+      "gov": "The Data Controller at Site A signing a master agreement that strictly limits read-only metadata access to Site B, without ever transferring actual file payloads."
+    },
+    "label": "Federated Storage",
+    "type": "definition",
+    "children": [
+      "decentralised_storage",
+      "central_storage"
+    ],
+    "tags": [
+      "Safe Settings",
+      "SATRE: Data Management"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Storage endpoints reachable via secure protocols",
+        "tags": []
+      },
+      {
+        "description": "Availability SLA > 99%",
+        "tags": []
+      }
+    ]
+  },
+  "decentralised_storage": {
+    "id": "decentralised_storage",
+    "definitions": {
+      "public": "Locally collected data is stored securely in its local hospital. Access to any part of this data is strictly controlled by the local people who actually collected it.",
+      "tech": "An architectural stance explicitly mandating that data payloads stubbornly reside at their point of origin; all authorization and processing workflows must dynamically route computational requests to the independent, sovereign storage nodes.",
+      "researcher": "A strict rule dictating that you must send your analysis code to the exact hospital where the data lives, rather than asking them to send their data to you.",
+      "gov": "The absolute maximization of institutional sovereignty and local accountability, requiring every single data use to continually pass local, independent checks."
+    },
+    "examples": {
+      "public": "A local hospital keeping its own patient records heavily guarded on-site, but safely allowing an approved math formula to temporarily query them.",
+      "tech": "A containerized processing engine dynamically instantiating at the local edge node, reading local parquet files, and returning only deeply aggregated statistics.",
+      "researcher": "Sending your statistical Python script to five different hospitals simultaneously, precisely because they refuse to move their patient data to a central location.",
+      "gov": "The autonomous Data Access Committee at a specific hospital retaining the absolute, unilateral right to reject a query, despite overriding national consortium approval."
+    },
+    "label": "Decentralised Storage",
+    "type": "solution",
+    "tags": [
+      "Safe Settings",
+      "Safe Data",
+      "PEDRI: Data Literacy"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Data never leaves local network boundaries",
+        "tags": []
+      },
+      {
+        "description": "Local DAC approval logged for all queries",
+        "tags": []
+      }
+    ]
+  },
+  "central_storage": {
+    "id": "central_storage",
+    "definitions": {
+      "public": "Taking huge amounts of data from lots of different places and pouring it all into one giant, central bucket. This is exactly what a true federation tries to avoid.",
+      "tech": "The practice of ingesting, transporting, and physically pooling data copies from myriad disparate sources into a single, monolithic database; this model is diametrically opposed to the principles of federation.",
+      "researcher": "Copying everyone's data into one massive, central database. While highly convenient for analysis, it fundamentally strips control away from the original data owners.",
+      "gov": "Consolidating immense cyber-security risk and absolute stewardship responsibility into a singular entity, breaking local control and creating a high-value centralized liability."
+    },
+    "examples": {
+      "public": "Copying every single citizen's local patient records into a massive, national cloud database securely controlled by just one company.",
+      "tech": "Setting up a continuous ETL pipeline to forcefully duplicate relational rows from 10 hospital SQL instances into one massive, centralized Snowflake data warehouse in the cloud.",
+      "researcher": "Running a query that takes just seconds because all 50 million global health records have been conveniently collected on one massive computer system.",
+      "gov": "An overarching legal mandate standardizing all historical formats and indemnifying the central host for any sweeping, systemic data breaches."
+    },
+    "label": "Data Pooling (Central Storage)",
+    "type": "solution",
+    "tags": [
+      "Safe Data",
+      "SATRE: Data Management"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Single physical storage location verified",
+        "tags": []
+      },
+      {
+        "description": "Data ingestion pipelines audited",
+        "tags": []
+      }
+    ]
+  },
+  "fed_analytics": {
+    "id": "fed_analytics",
+    "definitions": {
+      "public": "A clever system where the math explicitly goes to the data, instead of the data going to the math. The combined answers are then sent back to the researcher safely.",
+      "tech": "Non-disclosive federation techniques where statistical algorithms are algorithmically transmitted to, and evaluated concurrently across, disconnected data nodes, returning only deeply aggregated coefficients back to the central orchestrator.",
+      "researcher": "An analytical approach where you safely send your mathematical code to each hospital's dataset individually, and the software effortlessly mathematically combines the final answers for you.",
+      "gov": "A distributed computational model minimizing risk by rigidly ensuring raw data never egresses the secure perimeter; only deeply aggregated, non-identifiable statistical insights are formally transmitted."
+    },
+    "examples": {
+      "public": "Asking five different hospitals totally separate questions to safely count exactly how many people have a specific disease, and just adding their final numbers together.",
+      "tech": "Distributing a complex logistic regression task across 4 TREs using DataSHIELD to calculate robust standard error metrics simultaneously without exposing patient variance.",
+      "researcher": "Training a breast cancer prediction model on outcomes across three distinct countries, sharing only the model's coefficients rather than any raw patient data.",
+      "gov": "An explicit legal framework specifically authorizing the execution of code from external parties, provided the output vector strictly passes automated statistical disclosure control."
+    },
+    "label": "Federated Analytics",
+    "type": "definition",
+    "children": [
+      "ds_simul",
+      "smpc",
+      "sep_analysis"
+    ],
+    "tags": [
+      "Reusable",
+      "Interoperable",
+      "SATRE: Tech/Security",
+      "Safe Settings"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Analytics code executes locally at endpoints",
+        "tags": []
+      },
+      {
+        "description": "Only aggregate results transmitted back",
+        "tags": []
+      }
+    ]
+  },
+  "smpc": {
+    "id": "smpc",
+    "definitions": {
+      "public": "A highly clever mathematical lock that magically allows groups of people to answer a math problem together without anyone ever seeing anyone else's private numbers.",
+      "tech": "Cryptographic protocols (e.g., Shamir's Secret Sharing) systematically distributing a computation inextricably across multiple autonomous parties such that no individual party can mathematically deduce any other party's data inputs.",
+      "researcher": "Extremely secure abstract mathematics that allow multiple hospitals to powerfully compute a joint analysis while mathematically guaranteeing that their individual patients' real data remains utterly secret.",
+      "gov": "A highly advanced layer of mathematical security formally guaranteeing zero-knowledge proofs, satisfying even the most exceptionally stringent data protection and privacy regulations globally."
+    },
+    "examples": {
+      "public": "Three doctors safely finding out the exact average age of all their distinct patients combined, without any of them ever revealing the age of their own specific patients.",
+      "tech": "A homomorphic encryption scheme successfully utilized to elegantly calculate a global arithmetic mean securely without exposing distinct floating-point variances.",
+      "researcher": "Three distinct hospitals collaborating to calculate the precise average age of their uniquely combined patients, without any hospital legally or technically learning the exact ages of patients at the other two.",
+      "gov": "Operating an SMPC cluster strictly to explicitly enable critical cross-border genomic meta-analysis where international patient data export is legally and permanently prohibited."
+    },
+    "label": "Secure Multiparty Computing",
+    "type": "solution",
+    "tags": [
+      "Safe Settings",
+      "Safe Data"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Cryptographic protocol verified (e.g., Shamir secret sharing)",
+        "tags": []
+      },
+      {
+        "description": "Zero knowledge of distinct individual data maintained mathematically",
+        "tags": []
+      }
+    ]
+  },
+  "fed_gov": {
+    "id": "fed_gov",
+    "definitions": {
+      "public": "The rules, agreements, and teams of people who formally decide who is allowed to use the data, how they must protect it, and what they can use it for.",
+      "tech": "The overarching legal, administrative, and ethical frameworks establishing baseline policies, Data Processing Agreements (DPAs), and liabilities for all consortium operations and cross-institutional workflows.",
+      "researcher": "The established set of rules, ethics panels, and legal agreements that dictate exactly how, when, and by whom the federated data can be queried.",
+      "gov": "The formalized risk-management, legal, and operational structures that bind independent institutions together, ensuring unified compliance with privacy laws, information security standards, and ethical requirements."
+    },
+    "examples": {
+      "public": "A strict rulebook that every hospital and researcher must thoroughly read and sign before they are allowed to join the research network.",
+      "tech": "A consortium charter stipulating acceptable uses, indemnification clauses, and joint-controllership liabilities for analyzing shared genomic variants.",
+      "researcher": "A centralized ethics board that rigidly reviews your study protocol to ensure it complies with the federation's rules before code execution.",
+      "gov": "Executing a multilateral Data Sharing Agreement signed by 10 university Vice-Chancellors defining strict liability for any data breaches."
+    },
+    "label": "Organizations & Governance",
+    "type": "definition",
+    "children": [
+      "access_process"
+    ],
+    "tags": [
+      "Safe Projects",
+      "SATRE: Info Governance",
+      "PEDRI: Transparency"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Legal basis for data processing established",
+        "tags": []
+      },
+      {
+        "description": "Data Processing Agreements (DPAs) active",
+        "tags": []
+      }
+    ]
+  },
+  "access_process": {
+    "id": "access_process",
+    "definitions": {
+      "public": "The strict security checks and detailed application forms a scientist must complete and pass before they are given permission to see or use any data.",
+      "tech": "Standardized, auditable workflows and identity verification procedures evaluating researcher credentials, project scope, and legal compliance before granting programmatic authorizations to data enclaves.",
+      "researcher": "The formal, multi-step application you must carefully follow—such as submitting training certificates and a detailed project protocol—to receive permission to query the network's data.",
+      "gov": "The operationalization of information governance policies into measurable, standardized steps that gatekeep system access, ensuring all legal and ethical prerequisites are met and organizational risk is mitigated."
+    },
+    "examples": {
+      "public": "A thorough background check and application form asking the scientist exactly why they need the data and how it will tangibly help patients.",
+      "tech": "An automated Identity and Access Management pipeline integrating institutional ORCID credentials with a federated access gateway following explicit committee approval.",
+      "researcher": "Submitting a 5-page research protocol detailing exactly what statistical models you will run, and waiting for the designated committee to formally approve it.",
+      "gov": "Implementing a strict 'Five Safes' framework checklist that must be fully satisfied and signed off by the Information Asset Owner before an account is provisioned."
+    },
+    "label": "Access Processes",
+    "type": "definition",
+    "children": [
+      "dacs"
+    ],
+    "tags": [
+      "Safe Projects",
+      "Safe People",
+      "SATRE: Info Governance"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Time-to-access measured",
+        "tags": []
+      },
+      {
+        "description": "Number of approved vs rejected applications tracked",
+        "tags": []
+      }
+    ]
+  },
+  "dacs": {
+    "id": "dacs",
+    "definitions": {
+      "public": "A group of trusted experts, healthcare professionals, and everyday people who review every single request and have the absolute power to say 'yes' or 'no' to a researcher.",
+      "tech": "Independent, multi-disciplinary governance boards responsible for auditing, deliberating on, and validating specific data access requests against predefined, mathematically and ethically rigorous risk criteria.",
+      "researcher": "A panel of domain experts, ethical stewards, and public members who review your research proposal to verify it is safe and valuable before handing you the keys.",
+      "gov": "The delegated authority bodies entrusted with formally assessing the risk-versus-reward of specific data uses, ensuring total compliance with original consent protocols and institutional risk appetite."
+    },
+    "examples": {
+      "public": "A committee spanning multiple local patients that carefully reads a scientist's plan and decides if it is a truly safe, ethical, and beneficial use of their hospital's data.",
+      "tech": "A federated committee meeting monthly to review specific, granular FHIR scope requests alongside automated algorithmic output privacy bounds.",
+      "researcher": "Answering tough questions from a panel composed of two clinicians, a statistician, and a patient representative who want to ensure your study won’t accidentally identify individuals.",
+      "gov": "A formalized board operating under strict Terms of Reference that minutely records its rationale for approving or rejecting applications to satisfy external audit requirements."
+    },
+    "label": "Data Access Committees",
+    "type": "solution",
+    "tags": [
+      "Safe People",
+      "Safe Projects",
+      "PEDRI: Equity/Diversity",
+      "PEDRI: Transparency",
+      "PEDRI: Culture of Engagement"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Committee meetings minuted",
+        "tags": []
+      },
+      {
+        "description": "Lay/public representation on committee verified",
+        "tags": []
+      }
+    ]
+  },
+  "fed_infra": {
+    "id": "fed_infra",
+    "definitions": {
+      "public": "The highly secure computers, servers, and networks where the data physically lives, and the processing power used to run the math on that data.",
+      "tech": "The localized hardware architectures and cloud enclaves provisioning both the persistent storage of health data and the ephemeral, isolated compute environments required for secure analysis.",
+      "researcher": "The physical servers, secure cloud networks, and processing power provided by an institution so that you can actually store data and run your mathematical models safely.",
+      "gov": "The managed technical environments that must adhere to stringent physical and digital security controls (e.g. ISO 27001), representing the ultimate perimeter of the institution's risk envelope."
+    },
+    "examples": {
+      "public": "A secure, windowless server room at the hospital keeping all patient records completely locked away from the public internet.",
+      "tech": "A secure AWS Virtual Private Cloud enclave partitioned to completely separate the data storage layer from the EC2 compute instance layer.",
+      "researcher": "Logging into the university's high-performance cluster to securely use its 100 CPUs for your complex genetics analysis.",
+      "gov": "An annual independent penetration test explicitly required to renew the facility's accreditation before any new data can be loaded."
+    },
+    "label": "Storage & Compute",
+    "type": "definition",
+    "children": [
+      "remote_vm",
+      "phy_access"
+    ],
+    "tags": [
+      "SATRE: Tech/Security",
+      "SATRE: Supporting Capabilities",
+      "Safe Settings"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "ISO27001 or equivalent certification valid",
+        "tags": []
+      },
+      {
+        "description": "Penetration testing conducted annually",
+        "tags": []
+      }
+    ]
+  },
+  "remote_vm": {
+    "id": "remote_vm",
+    "definitions": {
+      "public": "Working with secure data through a special window on your computer screen, where it is impossible to copy, print, or save the data to your own machine.",
+      "tech": "The provisioning of isolated, containerized Virtual Desktop Infrastructures (VDIs) or Trusted Research Environments (TREs) that rigorously prevent data exfiltration while enabling remote interaction via secure rendering layers.",
+      "researcher": "A highly locked-down computer desktop you access over the internet, where you can see and analyze data, but simply cannot copy, paste, or download anything to your own laptop.",
+      "gov": "A technical control enforcing the 'Safe Settings' principle by entirely removing the endpoint device (the researcher's personal computer) from the data security perimeter."
+    },
+    "examples": {
+      "public": "Watching a secure movie on an airplane screen—you can view it fully, but you have absolutely no way to take the file home with you.",
+      "tech": "Accessing a Citrix Workspace session where outbound port 80/443 traffic, clipboard sharing, and local drive mapping have been permanently disabled by group policy.",
+      "researcher": "Using a remote desktop app from your living room to run RStudio on a dataset stored securely at the national statistics office.",
+      "gov": "A strict policy ensuring that even if a researcher's laptop is stolen, zero data is compromised because no data was ever actually stored on their device."
+    },
+    "label": "Remote Access",
+    "type": "solution",
+    "tags": [
+      "Safe Settings",
+      "Safe Data",
+      "SATRE: Tech/Security"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Clipboard and internet access disabled",
+        "tags": []
+      },
+      {
+        "description": "Session times and commands logged",
+        "tags": []
+      }
+    ]
+  },
+  "phy_access": {
+    "id": "phy_access",
+    "definitions": {
+      "public": "Requiring a researcher to physically travel to a guarded, lock-and-key room at the hospital or government office just to look at the data safely.",
+      "tech": "Strict physical isolation, colloquially known as air-gapped secure rooms ('safe rooms'), mandating monitored physical on-site presence, completely neutralizing remote network-borne exfiltration vectors.",
+      "researcher": "Having to travel in person to a specific, highly secure room at a university or government building to sit down at a dedicated computer terminal just to run your analysis.",
+      "gov": "The ultimate draconian risk mitigation strategy for exceptionally sensitive datasets, relying heavily on physical building security and strictly monitored human supervision."
+    },
+    "examples": {
+      "public": "A desktop computer locked in a highly secure room at the national statistics office, deliberately built with no internet connection and no USB ports.",
+      "tech": "A computing terminal completely severed from the external internet, featuring structurally deactivated USB ports and local-only network topography.",
+      "researcher": "Swiping a biometric ID card to enter a windowless room so you can type your queries into a desktop that isn't connected to the outside world.",
+      "gov": "Maintaining an immutable physical logbook and CCTV recordings precisely documenting every individual who entered the room and for how exactly long."
+    },
+    "label": "Physical Access",
+    "type": "solution",
+    "tags": [
+      "Safe Settings",
+      "Safe Data"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Biometric or keycard access logs maintained",
+        "tags": []
+      },
+      {
+        "description": "CCTV monitoring at physical access points",
+        "tags": []
+      }
+    ]
+  },
+  "fed_access": {
+    "id": "fed_access",
+    "definitions": {
+      "public": "Federated access means people can be given approved access across different organisations using shared rules, while each organisation still decides what can and cannot be accessed.",
+      "tech": "Federated access is an access model in which independent organisations or systems trust agreed identity, authentication, and authorisation arrangements so that approved users, services, or processes can access resources across organisational boundaries while control over those resources remains with the local owner.",
+      "researcher": "Federated access is a way of enabling people to use data or services across multiple organisations through shared access arrangements, without requiring each organisation to give up control of its own systems or permissions.",
+      "gov": "Federated access is an access arrangement in which organisations recognise shared identity or approval mechanisms to permit appropriate cross-organisational access, while each organisation remains responsible for its own rules, safeguards, and decisions about what is allowed."
+    },
+    "examples": {
+      "public": "Imagine a researcher who is approved to work on a project involving more than one hospital. Federated access means the hospitals can recognise that person’s approved identity through shared arrangements, but each hospital still decides exactly what information or systems they are allowed to use.",
+      "tech": "A researcher at University A signs in using their home institution credentials. Through a federated identity and access arrangement, a secure analysis platform at NHS Organisation B recognises their authenticated identity and mapped role, then permits access only to the approved workspace and tools defined by Organisation B’s local policies.",
+      "researcher": "A multi-site study allows approved researchers from different institutions to access the same secure research service without each site creating a completely separate local account from scratch for every user. Access is enabled through shared identity arrangements, but each site still controls what each researcher can do.",
+      "gov": "Several organisations agree a common access framework so that staff or researchers from trusted partner institutions can request and receive access using recognised identity checks and approval routes. Even so, each organisation remains responsible for deciding which resources are accessible and under what safeguards."
+    },
+    "label": "Federated Access",
+    "purpose": "To allow approved people or systems to access data, tools, or services across more than one organisation or environment without needing everything to be moved into one place or managed through one single local account structure.",
+    "type": "definition",
+    "tags": [
+      "Safe People",
+      "Safe Settings",
+      "SATRE: Info Governance"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "More than one organisation or system involved: Federated access only makes sense where access crosses boundaries.",
+        "tags": [
+          "Safe People"
+        ]
+      },
+      {
+        "description": "A shared trust framework: The participating parties need agreed rules for recognising identities, approvals, or access decisions.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Local control over resources: Each organisation still decides what can be accessed, by whom, and under what conditions.",
+        "tags": [
+          "Safe Settings"
+        ]
+      },
+      {
+        "description": "Identity recognition across boundaries: A user, role, or service can be recognised beyond its home organisation through agreed arrangements.",
+        "tags": [
+          "Safe People"
+        ]
+      },
+      {
+        "description": "Authentication and authorisation mechanisms: There must be a way to confirm who someone is and what they are allowed to do.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "No need for full centralisation: Access can be coordinated without requiring all users, data, or systems to be merged into one central environment.",
+        "tags": [
+          "Safe Settings"
+        ]
+      },
+      {
+        "description": "Defined accountability: It should remain clear who approved access, who granted it, who used it, and who is responsible for oversight.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Safeguards and permissions are context-specific: Access is not automatically universal. It is governed by rules, roles, and local policy.",
+        "tags": [
+          "Safe Projects"
+        ]
+      }
+    ]
+  },
+  "ds_simul": {
+    "id": "ds_simul",
+    "definitions": {
+      "public": "A special computer program that runs a complex analysis simultaneously across lots of different databases, safely giving the exact same fast result as if all the data was stored in one giant place.",
+      "tech": "Distributed computational synchronization where mathematical models are evaluated concurrently across separated nodes, producing a statistically identical aggregate output exactly as if the analysis had been executed on a fully pooled, centralized dataset.",
+      "researcher": "Advanced software that intelligently splits your analysis and runs it at the exact same time across every single hospital, combining the puzzle pieces perfectly mathematically inside the network.",
+      "gov": "A rigorous, non-disclosive analytical methodology flawlessly maintaining strict node isolation while ensuring extremely high-fidelity algorithmic output matching centralized benchmarks."
+    },
+    "examples": {
+      "public": "Automatically asking an identical complicated question at the exact same moment to ten distinct hospitals globally, and safely combining their swift answers in a flash.",
+      "tech": "Calculating a unified, multi-site linear regression standard error metric dynamically utilizing secure, non-disclosive aggregate matrix multiplications.",
+      "researcher": "Running a single powerful command in R that instantly tallies millions of global patient records and gracefully returns just the final combined statistical graph.",
+      "gov": "A cross-institutional risk assessment certifying that the simultaneous query protocol robustly mathematically prevents any reverse-engineering of single-node data payloads."
+    },
+    "label": "Distributed Simultaneous Site Analysis",
+    "type": "solution",
+    "children": [
+      "datashield",
+      "smpc"
+    ],
+    "tags": [
+      "Safe Data",
+      "Interoperable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Execution time identical across nodes",
+        "tags": []
+      },
+      {
+        "description": "All node results combined automatically",
+        "tags": []
+      }
+    ]
+  },
+  "datashield": {
+    "id": "datashield",
+    "definitions": {
+      "public": "A specially designed computer program that securely calculates medical statistics across different hospitals, automatically blocking any math that could accidentally reveal who a patient is.",
+      "tech": "An open-source, client-server software architecture designed specifically for non-disclosive federated analysis, programmatically ensuring only deeply aggregated, statistically safe summary statistics return to the analytical client.",
+      "researcher": "An R-based software package that securely runs statistical models simultaneously across several different hospital databases, automatically blocking any command that might accidentally reveal a single person's data.",
+      "gov": "A rigorously tested, community-driven technical control enforcing robust statistical disclosure limitations at the point of query execution, heavily mitigating the risk of inadvertent re-identification during multi-site research."
+    },
+    "examples": {
+      "public": "A scientist running a safe spelling-check program that only tells them how many times the word 'asthma' appears across ten hospitals, but absolutely refuses to show the actual sentences.",
+      "tech": "Executing the ds.glm command to orchestrate a unified generalized linear model across 4 physically disconnected Opal data servers.",
+      "researcher": "Typing a single command in RStudio that calculates the average BMI of 500,000 patients spanning 5 countries, receiving only the final number back.",
+      "gov": "Approving the use of DataSHIELD within a consortium because its core parser explicitly refuses to execute disclosive base functions like head() or print()."
+    },
+    "label": "DataSHIELD",
+    "type": "provider",
+    "tags": [
+      "Safe Data",
+      "Safe Settings",
+      "Safe Outputs",
+      "Reusable",
+      "Interoperable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "DataSHIELD instance running v6.0+",
+        "tags": []
+      },
+      {
+        "description": "Disclosure checks pass standard DS logic",
+        "tags": []
+      }
+    ]
+  },
+  "sep_analysis": {
+    "id": "sep_analysis",
+    "definitions": {
+      "public": "A careful, step-by-step process where a brilliant researcher completely finishes safely checking one hospital's data independently before moving on to ask totally new questions at the very next hospital.",
+      "tech": "Sequential, asynchronous federated queries wherein distinct, isolated analytical localized results or specifically localized model weights are transmitted asynchronously to the orchestrating node for subsequent manual meta-analysis.",
+      "researcher": "Running your statistical analysis script fully on the very first hospital's data, checking the aggregated output, and then carefully adjusting the script before cautiously sending it to the next hospital.",
+      "gov": "An iterative, human-in-the-loop federated workflow explicitly requiring deliberate, methodical Information Governance professional review at each discrete step of the sequential analytical process."
+    },
+    "examples": {
+      "public": "A scientist diligently running a medical test safely at a hospital securely in London, writing down the final numerical answer, and then taking a train to run the exact same test safely at a completely different hospital securely in Manchester.",
+      "tech": "Orchestrating an iterative federated machine learning loop where an isolated foundational model is completely trained at Site A before its isolated neural weights are securely, manually transferred to Site B.",
+      "researcher": "Fitting a foundational statistical healthcare model meticulously at Oxford, and then deliberately validating that exact same model at Cambridge to see if the medical results confidently hold true.",
+      "gov": "Explicitly requiring a Data Access Committee to robustly and independently sign off on the specific query results from individual Site A before the researcher is subsequently permitted to approach individual Site B."
+    },
+    "label": "Separate Site Analysis",
+    "type": "solution",
+    "children": [
+      "datashield",
+      "trevolution",
+      "tes",
+      "ohdsi",
+      "opensafely"
+    ],
+    "tags": [
+      "Reusable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Asynchronous results collection visible",
+        "tags": []
+      },
+      {
+        "description": "Local node isolation maintained",
+        "tags": []
+      }
+    ]
+  },
+  "trevolution": {
+    "id": "trevolution",
+    "definitions": {
+      "public": "A large project trying to build a universal, secure set of train tracks so that approved medical research can securely travel between different, disconnected hospital computer systems.",
+      "tech": "An architectural blueprint and active development initiative aiming to standardize APIs and secure interoperability protocols natively between disparate Trusted Research Environments (TREs) to facilitate seamless, secure federated workflows.",
+      "researcher": "An initiative striving to make completely different secure data environments structurally talk to each other, so you don't have to learn five different complex systems just to run one combined analysis.",
+      "gov": "A strategic framework pursuing harmonized standards, shared computational capabilities, and reciprocal trust agreements across independent, sovereign TRE implementations globally."
+    },
+    "examples": {
+      "public": "Building a secure system that seamlessly translates the different computer languages used by different hospitals so they can all finally answer the same research question together.",
+      "tech": "Implementing a unified, cross-TRE API specification allowing a single researcher identity token to safely provision ephemeral compute containers across three distinct cloud enclaves.",
+      "researcher": "Submitting a single unified script via a specialized portal that successfully translates your code natively into the different formats required by three different secure databases.",
+      "gov": "A consortium formally adopting the DARE UK interoperability standards to strategically align institutional policies and safely enable cross-boundary queries."
+    },
+    "label": "TREvolution",
+    "type": "provider",
+    "tags": [
+      "Interoperable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "TREvolution API response times logged",
+        "tags": []
+      },
+      {
+        "description": "Cross-TRE API keys mapped",
+        "tags": []
+      }
+    ]
+  },
+  "tes": {
+    "id": "tes",
+    "definitions": {
+      "public": "A universally agreed standard way of writing computer instructions so that totally different hospital computers all know exactly how to safely run the exact same complex science experiment.",
+      "tech": "The Global Alliance for Genomics and Health (GA4GH) Task Execution Schema (TES) is a standardized API for describing, orchestrating, and executing batch computing tasks securely across diverse, decentralized computing environments.",
+      "researcher": "A standardized set of technical instructions allowing you to reliably package up your complex genomic analysis pipeline and command it to run smoothly on fundamentally different computer systems around the world.",
+      "gov": "A widely adopted, community-governed data standard ensuring robust vendor neutrality and deep interoperability, allowing institutions to flexibly collaborate regardless of their underlying hardware provider."
+    },
+    "examples": {
+      "public": "Sending a perfectly written, standardized medical recipe to ten different hospital kitchens, knowing their different robot chefs will all securely bake the exact same cake.",
+      "tech": "Generating a unified TES JSON payload to securely trigger a containerized variant-calling pipeline dynamically across AWS, GCP, and local HPC edge nodes simultaneously.",
+      "researcher": "Writing your complex genome alignment workflow just once, and successfully broadcasting it to confidently compute instantly on 10 different global databases.",
+      "gov": "Standardizing an international genome consortium entirely onto GA4GH APIs, systematically bypassing the immense legal and technical hurdles of forcing every member to buy the exact same software."
+    },
+    "label": "TES",
+    "type": "provider",
+    "tags": [
+      "Interoperable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "GA4GH TES API endpoints active",
+        "tags": []
+      },
+      {
+        "description": "Job execution status codes trackable",
+        "tags": []
+      }
+    ]
+  },
+  "ohdsi": {
+    "id": "ohdsi",
+    "definitions": {
+      "public": "A massive international project that safely translates totally different hospital medical files into one universal medical language, so researchers can instantly compare diseases across the entire world.",
+      "tech": "An international collaborative utilizing the structured OMOP Common Data Model (CDM) to deeply harmonize heterogeneous observational health data, enabling standardized, large-scale federated statistical methodologies.",
+      "researcher": "A widely used standardized system that translates messy, completely different hospital records from all around the world into one single identical structure, making global health comparisons finally possible.",
+      "gov": "A profoundly influential open-science data standardization initiative that vastly reduces friction for cross-institutional studies by aggressively converting complex local data idiosyncrasies into a unified semantic format."
+    },
+    "examples": {
+      "public": "Automatically safely translating French, Japanese, and English medical records into an identical, perfectly organized universal spreadsheet so a computer can quickly find global health patterns.",
+      "tech": "Executing an identical, standardized SQL query utilizing the OHDSI ATLAS toolkit seamlessly across 50 disparately hosted, globally distributed OMOP-mapped relational databases.",
+      "researcher": "Running a massive study to see if a new blood pressure pill works identically in America, Japan, and the UK, because all their complex data is formatted safely in the exact same way.",
+      "gov": "A national health system mandating the complete ontological mapping of all historical primary care records to SNOMED-CT uniquely within the OMOP CDM."
+    },
+    "label": "OHDSI",
+    "type": "provider",
+    "tags": [
+      "Findable",
+      "Interoperable",
+      "Reusable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "OMOP CDM version 5.3+ validated",
+        "tags": []
+      },
+      {
+        "description": "Data quality dashboard scores > 90%",
+        "tags": []
+      }
+    ]
+  },
+  "opensafely": {
+    "id": "opensafely",
+    "definitions": {
+      "public": "A uniquely transparent computer system that safely answers complex health questions using millions of medical records, while rigidly publishing exactly what code the researchers used for everyone to see.",
+      "tech": "A highly secure, intrinsically federated analytics platform utilizing a unique open-source tiering architecture, allowing researchers to safely execute code natively against millions of primary care records without interacting directly with disclosive granular data.",
+      "researcher": "A highly locked-down, specialized web platform where you write your analysis code completely in the open, verify it works on fake dummy data, and then ask the system to safely execute it on real patient data hidden securely behind a wall.",
+      "gov": "An aggressively transparent, privacy-by-design secure platform uniquely mandating that all analytical code utilized within the environment must be published entirely openly for supreme public accountability."
+    },
+    "examples": {
+      "public": "A secure robot that takes your medical questions, securely looks at millions of real hospital files, safely gives you just the answer, and then transparently posts everything it did online for the public to check.",
+      "tech": "Initiating a computationally heavy SQL aggregation over 58 million primary care rows dynamically within the TPP secure environment using securely curated Docker containers.",
+      "researcher": "Pushing your epidemiological Python script to GitHub, where the OpenSAFELY bot securely grabs it, runs it autonomously on real patient files, and safely hands you back just the final statistical graph.",
+      "gov": "Fully satisfying intense public privacy concerns during a pandemic by explicitly embedding an auditable, open-source code requirement directly into the core data access pipeline."
+    },
+    "label": "OpenSAFELY",
+    "type": "provider",
+    "tags": [
+      "Safe Settings",
+      "Safe Data",
+      "Safe Outputs"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "OpenSAFELY backend execution recorded",
+        "tags": []
+      },
+      {
+        "description": "SQL query suppression flags triggered when N<5",
+        "tags": []
+      }
+    ]
+  },
+  "sdc_output": {
+    "id": "sdc_output",
+    "definitions": {
+      "public": "A very careful security check that intentionally blurs the final math results slightly, making absolutely sure no clever person can ever work backwards to illegally find out who was in the study.",
+      "tech": "Extremely rigorous methodological practices involving deliberate data perturbation, granular cell suppression, or algorithmic rounding designed specifically to rigorously prevent adversarial statistical re-identification attacks from aggregated tabulations.",
+      "researcher": "The careful, systematic process of intentionally blurring your final charts and mathematical tables just enough so that absolutely no one can maliciously guess the identity of any single patient.",
+      "gov": "The paramount operational control completely underpinning the 'Safe Outputs' principle, serving as the definitive, unyielding fail-safe protecting privacy prior to any external data publication."
+    },
+    "examples": {
+      "public": "A security guard intently checking a scientist's homework before they leave, actively using a black marker to firmly cross out any tiny numbers that look suspiciously too specific.",
+      "tech": "Actively applying a strict mathematical rule that algorithmically suppresses any cross-tabulated demographic cohort natively containing fewer than 5 specific individuals (n<5).",
+      "researcher": "Your software automatically changing a table cell from showing '1 rare patient' to simply showing '<5 patients' to deliberately, fiercely protect that exact person's privacy.",
+      "gov": "Requiring highly detailed, mathematically auditable system logs unambiguously proving that specific, approved disclosure control algorithms were uniformly applied before any data egress execution."
+    },
+    "label": "Statistical Disclosure Control",
+    "type": "solution",
+    "tags": [
+      "Safe Outputs",
+      "PEDRI: Transparency"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Small cell counts strictly suppressed (<10)",
+        "tags": []
+      },
+      {
+        "description": "Output rounding rules systematically applied",
+        "tags": []
+      }
+    ]
+  },
+  "auto_sdc": {
+    "id": "auto_sdc",
+    "definitions": {
+      "public": "A smart computer robot that instantly checks the scientist's final answers with incredible speed, actively automatically deleting any specific numbers that might accidentally reveal exactly who a patient is.",
+      "tech": "The programmatic enforcement of statistical disclosure control rules—such as dynamic small-number suppression or differential privacy noise injection—executed natively at compile-time by the analytics engine without manual human intervention.",
+      "researcher": "A highly advanced software feature that instantly and automatically checks your math results for specific privacy risks before you even see them, explicitly blocking anything dangerous immediately.",
+      "gov": "A highly scalable, technically deterministic 'Safe Outputs' mitigation strategy fundamentally eliminating dangerous human error and vast administrative bottlenecks from routine algorithmic data egress reviews."
+    },
+    "examples": {
+      "public": "A fast, automatic spelling-checker that safely immediately blurs out the word 'asthma' if it mathematically calculates that only one single solitary person in the entire hospital actually has it.",
+      "tech": "DataSHIELD completely aborting a query and throwing an explicit runtime error because a specifically requested scatterplot coordinate dynamically violated the rigid minimum cell density threshold.",
+      "researcher": "Confidently hitting 'run' on your script and instantly seeing a big red warning message explicitly telling you the software automatically blocked the chart because it was mathematically too disclosive.",
+      "gov": "The explicit automation of routine algorithmic disclosure checks entirely freeing up the manual Data Access Committee to deliberately focus only on nuanced, high-risk, edge-case qualitative assessments."
+    },
+    "label": "Automated",
+    "type": "solution",
+    "tags": [
+      "Safe Outputs",
+      "SATRE: Tech/Security"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Algorithmic suppression logs available",
+        "tags": []
+      },
+      {
+        "description": "0 human interventions needed for basic outputs",
+        "tags": []
+      }
+    ]
+  },
+  "semi_auto_sdc": {
+    "id": "semi_auto_sdc",
+    "definitions": {
+      "public": "A teamwork system where a fast computer highlights anything slightly risky in the scientist's work, and then a smart human safely and carefully double-checks exactly those specific highlights before saying 'yes'.",
+      "tech": "A hybrid security assurance workflow where preliminary algorithmic scripts mathematically flag potential quantitative disclosure risks, necessitating subsequent qualitative review and explicit approval by an accredited human Information Governance professional.",
+      "researcher": "A system where a very fast computer does the very first quick security check of your analysis completely, but an actual human expert must then carefully review the tricky parts before you are allowed to specifically publish.",
+      "gov": "A balanced, highly pragmatic risk management methodology efficiently combining the rapid scale of algorithmic security parsing directly with the nuanced, contextual judgment of trained ethical stewards."
+    },
+    "examples": {
+      "public": "An automatic airport metal detector beeping at a specific bag, carefully prompting a trained human security guard to intentionally step forward and carefully look deeply inside just to be completely completely safe.",
+      "tech": "A Python script automatically hashing output tables natively against strict K-anonymity rules and immediately generating a prioritized triage dashboard for the TRE output review team to manually formally inspect.",
+      "researcher": "The computer quickly approving 90% of your massive quantitative dataset instantly, but deliberately flagging one specific rare disease chart for a human official to manually legally review tomorrow.",
+      "gov": "An Information Governance protocol strictly mandating formal human sign-off on any algorithmic machine learning model weights, simply because pure mathematical thresholds cannot autonomously thoroughly assess clinical context."
+    },
+    "label": "Semi-Automated",
+    "type": "solution",
+    "tags": [
+      "Safe People",
+      "Safe Outputs"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Human review timestamps logged",
+        "tags": []
+      },
+      {
+        "description": "Approval rationale documented per output release",
+        "tags": []
+      }
+    ]
+  },
+  "fed_outputs": {
+    "id": "fed_outputs",
+    "definitions": {
+      "public": "The final, magical step where the computer perfectly glues all the different pieces of the puzzle together from the different hospitals to clearly reveal the big picture.",
+      "tech": "The orchestrated, complex meta-analytical collation of multiple, disparate node-level statistical outputs into a unified, coherent global estimate strictly within the federated orchestrator framework.",
+      "researcher": "The final step where the software automatically catches all the different answers thrown back by the different hospitals and expertly stitches them together into one final, highly accurate master result.",
+      "gov": "The formal, algorithmic aggregation phase that structurally ensures no individual localized site is disproportionately exposed or maliciously reverse-engineerable from the terminal aggregated release."
+    },
+    "examples": {
+      "public": "Taking five completely separate, secure summary reports securely from five different cities and quickly stapling them together to perfectly answer a very hard national medical question.",
+      "tech": "Calculating a global DerSimonian-Laird random-effects meta-analysis dynamically utilizing the distinct effect sizes securely transmitted directly from five disparate independent nodes.",
+      "researcher": "Watching your computer screen instantly take five different statistical curves from five different countries and mathematically seamlessly blend them into one perfect global curve.",
+      "gov": "Programmatically ensuring that the global combined dataset strictly obscures the exact, distinct contribution vectors of any single participating organizational entity."
+    },
+    "label": "Federated Outputs",
+    "type": "definition",
+    "tags": [
+      "Safe Outputs",
+      "Reusable"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Consolidated final hash sum verified",
+        "tags": []
+      },
+      {
+        "description": "No raw individual patient data included in export object",
+        "tags": []
+      }
+    ]
+  },
+  "research_outputs": {
+    "id": "research_outputs",
+    "definitions": {
+      "public": "The final scientific discoveries, charts, and numbers that researchers are completely allowed to take home and publish to help find cures for diseases.",
+      "tech": "The aggregate empirical artifacts (e.g., statistical distributions, trained hyper-parameters, or peer-reviewed manuscripts) synthesized conditionally across the distributed network intended for academic or operational dissemination.",
+      "researcher": "The final scientific answers—like statistical graphs, average numbers, or trained machine learning models—that you actually take away from the secure environment to publish in your paper.",
+      "gov": "The fully controlled externalization of data insights, stringently evaluated against the 'Safe Outputs' principle to irrevocably legally prove that no protected health information has breached the secure perimeter."
+    },
+    "examples": {
+      "public": "Publishing a widely read news article showing that a new cancer treatment works 20% better, without ever revealing any single patient's name to the press.",
+      "tech": "Exporting an aggregated, non-disclosive Kaplan-Meier survival curve plot after successfully executing a multi-site retrospective cohort study.",
+      "researcher": "Downloading the final bar chart showing the statistical difference in drug effectiveness between three distinct countries so you can put it into your scientific journal article.",
+      "gov": "Formally logging and archiving the exact aggregate statistics permanently removed from the secure environment to provide an immutable trail for future compliance audits."
+    },
+    "label": "Research Outputs",
+    "type": "definition",
+    "children": [
+      "intermediate_outputs",
+      "final_outputs"
+    ],
+    "tags": [
+      "Safe Outputs",
+      "PEDRI: Mutual Benefit"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Digital Object Identifier (DOI) assigned",
+        "tags": []
+      },
+      {
+        "description": "Associated methodology published openly",
+        "tags": []
+      }
+    ]
+  },
+  "intermediate_outputs": {
+    "id": "intermediate_outputs",
+    "definitions": {
+      "public": "The invisible, secret numbers that the computers automatically whisper to each other while they are working together to safely solve a hard math problem.",
+      "tech": "In-flight, non-terminal statistical artifacts (e.g., node-specific model weights or gradient updates) exchanged iteratively between distinct federated endpoints during the execution of a distributed query loop.",
+      "researcher": "The messy, half-finished math calculations that your computer code needs to automatically pass back and forth between different hospitals before it can finally solve the whole puzzle.",
+      "gov": "Iterative computational byproducts that still strictly remain within the formally accredited security boundary, governed by automated technical controls blocking unauthorized human observation."
+    },
+    "examples": {
+      "public": "Two hospital computers quickly swapping completely half-finished math problems over a secure line so they can figure out the final answer together.",
+      "tech": "Transmitting local gradients from an edge hospital node back to a central orchestrator server securely during round 4 of a federated deep learning epoch.",
+      "researcher": "Your software automatically checking a preliminary mathematical sub-total with a hospital in Edinburgh before seamlessly adding it to the final equation in London.",
+      "gov": "Cryptographically encrypting all iterative data packets safely exchanged between Site A and Site B to guarantee that random network interception yields absolutely zero usable patient information."
+    },
+    "label": "Intermediate Research Outputs",
+    "type": "definition",
+    "children": [
+      "auto_sdc"
+    ],
+    "tags": [
+      "Safe Outputs",
+      "SATRE: Data Management"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Outputs restricted to authenticated session only",
+        "tags": []
+      },
+      {
+        "description": "Deleted automatically after 30 days",
+        "tags": []
+      }
+    ]
+  },
+  "final_outputs": {
+    "id": "final_outputs",
+    "definitions": {
+      "public": "The totally safe, checked, and officially approved discoveries that a scientist is completely allowed to take out of the secure hospital computer network.",
+      "tech": "The terminal, synthesized statistical results formally approved for definitive egress from the trusted research environment following rigorous algorithmic or manual disclosure risk mitigation.",
+      "researcher": "The fully checked, completely safe final numbers and graphs that the security team officially signs off on, allowing you to finally download them to your own laptop.",
+      "gov": "The legal and absolute culmination of the information governance lifecycle, formally absolving the analytical payload of all distinct personal identifiers."
+    },
+    "examples": {
+      "public": "A scientist walking confidently out of the secure hospital doors holding a piece of paper that only has the number '42%' written on it, safely answering their research question.",
+      "tech": "Successfully extracting a globally calculated p-value and confidence interval matrix after identically applying rule-based cell suppression algorithms (k-anonymity=5).",
+      "researcher": "Getting an email saying the security team has personally approved the final five charts you made, and they are now ready for you to safely download.",
+      "gov": "An Information Asset Owner formally accepting liability and legally declaring that an aggregated statistical table poses absolutely zero risk of re-identification to any constituent."
+    },
+    "label": "Final Research Output",
+    "type": "definition",
+    "children": [
+      "semi_auto_sdc"
+    ],
+    "tags": [
+      "Safe Outputs",
+      "PEDRI: Two-way Comm",
+      "PEDRI: Transparency"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Cleared through institutional comms team",
+        "tags": []
+      },
+      {
+        "description": "Available publicly without authentication barrier",
+        "tags": []
+      }
+    ]
+  }
+}

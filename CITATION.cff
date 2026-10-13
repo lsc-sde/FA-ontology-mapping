@@ -3,7 +3,7 @@
 
 cff-version: 1.2.0
 title: "FA Ontology Mapping"
-repository-code: "https://github.com/DWkirkwood/FA-ontology-mapping"
+repository-code: "https://github.com/lsc-sde/FA-ontology-mapping"
 message: >-
   If you use this work, please cite it using the metadata
   from this file.

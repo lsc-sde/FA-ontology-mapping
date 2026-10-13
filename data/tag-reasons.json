@@ -1,0 +1,143 @@
+{
+  "fed_ecosystem": {
+    "Safe Projects": "Provides the overarching framework for research project approval and governance",
+    "Safe Settings": "Encompasses all secure environments where data processing occurs",
+    "Findable": "Metadata cataloguing across the federation makes datasets discoverable",
+    "Accessible": "Federated access mechanisms enable authorized data retrieval across institutions",
+    "Interoperable": "Federated systems must interoperate across different institutional platforms",
+    "SATRE: Info Governance": "Requires comprehensive governance spanning all participating institutions",
+    "SATRE: Supporting Capabilities": "Depends on shared infrastructure and support services across the federation"
+  },
+  "fed_people": {
+    "Safe People": "Directly concerns governance of who can access and work with sensitive data",
+    "PEDRI: Mutual Benefit": "Public contributors and patients should see tangible benefits from sharing their data",
+    "PEDRI: Effective Involvement": "Patients and public members must be meaningfully involved in decisions about data use",
+    "PEDRI: Culture of Engagement": "Sustained culture of engaging communities and patients across participating organizations"
+  },
+  "fed_data": {
+    "Safe Data": "Core focus is management, protection, and sovereignty of sensitive datasets",
+    "Findable": "Harmonized metadata makes federated datasets discoverable across institutions",
+    "Accessible": "Standardized APIs and access controls enable authorized data retrieval",
+    "Interoperable": "Data standards enable cross-institutional analysis and harmonization",
+    "SATRE: Tech/Security": "Technical security controls protect data in transit and at rest",
+    "SATRE: Data Management": "Federated data management is the core function of this component"
+  },
+  "fed_storage": {
+    "Safe Settings": "Storage infrastructure is a fundamental component of the secure setting",
+    "SATRE: Data Management": "Storage architecture directly underpins data management strategy"
+  },
+  "decentralised_storage": {
+    "Safe Settings": "Keeping data at origin preserves sovereignty and contributes to the secure setting",
+    "Safe Data": "Data sovereignty preserved — data never leaves its original location",
+    "PEDRI: Data Literacy": "Public should understand how and where their data is stored locally and why it stays there"
+  },
+  "central_storage": {
+    "Safe Data": "Centralized pooling requires rigorous data protection and governance measures",
+    "SATRE: Data Management": "Central pooling is a specific data management architectural approach"
+  },
+  "fed_analytics": {
+    "Reusable": "Federated analytical methods can be reused across different data sources",
+    "Interoperable": "Analytics must function across heterogeneous data systems and platforms",
+    "SATRE: Tech/Security": "Analytical infrastructure requires security assurance and certification",
+    "Safe Settings": "Analytical environments are key components of the secure research setting"
+  },
+  "smpc": {
+    "Safe Settings": "Cryptographic protocols provide a mathematically provable secure setting",
+    "Safe Data": "Individual party data remains completely secret throughout computation"
+  },
+  "fed_gov": {
+    "Safe Projects": "Governance frameworks directly control which research projects are approved",
+    "SATRE: Info Governance": "Organizations and governance are the core information governance function",
+    "PEDRI: Transparency": "Governance decisions must be transparent to the public whose data is being used"
+  },
+  "access_process": {
+    "Safe Projects": "Access processes evaluate project scope, legitimacy, and compliance",
+    "Safe People": "Access workflows verify identity and training of requesting researchers",
+    "SATRE: Info Governance": "Standardized access workflows are a formal governance function"
+  },
+  "dacs": {
+    "Safe People": "DACs assess researcher credentials and trustworthiness before granting access",
+    "Safe Projects": "DACs evaluate each research project against predefined ethical criteria",
+    "PEDRI: Equity/Diversity": "DAC membership must include diverse public voices including patients and community representatives",
+    "PEDRI: Transparency": "DAC criteria and decisions must be openly communicated to the public and data subjects",
+    "PEDRI: Culture of Engagement": "DACs embed public and patient engagement at the heart of data access governance"
+  },
+  "fed_infra": {
+    "SATRE: Tech/Security": "Infrastructure must meet certified security standards and accreditation",
+    "SATRE: Supporting Capabilities": "Provides foundational computing and networking capabilities",
+    "Safe Settings": "Physical and virtual infrastructure constitutes the secure analytical setting"
+  },
+  "remote_vm": {
+    "Safe Settings": "Isolated virtual machines provide controlled, locked-down environments",
+    "Safe Data": "Data exfiltration prevention protects data from unauthorized extraction",
+    "SATRE: Tech/Security": "TRE security controls (disabled clipboard, no internet) are technical requirements"
+  },
+  "phy_access": {
+    "Safe Settings": "Air-gapped secure rooms represent the most physically secure setting type",
+    "Safe Data": "Physical isolation ensures data cannot be transmitted beyond the secure room"
+  },
+  "fed_access": {
+    "Safe People": "Access controls verify identity and authorization of each individual user",
+    "Safe Settings": "Access mechanisms are integral to maintaining the secure setting",
+    "SATRE: Info Governance": "Cross-domain delegated access requires formal governance frameworks"
+  },
+  "ds_simul": {
+    "Safe Data": "Non-disclosive techniques ensure no individual-level data is ever exposed",
+    "Interoperable": "Must execute simultaneously across heterogeneous data sources"
+  },
+  "datashield": {
+    "Safe Data": "Analysis functions are designed to never return individual-level data",
+    "Safe Settings": "Provides a programmatically enforced secure analysis environment",
+    "Safe Outputs": "Built-in disclosure checks ensure analytical outputs are non-disclosive",
+    "Reusable": "Open-source R packages are freely reusable across studies and institutions",
+    "Interoperable": "Works across different Opal data servers at multiple institutions globally"
+  },
+  "sep_analysis": {
+    "Reusable": "Analysis scripts can be sequentially reused across sites without modification"
+  },
+  "trevolution": {
+    "Interoperable": "Enables federated workflows across multiple different TRE implementations"
+  },
+  "tes": {
+    "Interoperable": "GA4GH standard enabling standardized task execution across disparate platforms"
+  },
+  "ohdsi": {
+    "Findable": "OMOP Common Data Model standardization makes health data universally findable",
+    "Interoperable": "Common Data Model enables cross-institutional query interoperability",
+    "Reusable": "Standardized SQL queries are reusable across any OMOP-compliant database"
+  },
+  "opensafely": {
+    "Safe Settings": "Highly secure platform with strict controls — no data extraction permitted",
+    "Safe Data": "All data remains within the secure platform boundary at all times",
+    "Safe Outputs": "Rigorous output checking before any results are released"
+  },
+  "sdc_output": {
+    "Safe Outputs": "Core function is ensuring analytical outputs cannot identify individuals",
+    "PEDRI: Transparency": "The public should understand what disclosure controls are applied to protect their data"
+  },
+  "auto_sdc": {
+    "Safe Outputs": "Automated algorithmic rules enforce output disclosure safety before release",
+    "SATRE: Tech/Security": "Algorithmic enforcement of disclosure control is a technical security measure"
+  },
+  "semi_auto_sdc": {
+    "Safe People": "Trained human reviewers are essential to the semi-automated review process",
+    "Safe Outputs": "Combined human-algorithmic review provides the highest level of output safety"
+  },
+  "fed_outputs": {
+    "Safe Outputs": "Directly concerns secure aggregation and export of analytical outputs",
+    "Reusable": "Properly disclosed outputs can be reused for further research and meta-analysis"
+  },
+  "research_outputs": {
+    "Safe Outputs": "All research outputs must pass statistical disclosure control before release",
+    "PEDRI: Mutual Benefit": "Research outputs must demonstrably benefit the patients and communities who contributed their data"
+  },
+  "intermediate_outputs": {
+    "Safe Outputs": "Even intermediate collaborative outputs must be checked for disclosure risk",
+    "SATRE: Data Management": "Intermediate outputs are managed within the secure boundary as data artifacts"
+  },
+  "final_outputs": {
+    "Safe Outputs": "Final published outputs undergo the strictest disclosure control checks",
+    "PEDRI: Two-way Comm": "Findings must be communicated back to the public and patient communities who contributed their data",
+    "PEDRI: Transparency": "Publication ensures the public can see how their data was used and what was discovered"
+  }
+}
