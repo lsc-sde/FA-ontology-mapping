@@ -131,15 +131,6 @@ export default function CustomNode({ data }: CustomNodeProps) {
                 </div>
             )}
 
-            {/* Arrow pointing to sidebar when selected */}
-            {isSelected && (
-                <div className="selected-arrow">
-                    <svg width="32" height="18" viewBox="0 0 32 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M30 9H4M4 9L11 2M4 9L11 16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <span className="selected-arrow-label">Details in sidebar</span>
-                </div>
-            )}
         </div>
     );
 }

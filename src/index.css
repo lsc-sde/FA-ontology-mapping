@@ -57,45 +57,6 @@
   transform: scale(1.5) !important;
 }
 
-/* Arrow pointing to sidebar */
-.selected-arrow {
-  position: absolute;
-  left: -12px;
-  top: 50%;
-  transform: translate(-100%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: #3b82f6;
-  animation: arrow-pulse 1.8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-.selected-arrow-label {
-  font-size: 8px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #3b82f6;
-  white-space: nowrap;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2px 6px;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes arrow-pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: translate(-100%, -50%) translateX(0);
-  }
-  50% {
-    opacity: 0.7;
-    transform: translate(-100%, -50%) translateX(-6px);
-  }
-}
-
 /* ===== Hidden Nodes (progressive reveal) ===== */
 .node-hidden {
   opacity: 0 !important;
