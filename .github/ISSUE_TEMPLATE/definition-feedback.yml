@@ -1,0 +1,91 @@
+name: Feedback on the ontology
+description: Comment on a definition, report a problem, or suggest something new. No technical knowledge needed.
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to tell us what you think.
+
+        **You do not need to understand GitHub, code, or ontologies to use this form.**
+        Every field except the first is optional — tell us whatever you can and
+        leave the rest blank. Plain English is welcome and preferred.
+
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What would you like to tell us?
+      description: Describe what's unclear, wrong, missing, or worth changing.
+      placeholder: e.g. "The public definition of 'federated analytics' uses the word 'node', which I had never heard before."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback is this?
+      description: If you're not sure, pick "Something else" or skip this.
+      options:
+        - A definition is unclear or hard to understand
+        - A definition is wrong or misleading
+        - A term or definition is missing
+        - A term is used differently in my community
+        - Something about how the website works
+        - Something else
+    validations:
+      required: false
+
+  - type: input
+    id: term
+    attributes:
+      label: Which term is this about?
+      description: If it relates to a particular term, name it here. Leave blank if it's general.
+      placeholder: e.g. federated analytics
+    validations:
+      required: false
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Which perspective does this affect?
+      description: >-
+        The site shows four versions of each definition. Choose the one you were
+        reading, if you know.
+      multiple: true
+      options:
+        - Public (why it matters)
+        - Technical (how it works)
+        - Researcher (what I can do)
+        - Governance (who's accountable)
+        - Not sure / applies to all
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What would you suggest instead?
+      description: If you have alternative wording or an idea, add it here. A rough suggestion is still useful.
+    validations:
+      required: false
+
+  - type: input
+    id: background
+    attributes:
+      label: Anything about your background you'd like to share?
+      description: >-
+        Entirely optional. Knowing whether you're a patient, member of the public,
+        researcher, clinician, or work in data governance helps us weigh feedback —
+        but you are welcome to stay anonymous.
+      placeholder: e.g. member of a public advisory group
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - label: I would prefer **not** to be credited for this contribution.
+          required: false

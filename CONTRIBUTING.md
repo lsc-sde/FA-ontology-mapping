@@ -15,12 +15,10 @@ If a definition is unclear, misleading, missing, or doesn't match how your
 community actually uses a term, please tell us. You do not need to understand
 GitHub, TypeScript, or ontologies to do this.
 
-**[Open an issue](https://github.com/lsc-sde/federated-analytics-ontology/issues/new?title=Definition+feedback%3A+%5Bterm%5D)** and include whatever you can:
-
-- The term you're commenting on
-- Which audience it affects — public, technical, researcher, or governance
-- What's wrong, or what's missing
-- A suggested alternative wording, if you have one
+**[Open an issue using our feedback form](https://github.com/lsc-sde/federated-analytics-ontology/issues/new?template=definition-feedback.yml)**. The form
+asks which term you're commenting on, which audience it affects, what's wrong or
+missing, and any wording you'd suggest instead — but **every field except the
+first is optional**. Tell us whatever you can and leave the rest blank.
 
 We particularly welcome contributions from **members of the public, patients,
 and public advisory group members**. This project exists because the language
