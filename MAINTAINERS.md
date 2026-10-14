@@ -49,30 +49,12 @@ prefixed with the repository name. Local dev and Vercel serve from the root.
 
 > ⚠️ **If the repository is ever renamed, this string must be updated in the same
 > change.** A mismatch produces a blank white page with 404s on every asset and
-> no build error. This exact failure is what left the original site broken.
+> no build error, so it will not be caught by CI. This failure mode has occurred
+> before — treat it as the first thing to check if the site goes blank.
 
 Other places the repository name appears: `package.json` (`name`,
 `repository.url`), `package-lock.json`, `data/schema/ontology.schema.json`
 (`$id`), `CITATION.cff` (`repository-code`), and `CONTRIBUTING.md`.
-
----
-
-## Held decisions
-
-Changes that have been considered and **deliberately deferred**. Recorded here so
-they are not silently re-litigated or accidentally applied.
-
-| Decision | Status | Condition for revisiting |
-|---|---|---|
-| Rename the on-screen title from "Language Road Map" | **Actioned** | Settled as a deliberate two-name split: **"Federation Atlas"** is the public-facing name of the *tool*, while **"Federated Analytics Ontology"** remains the name of the *work* and the repository. "Ontology" is accurate but not public-facing, so it stays in the citable metadata (`CITATION.cff`, `package.json`, `NOTICE`) and the tool carries the friendlier name. Changed in the `<h1>` of `src/components/Sidebar.tsx` and the `<title>` in `index.html`. Note "Federation Atlas" is also in use by the downstream fork at `jonaaeva.github.io/federation-atlas/` — this was not negotiated with them before adopting it. |
-| Remove the prototype disclaimers from the tool | **Actioned** | Removed from the sidebar, the tabular view and the top placeholder bar. Note the in-app warnings are now gone while the definitions themselves have still not been through stakeholder review — the only remaining signals of draft status are the "Drafting" watermark in `src/App.tsx` and the prototype note in `README.md`. |
-| Remove the bottom survey banner from `src/App.tsx` | **Actioned** | The linked MS Form was confirmed closed and the banner removed. |
-| Choice of public contribution channel | **Actioned** | A GitHub Issue Form now exists at `.github/ISSUE_TEMPLATE/definition-feedback.yml`, linked from `CONTRIBUTING.md` and the app footer. Triage sits with the `lsc-sde` organisation rather than a named individual, so no one person is a single point of failure — but an organisation cannot receive a notification. Issues only surface to someone who is **watching the repository**, so at least one maintainer must watch it for the form to be answered. See "Issue triage" below. |
-| Disclose that definitions are AI-generated | **Actioned** | The app footer, `README.md` and `data/README.md` now state that definition text was AI-generated and is a draft under review. This matters because `/data` is CC BY 4.0 and may be reused downstream. |
-
-A downstream fork has applied some of these changes already. That is not a
-precedent for this repository, which carries NHS attribution and a CC BY 4.0
-content licence the fork does not.
 
 ---
 
@@ -85,12 +67,10 @@ Public feedback arrives as GitHub issues via
 `lsc-sde` maintainer can pick up an issue, and organisation owners can add or
 remove maintainers without the channel breaking.
 
-There is one practical catch worth understanding: **GitHub does not notify an
-organisation.** Issues only reach a human if at least one person is *watching*
-the repository. If nobody watches it, the form will sit unanswered while
-appearing, to the contributor, to be a live channel.
+One practical point: **GitHub does not notify an organisation.** Issues only
+reach a human if at least one person is *watching* the repository.
 
-- At least one maintainer must **Watch → All Activity** on this repository.
+- At least one maintainer must set **Watch → All Activity** on this repository.
 - Treat that as a handover item: if the last watcher leaves, someone else
   must take it on.
 
