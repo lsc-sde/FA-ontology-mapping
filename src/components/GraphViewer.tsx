@@ -41,6 +41,7 @@ const edgeTypes = {
 // Layout constants
 const PIE_RADIUS = 500;
 const LAYER2_RADIUS = 320;       // What (green) inner hexagon
+const LAYER2B_RADIUS = 410;      // What sub-concepts (governance, infra, data protection)
 const LAYER3_RADIUS = 500;       // How (purple) — anchored at pie circle edge
 const LAYER3B_RADIUS = 570;      // How sub-children (SDC children)
 const SAFES_RING_INNER = 640;    // Six Safes ring inner edge
@@ -48,7 +49,7 @@ const SAFES_RING_OUTER = 693;    // Six Safes ring outer edge (~53px = 1/3 of LA
 const LAYER4_RADIUS = 840;       // Who (providers) — clean outer ring past the Safes ring
 const CENTER_SIZE = 240;
 const LAYER2_SIZE = 160;
-const LAYER3_SIZE = 280;          // DAC halo
+const MID_NODE_SIZE = 120;        // What sub-concepts on the LAYER2B ring
 const HOW_NODE_SIZE = 130;
 const HOW_SUB_SIZE = 110;         // SDC sub-child size
 const WHO_NODE_SIZE = 110;
@@ -137,18 +138,55 @@ function buildNodes(): Node[] {
         };
     });
 
+    // Layer 1b — What sub-concepts, on an intermediate ring just outside the
+    // green hexagon. These are `children` of the What nodes in the ontology and
+    // were previously absent from the graph entirely.
+    const layer2bItems = [
+        { id: 'fed_gov', clockAngle: 20 },            // child of fed_people
+        { id: 'fed_infra', clockAngle: 100 },         // child of fed_data
+        { id: 'data_protect', clockAngle: 140 },      // child of fed_data
+        { id: 'research_outputs', clockAngle: 285 },  // child of fed_ecosystem
+    ];
+
+    const layer2bNodes: Node[] = layer2bItems.map(({ id, clockAngle }) => {
+        const pos = clockPosition(clockAngle, LAYER2B_RADIUS, MID_NODE_SIZE);
+        return {
+            id,
+            type: 'custom',
+            position: pos,
+            zIndex: 4,
+            data: {
+                ...ontologyData[id],
+                activeFilter: null,
+                dimmed: false,
+                layer: 1,
+                nodeSize: MID_NODE_SIZE,
+                showTags: true,
+            },
+        };
+    });
+
     // Layer 2 — How (enablers, anchored at pie circle edge for geometric ring)
-    const layer3Items = [
-        {
-            id: 'dacs',
-            parentId: 'fed_people',
-            // Same center as ecosystem node, but larger — peeks out behind
-            position: { x: -LAYER3_SIZE / 2, y: -LAYER3_SIZE / 2 },
-            nodeSize: LAYER3_SIZE
-        },
+    const layer3Items: {
+        id: string;
+        parentId: string;
+        clockAngle: number;
+        radius?: number;
+        nodeSize?: number;
+    }[] = [
+        // Moved off the centre point: it previously shared its centre with
+        // fed_ecosystem as a "halo", which read as an overlap bug.
+        { id: 'dacs', parentId: 'access_process', clockAngle: 50 },
+        { id: 'access_process', parentId: 'fed_gov', clockAngle: 10 },
+        { id: 'data_min', parentId: 'fed_gov', clockAngle: 350 },
+        { id: 'pseudonym', parentId: 'data_protect', clockAngle: 110 },
+        { id: 'anonymise', parentId: 'data_protect', clockAngle: 130 },
+        { id: 'synth_data', parentId: 'data_protect', clockAngle: 170 },
+        { id: 'intermediate_outputs', parentId: 'research_outputs', clockAngle: 290 },
+        { id: 'final_outputs', parentId: 'research_outputs', clockAngle: 300 },
         // Midpoint angles between green parents → clean dodecagonal interleave
-        { id: 'remote_vm', parentId: 'fed_access', clockAngle: 30 },            // midpoint 0°–60°
-        { id: 'phy_access', parentId: 'fed_access', clockAngle: 90 },           // midpoint 60°–120°
+        { id: 'remote_vm', parentId: 'fed_infra', clockAngle: 70 },
+        { id: 'phy_access', parentId: 'fed_infra', clockAngle: 90 },
         { id: 'decentralised_storage', parentId: 'fed_storage', clockAngle: 150 }, // midpoint 120°–180°
         { id: 'central_storage', parentId: 'fed_storage', clockAngle: 200 },    // sector 180°–240°
         { id: 'ds_simul', parentId: 'fed_analytics', clockAngle: 220 },         // sector 180°–240°
@@ -159,11 +197,11 @@ function buildNodes(): Node[] {
         { id: 'semi_auto_sdc', parentId: 'sdc_output', clockAngle: 350, radius: LAYER3B_RADIUS, nodeSize: HOW_SUB_SIZE },
     ];
 
-    const layer3Nodes: Node[] = layer3Items.map(({ id, position, clockAngle, nodeSize, radius }) => {
+    const layer3Nodes: Node[] = layer3Items.map(({ id, clockAngle, nodeSize, radius }) => {
         const nodeData = ontologyData[id];
-        const size = nodeSize || HOW_NODE_SIZE;
-        const rad = radius || LAYER3_RADIUS;
-        const pos = position || clockPosition(clockAngle!, rad, size);
+        const size = nodeSize ?? HOW_NODE_SIZE;
+        const rad = radius ?? LAYER3_RADIUS;
+        const pos = clockPosition(clockAngle, rad, size);
 
         return {
             id,
@@ -212,7 +250,7 @@ function buildNodes(): Node[] {
     });
 
     // Render order: pie (bg) → safes ring → Who (back) → How (behind) → What (middle) → Why (front)
-    return [pieNode, safesRingNode, ...layer4Nodes, ...layer3Nodes, ...layer2Nodes, centerNode];
+    return [pieNode, safesRingNode, ...layer4Nodes, ...layer3Nodes, ...layer2bNodes, ...layer2Nodes, centerNode];
 }
 
 function buildEdges(nodes: Node[]): Edge[] {
@@ -241,43 +279,55 @@ function buildEdges(nodes: Node[]): Edge[] {
         }
     });
 
-    return [
-        // --- Layer 0 to Layer 1 (Solid Green) ---
-        edge('eco-people', 'fed_ecosystem', 'fed_people', solidGreenStyle, false),
-        edge('eco-data', 'fed_ecosystem', 'fed_data', solidGreenStyle, false),
-        edge('eco-analytics', 'fed_ecosystem', 'fed_analytics', solidGreenStyle, false),
+    // Edges are DERIVED from the `children` relationships in the ontology data
+    // rather than hand-maintained here. Previously this list was written by hand
+    // and silently drifted from the data: nodes added to the ontology (the whole
+    // data-protection branch, for example) never appeared in the graph because
+    // nobody remembered to add a matching line below.
+    //
+    // Styling is chosen from the layer of the two endpoints, preserving the
+    // original visual language:
+    //   Why → What            solid green
+    //   within What           dotted green
+    //   What → How            dashed purple, animated
+    //   How → Who             dashed blue, animated
+    const rendered = new Set(nodes.map(n => n.id));
+    const layerOf = (id: string) => {
+        const node = nodes.find(n => n.id === id);
+        return (node?.data as Partial<GraphNodeData> | undefined)?.layer;
+    };
 
-        // --- Layer 1 to Sub-Layer 1 (Dotted Green) ---
-        edge('data-storage', 'fed_data', 'fed_storage', dottedGreenStyle, false),
-        edge('analytics-storage', 'fed_analytics', 'fed_storage', dottedGreenStyle, false),
-        edge('data-access', 'fed_data', 'fed_access', dottedGreenStyle, false),
-        edge('people-access', 'fed_people', 'fed_access', dottedGreenStyle, false),
-        edge('analytics-outputs', 'fed_analytics', 'fed_outputs', dottedGreenStyle, false),
-        edge('people-outputs', 'fed_people', 'fed_outputs', dottedGreenStyle, false),
+    const styleFor = (source: string, target: string) => {
+        const s = layerOf(source);
+        const t = layerOf(target);
+        if (t === 3 || s === 3) return { style: blueDottedStyle, animated: true };
+        if (t === 2 || s === 2) return { style: commonEdgeStyle, animated: true };
+        if (s === 0) return { style: solidGreenStyle, animated: false };
+        return { style: dottedGreenStyle, animated: false };
+    };
 
-        // --- Layer 1/Sub-Layer 1 to Layer 2 (How) ---
-        edge('fed_people-dacs', 'fed_people', 'dacs', commonEdgeStyle, true),
-        edge('fed_access-dacs', 'fed_access', 'dacs', commonEdgeStyle, true),
-        edge('fed_storage-decentralised', 'fed_storage', 'decentralised_storage', commonEdgeStyle, true),
-        edge('fed_storage-central', 'fed_storage', 'central_storage', commonEdgeStyle, true),
-        edge('fed_access-remote', 'fed_access', 'remote_vm', commonEdgeStyle, true),
-        edge('fed_access-physical', 'fed_access', 'phy_access', commonEdgeStyle, true),
-        edge('fed_outputs-sdc', 'fed_outputs', 'sdc_output', commonEdgeStyle, true),
-        edge('sdc-auto', 'sdc_output', 'auto_sdc', commonEdgeStyle, true),
-        edge('sdc-semi', 'sdc_output', 'semi_auto_sdc', commonEdgeStyle, true),
-        edge('analytics-simul', 'fed_analytics', 'ds_simul', commonEdgeStyle, true),
-        edge('analytics-sepa', 'fed_analytics', 'sep_analysis', commonEdgeStyle, true),
+    const edges: Edge[] = [];
+    const seen = new Set<string>();
 
-        // --- Layer 2 (How) to Layer 3 (Who) - Blue Lines ---
-        edge('simul-datashield', 'ds_simul', 'datashield', blueDottedStyle, true),
-        edge('simul-smpc', 'ds_simul', 'smpc', blueDottedStyle, true),
+    for (const [parentId, node] of Object.entries(ontologyData)) {
+        // Skip relationships whose endpoints are not drawn on the canvas.
+        if (!rendered.has(parentId)) continue;
 
-        edge('sepa-datashield', 'sep_analysis', 'datashield', blueDottedStyle, true),
-        edge('sepa-trevolution', 'sep_analysis', 'trevolution', blueDottedStyle, true),
-        edge('sepa-tes', 'sep_analysis', 'tes', blueDottedStyle, true),
-        edge('sepa-ohdsi', 'sep_analysis', 'ohdsi', blueDottedStyle, true),
-        edge('sepa-opensafely', 'sep_analysis', 'opensafely', blueDottedStyle, true),
-    ];
+        for (const childId of node.children ?? []) {
+            if (!rendered.has(childId)) continue;
+
+            // `children` is an untyped catch-all, so the same pair can be
+            // reachable by more than one route. Keep the first.
+            const key = `${parentId}->${childId}`;
+            if (seen.has(key)) continue;
+            seen.add(key);
+
+            const { style, animated } = styleFor(parentId, childId);
+            edges.push(edge(key, parentId, childId, style, animated));
+        }
+    }
+
+    return edges;
 }
 
 const initialNodes = buildNodes();

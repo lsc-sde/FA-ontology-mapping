@@ -7,13 +7,34 @@ interface TabularViewProps {
     searchQuery: string;
 }
 
-// Group nodes by layer corresponding to the Map layout
-const LAYERS = [
+// Group nodes by layer corresponding to the Map layout.
+//
+// The explicit lists below are the curated ORDER for each section, not the
+// membership. Membership is derived from the ontology itself so that a concept
+// added to the data can never silently vanish from this view — which is exactly
+// what happened to the data-protection branch (pseudonymisation, anonymisation,
+// synthetic data), which existed in the data but appeared in neither view.
+const LAYER_ORDER = [
     { title: 'Why - Federated Research Ecosystem', keys: ['fed_ecosystem'] },
-    { title: 'What - Core Principles', keys: ['fed_people', 'fed_data', 'fed_analytics', 'research_outputs', 'fed_storage', 'fed_gov', 'fed_infra', 'fed_access'] },
-    { title: 'How - Implementations & Solutions', keys: ['access_process', 'dacs', 'decentralised_storage', 'central_storage', 'sep_analysis', 'ds_simul', 'smpc', 'remote_vm', 'phy_access', 'sdc_output', 'auto_sdc', 'semi_auto_sdc', 'intermediate_outputs', 'final_outputs'] },
+    { title: 'What - Core Principles', keys: ['fed_people', 'fed_data', 'fed_analytics', 'research_outputs', 'fed_storage', 'fed_gov', 'fed_infra', 'fed_access', 'fed_outputs', 'data_protect'] },
+    { title: 'How - Implementations & Solutions', keys: ['access_process', 'dacs', 'decentralised_storage', 'central_storage', 'sep_analysis', 'ds_simul', 'smpc', 'remote_vm', 'phy_access', 'sdc_output', 'auto_sdc', 'semi_auto_sdc', 'intermediate_outputs', 'final_outputs', 'pseudonym', 'anonymise', 'synth_data', 'data_min'] },
     { title: 'Who - Providers & Platforms', keys: ['datashield', 'trevolution', 'tes', 'ohdsi', 'opensafely'] },
 ];
+
+// Any node not named above is appended to a catch-all section, so the tabular
+// view always accounts for every concept in the ontology.
+const LAYERS = (() => {
+    const placed = new Set(LAYER_ORDER.flatMap(l => l.keys));
+    const unplaced = Object.keys(ontologyData).filter(id => !placed.has(id));
+    const layers = LAYER_ORDER.map(l => ({
+        title: l.title,
+        keys: l.keys.filter(k => ontologyData[k]),
+    }));
+    if (unplaced.length) {
+        layers.push({ title: 'Other concepts', keys: unplaced });
+    }
+    return layers;
+})();
 
 export default function TabularView({ perspective, activeFilter, searchQuery }: TabularViewProps) {
 
