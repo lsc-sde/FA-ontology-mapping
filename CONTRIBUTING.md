@@ -25,7 +25,12 @@ and public advisory group members**. This project exists because the language
 used around federated health data research is often inaccessible; if a "plain
 English" definition isn't plain to you, that is a bug and we want to hear it.
 
-You will be credited for accepted contributions unless you ask not to be.
+**Contributions are anonymous by default.** The form asks whether you'd like to
+be thanked by name, and how you'd like to be named — leave it blank and we won't
+record one. Accepted contributions are listed in
+[`CONTRIBUTORS.md`](CONTRIBUTORS.md), where anonymous ones are counted rather
+than named. Being listed there is thanks rather than authorship; see the note on
+authorship in that file.
 
 ---
 

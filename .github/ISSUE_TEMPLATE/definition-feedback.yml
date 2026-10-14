@@ -82,10 +82,15 @@ body:
     validations:
       required: false
 
-  - type: checkboxes
+  - type: input
     id: credit
     attributes:
-      label: Credit
-      options:
-        - label: I would prefer **not** to be credited for this contribution.
-          required: false
+      label: Would you like to be thanked by name?
+      description: >-
+        **You will stay anonymous unless you fill this in.** If you'd like to be
+        listed in our CONTRIBUTORS file, tell us how you'd like to be named — your
+        name, a GitHub handle, an organisation, or something like "a member of the
+        public". Anonymous feedback is just as welcome and counts just as much.
+      placeholder: Leave blank to stay anonymous
+    validations:
+      required: false
