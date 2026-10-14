@@ -15,7 +15,7 @@ If a definition is unclear, misleading, missing, or doesn't match how your
 community actually uses a term, please tell us. You do not need to understand
 GitHub, TypeScript, or ontologies to do this.
 
-**Open an issue** and include whatever you can:
+**[Open an issue](https://github.com/lsc-sde/federated-analytics-ontology/issues/new?title=Definition+feedback%3A+%5Bterm%5D)** and include whatever you can:
 
 - The term you're commenting on
 - Which audience it affects — public, technical, researcher, or governance
