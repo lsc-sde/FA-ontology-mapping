@@ -137,6 +137,14 @@ These live in GitHub settings and are lost if the repo is recreated:
   SKOS/RDF export, and would likely resolve the orphan nodes too.
 - **Dev-only audit advisories.** `npm audit` reports issues in development
   tooling only; `npm audit --omit=dev` is clean. These are not shipped to users.
+  `npm audit fix` was last run on 14 Oct 2026, clearing 13 of 22 advisories.
+  The remaining 9 (3 moderate, 6 high) sit in `vite` and `postcss-selector-parser`
+  and can only be resolved by `npm audit fix --force`, which would install
+  `tailwindcss@4` and `vite@8` — both breaking major upgrades. They are
+  deliberately left outstanding; revisit them as part of a planned Vite/Tailwind
+  upgrade rather than forcing majors into a working build for issues that never
+  reach a browser. GitHub's Dependabot count is higher than npm's because it
+  uses a broader advisory database; neither is wrong.
 - **Prototype status.** Definitions are under active review and are not settled.
   The in-app disclaimers have been removed, so the prototype warning in
   `README.md` and the "Drafting" watermark are now the only signals of draft
