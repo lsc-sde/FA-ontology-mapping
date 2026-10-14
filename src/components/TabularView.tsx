@@ -1,6 +1,5 @@
 import { FrameworkTag, ontologyData, frameworkCategories } from '../data/ontology';
 import { tagReasons } from '../data/tagReasons';
-import { AlertTriangle } from 'lucide-react';
 
 interface TabularViewProps {
     perspective: 'public' | 'tech' | 'researcher' | 'gov';
@@ -212,19 +211,6 @@ export default function TabularView({ perspective, activeFilter, searchQuery }: 
                     <h1 className="text-3xl font-extrabold text-slate-800 mb-2">Glossary of Terms</h1>
                     <p className="text-slate-500 mb-4">A structured breakdown of the federated data ecosystem.</p>
                     
-                    {/* Disclaimer Warning Box */}
-                    <div className="mb-4 bg-amber-50 p-4 rounded-xl border-l-4 border-l-amber-500 border-y border-r border-amber-200 shadow-sm max-w-4xl">
-                        <div className="flex items-start gap-3">
-                            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                            <div>
-                                <h4 className="font-semibold text-amber-900 text-sm mb-1">Disclaimer: Prototype Content</h4>
-                                <p className="text-sm text-amber-800 leading-relaxed">
-                                    The definitions and examples provided in this prototype are AI-generated placeholders intended for illustrative purposes only. This site is a preliminary design developed to facilitate engagement with public and professional stakeholders, who will collaboratively refine and establish the final, agreed-upon content.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="bg-emerald-50/50 p-4 rounded-xl border-l-4 border-l-emerald-500 border-y border-r border-slate-200 shadow-sm max-w-4xl">
                         <p className="text-sm text-slate-600 italic">
                             <strong className="font-semibold text-emerald-800">Note on Essential Characteristics:</strong> These characteristics should broadly align to framework developments such as SATRE 2.0 and represent that which is measurable or observable to determine if a criteria is met or not met.
