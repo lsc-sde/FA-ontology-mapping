@@ -1,4 +1,34 @@
 {
+  "data_protect": {
+    "Safe Data": "Groups the techniques whose whole purpose is reducing the identifiability of a dataset",
+    "Safe Outputs": "Several of the grouped techniques are applied at the point data or results leave a controlled environment",
+    "SATRE: Data Management": "Choosing between these techniques is a data management decision with lasting consequences for utility",
+    "SATRE: Info Governance": "Which technique is proportionate is a governance judgement, not purely a technical preference"
+  },
+  "pseudonym": {
+    "Safe Data": "Replacing direct identifiers with surrogates is a primary control on the data itself",
+    "Interoperable": "Consistent pseudonyms are what allow records about the same person to be linked across datasets and organisations",
+    "SATRE: Data Management": "Requires managing surrogate generation and consistency across releases and over time",
+    "SATRE: Info Governance": "The re-identification key must be held separately under controls, and the data remains personal data in law"
+  },
+  "anonymise": {
+    "Safe Data": "Irreversibly removes identifiability from the dataset itself",
+    "Safe Outputs": "Commonly the control applied before results are published or shared openly",
+    "SATRE: Data Management": "Generalisation and suppression permanently change what the data can support, so the decision must be managed and recorded"
+  },
+  "synth_data": {
+    "Safe Data": "Artificial records stand in for real ones, so no individual's data is exposed",
+    "Accessible": "Can often be shared where real data cannot, widening who is able to work with a dataset's structure",
+    "Reusable": "Supports development, testing and training without repeated access approvals",
+    "SATRE: Tech/Security": "Generation and evaluation for memorisation are technical controls requiring testing rather than assumption"
+  },
+  "data_min": {
+    "Safe Data": "Reduces risk by limiting the volume, granularity and scope of data processed",
+    "Safe Projects": "Necessity is judged against the stated purpose, making it a project-scoping decision",
+    "SATRE: Info Governance": "Applies across the lifecycle, from holder preparation through access assessment to use",
+    "PEDRI: Transparency": "Asking only for what is needed, and being able to explain why, is visible to participants and the public"
+  },
+
   "fed_ecosystem": {
     "Safe Projects": "Provides the overarching framework for research project approval and governance",
     "Safe Settings": "Encompasses all secure environments where data processing occurs",

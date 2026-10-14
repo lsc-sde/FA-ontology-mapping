@@ -75,6 +75,14 @@ export interface OntologyNode {
         term: string;
         definition: string;
     }[];
+    // Further reading. Somewhere to put source material and adjacent work that
+    // does not itself warrant a node in the ontology.
+    more_information?: {
+        label: string;
+        url: string;
+        doi?: string;
+        note?: string;
+    }[];
     children?: string[];
 }
 

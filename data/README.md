@@ -16,7 +16,7 @@ files; it does not hold its own copy.
 
 | File | Contents |
 |---|---|
-| `ontology.json` | The 29 ontology nodes — definitions, examples, characteristics, tags and hierarchy |
+| `ontology.json` | The 34 ontology nodes — definitions, examples, characteristics, tags and hierarchy |
 | `framework-categories.json` | Which tags belong to which framework (Five Safes, FAIR, PEDRI, SATRE) |
 | `framework-tag-definitions.json` | Plain-English definition of each of the 20 framework tags |
 | `tag-reasons.json` | Why a given framework tag was applied to a given node |
@@ -35,6 +35,28 @@ project is translation between communities:
 
 `examples` follows the same shape, and may additionally carry `sde` and `dare`
 examples used by the tabular view.
+
+## Optional enrichment fields
+
+Two optional fields let a node carry context without adding clutter to the graph:
+
+- **`related_terms`** — an array of `{ term, definition }`. Use this for
+  vocabulary that is worth explaining next to a concept but does not warrant a
+  node of its own (for example *re-identification risk*). Rendered in both the
+  sidebar and the tabular view.
+- **`more_information`** — an array of `{ label, url, doi?, note? }`. Further
+  reading and source material. `label` and `url` are required; `url` must be
+  absolute. Use `note` to say why the link is worth following. Being listed is
+  not an endorsement, and linked works may use terms differently to this
+  ontology.
+
+## Known gaps
+
+The ontology currently has no branch covering **dataset discovery and
+metadata** — cataloguing, data dictionaries, and how a researcher finds out
+what exists before requesting access. The `Findable` tags on existing nodes
+gesture at it, but the concepts themselves are not modelled. Noted here so the
+gap is deliberate and visible rather than forgotten.
 
 ## Framework tagging
 

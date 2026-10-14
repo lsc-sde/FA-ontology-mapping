@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { OntologyNode, FrameworkTag, frameworkCategories } from '../data/ontology';
 import { tagReasons } from '../data/tagReasons';
 import { frameworkTagDefinitions } from '../data/frameworkTagDefinitions';
-import { SlidersHorizontal, Settings, BookOpen, Fingerprint, ChevronDown, ChevronRight, Search, X } from 'lucide-react';
+import { SlidersHorizontal, Settings, BookOpen, Fingerprint, ChevronDown, ChevronRight, Search, X, ExternalLink } from 'lucide-react';
 
 interface SidebarProps {
     perspective: 'public' | 'tech' | 'researcher' | 'gov';
@@ -357,6 +357,39 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                                             </div>
                                         );
                                     })}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* More Information */}
+                        {selectedNode.more_information && selectedNode.more_information.length > 0 && (
+                            <div className="mt-2">
+                                <h5 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">More Information</h5>
+                                <div className="bg-amber-50/50 p-4 rounded-xl border-l-4 border-l-amber-500 border-y border-r border-slate-200 shadow-sm">
+                                    <p className="text-xs text-slate-500 mb-3 italic">
+                                        Further reading and source material. Listed for context — being linked here is not an endorsement, and these works may use terms differently.
+                                    </p>
+                                    <ul className="space-y-3">
+                                        {selectedNode.more_information.map((ref, i) => (
+                                            <li key={i} className="text-sm">
+                                                <a
+                                                    href={ref.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="font-semibold text-blue-700 hover:text-blue-900 hover:underline inline-flex items-start gap-1"
+                                                >
+                                                    <span>{ref.label}</span>
+                                                    <ExternalLink className="w-3 h-3 mt-1 flex-shrink-0" />
+                                                </a>
+                                                {ref.note && (
+                                                    <p className="text-slate-600 mt-1">{ref.note}</p>
+                                                )}
+                                                {ref.doi && (
+                                                    <p className="text-xs text-slate-400 mt-1">DOI: {ref.doi}</p>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
                         )}

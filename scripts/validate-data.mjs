@@ -57,6 +57,20 @@ for (const [key, node] of Object.entries(ontology)) {
     for (const child of node.children ?? []) {
         if (!ids.has(child)) err(key, `child "${child}" does not exist in the ontology`);
     }
+    for (const rt of node.related_terms ?? []) {
+        if (!rt.term || !String(rt.term).trim()) err(key, 'related_term missing "term"');
+        if (!rt.definition || !String(rt.definition).trim()) {
+            err(key, `related_term "${rt.term ?? '?'}" missing "definition"`);
+        }
+    }
+    for (const ref of node.more_information ?? []) {
+        if (!ref.label || !String(ref.label).trim()) err(key, 'more_information entry missing "label"');
+        if (!ref.url || !String(ref.url).trim()) {
+            err(key, `more_information entry "${ref.label ?? '?'}" missing "url"`);
+        } else if (!/^https?:\/\//.test(ref.url)) {
+            err(key, `more_information "${ref.label}" url must start with http:// or https://`);
+        }
+    }
 }
 
 // Cross-file integrity

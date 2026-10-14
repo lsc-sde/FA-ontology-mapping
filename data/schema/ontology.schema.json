@@ -70,6 +70,21 @@
             "additionalProperties": false
           }
         },
+        "more_information": {
+          "type": "array",
+          "description": "Further reading for this concept. A place for source material and adjacent work that does not itself belong in the ontology.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string", "minLength": 1 },
+              "url": { "type": "string", "minLength": 1 },
+              "doi": { "type": "string" },
+              "note": { "type": "string" }
+            },
+            "required": ["label", "url"],
+            "additionalProperties": false
+          }
+        },
         "children": {
           "type": "array",
           "description": "IDs of child nodes. Each must exist as a key in this document.",

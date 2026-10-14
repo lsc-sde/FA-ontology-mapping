@@ -220,7 +220,8 @@
     "type": "definition",
     "children": [
       "fed_infra",
-      "fed_storage"
+      "fed_storage",
+      "data_protect"
     ],
     "tags": [
       "Safe Data",
@@ -499,7 +500,8 @@
     "label": "Organizations & Governance",
     "type": "definition",
     "children": [
-      "access_process"
+      "access_process",
+      "data_min"
     ],
     "tags": [
       "Safe Projects",
@@ -1213,6 +1215,336 @@
       {
         "description": "Available publicly without authentication barrier",
         "tags": []
+      }
+    ]
+  },
+  "data_protect": {
+    "id": "data_protect",
+    "definitions": {
+      "public": "The different ways data can be changed to make it harder to work out who it is about. Some methods swap names for codes, some remove identity altogether, and some invent stand-in data. Each one trades a little usefulness for a little more privacy.",
+      "tech": "The family of transformations applied to a dataset to reduce identifiability, spanning reversible substitution of identifiers, irreversible removal of identifying detail, generative substitution, and controls applied to aggregate results before release.",
+      "researcher": "The toolkit used to protect the people in your dataset. Which technique you work with shapes what analysis is possible, so it is worth understanding the differences before you design a study rather than after.",
+      "gov": "The set of technical measures available to reduce identifiability, each carrying a different legal status and residual risk. Choosing between them is a governance judgement about proportionality, not simply a technical preference."
+    },
+    "examples": {
+      "public": "A hospital preparing records for research has choices. It might replace every name with a reference number, strip out anything that could identify a person, or create an artificial copy of the dataset that behaves like the real one. Which it picks depends on what the research needs and how much risk is acceptable.",
+      "tech": "A data holder preparing a release decides between pseudonymisation to preserve linkage, anonymisation where the output is intended for open publication, or synthetic generation where only the statistical shape of the data is required by the recipient.",
+      "researcher": "Deciding early that your study needs to follow individuals across several years, which rules out a fully anonymised extract and points towards working with pseudonymised records inside a secure environment.",
+      "gov": "Recording in an access approval why pseudonymisation was judged sufficient for a particular project, including the mitigations that make the residual re-identification risk acceptable."
+    },
+    "label": "Data Protection Techniques",
+    "purpose": "To group the methods used to reduce identifiability, so the trade-offs between them can be compared rather than treated as interchangeable.",
+    "type": "definition",
+    "children": [
+      "pseudonym",
+      "anonymise",
+      "synth_data",
+      "sdc_output"
+    ],
+    "tags": [
+      "Safe Data",
+      "Safe Outputs",
+      "SATRE: Data Management",
+      "SATRE: Info Governance"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Identifiability is reduced: Each technique makes it harder to connect a record back to a specific person.",
+        "tags": [
+          "Safe Data"
+        ]
+      },
+      {
+        "description": "A utility trade-off is accepted: Stronger protection removes detail, so the choice of technique constrains what analysis remains possible.",
+        "tags": [
+          "Safe Data",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "The choice is documented: Which technique was applied, and why it was judged proportionate, is recorded and can be reviewed.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Re-identification risk",
+        "definition": "The likelihood that someone could work out which individual a record refers to, whether from the data alone or by combining it with other information they hold. It is a matter of degree rather than a yes-or-no property."
+      },
+      {
+        "term": "Privacy risk assessment",
+        "definition": "A structured review of how likely re-identification is for a particular dataset and release, and of what could be inferred about people even where they are not directly identified."
+      }
+    ],
+    "more_information": [
+      {
+        "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+        "url": "https://doi.org/10.5281/zenodo.20269109",
+        "doi": "10.5281/zenodo.20269109",
+        "note": "European guidance grouping these techniques together. Written for the EHDS, but the underlying concepts are GDPR-based and apply in the UK."
+      }
+    ]
+  },
+  "pseudonym": {
+    "id": "pseudonym",
+    "definitions": {
+      "public": "Replacing the details that name a person, such as their name or NHS number, with a code. The link between the code and the person still exists, but it is kept separately and under tight control, so the data on its own does not say who anyone is.",
+      "tech": "Substitution of direct identifiers with consistent surrogate values, where the mapping between surrogate and identifier is retained but held separately under access control. Consistency of the surrogate is what permits record linkage across datasets or over time.",
+      "researcher": "Working with records where names have been swapped for codes. Because the same person keeps the same code, you can still follow individuals over time and join datasets together, which is what makes most longitudinal research possible.",
+      "gov": "A technical measure that reduces the likelihood of direct identification while leaving the data as personal data in law, because re-identification remains possible for anyone holding the key. The separation and control of that key is the core safeguard."
+    },
+    "examples": {
+      "public": "A hospital replaces every patient's name and NHS number with a reference like P0043 before researchers see the records. The list matching P0043 back to a real person is kept by the hospital, not given to the researchers.",
+      "tech": "Applying a keyed hash to NHS numbers so the same patient resolves to the same surrogate across two trusts, enabling a linked cohort to be assembled without either trust disclosing the underlying identifier.",
+      "researcher": "Tracking the same group of patients across five years of records to see whether an early treatment changed later outcomes, without ever learning any patient's name.",
+      "gov": "Requiring that the re-identification key is held by the data holder and never released alongside the dataset, so that no single party holds both the pseudonymised records and the means to reverse them."
+    },
+    "label": "Pseudonymisation",
+    "purpose": "To reduce the risk of identifying people while keeping the ability to link records about the same person across datasets or over time.",
+    "type": "definition",
+    "tags": [
+      "Safe Data",
+      "Interoperable",
+      "SATRE: Data Management",
+      "SATRE: Info Governance"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Direct identifiers are replaced: Names, NHS numbers and similar fields are substituted with surrogate values.",
+        "tags": [
+          "Safe Data"
+        ]
+      },
+      {
+        "description": "The mapping is retained but separated: The key linking surrogate to person continues to exist and is held under separate access control.",
+        "tags": [
+          "SATRE: Info Governance",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "The surrogate is consistent: The same person resolves to the same value, which is what makes linkage possible.",
+        "tags": [
+          "Interoperable"
+        ]
+      },
+      {
+        "description": "It remains personal data: Because reversal is possible, data protection obligations continue to apply in full.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Re-identification key",
+        "definition": "The separately held mapping that allows a pseudonym to be traced back to the person it refers to. Its control is usually the single most important safeguard in a pseudonymised release."
+      },
+      {
+        "term": "Record linkage",
+        "definition": "Joining records that belong to the same person across different datasets or time points, which consistent pseudonyms make possible without revealing identity."
+      }
+    ],
+    "more_information": [
+      {
+        "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+        "url": "https://doi.org/10.5281/zenodo.20269109",
+        "doi": "10.5281/zenodo.20269109",
+        "note": "Sets out why pseudonymised data remains personal data, and the role it plays in enabling linkage and in supporting opt-out and significant-findings processes."
+      }
+    ]
+  },
+  "anonymise": {
+    "id": "anonymise",
+    "definitions": {
+      "public": "Changing data so thoroughly that no one can work out who it was about, and there is no key to reverse it. Done properly it is permanent, which also means some detail is lost for good.",
+      "tech": "Irreversible transformation of a dataset such that individuals can no longer be identified by any means reasonably likely to be used, accounting for data the recipient may already hold. No retained mapping exists to reverse the process.",
+      "researcher": "Data that has been stripped of identity for good. It can often be shared more freely, but because detail has been removed you usually cannot link it to other datasets or follow individuals over time.",
+      "gov": "A transformation that, where the threshold is genuinely met, takes data outside the scope of data protection law. The judgement is contextual and depends on what other information is available, so the assessment matters as much as the technique."
+    },
+    "examples": {
+      "public": "A published table showing how many people in a region had a condition last year, with age given only as a broad band and no way to pick out any individual.",
+      "tech": "Generalising dates of birth to year, truncating postcodes to district, and suppressing any cell counting fewer than a threshold number of individuals, assessed against plausible linkage with publicly available datasets.",
+      "researcher": "Receiving a dataset where ages are banded and locations are coarse, which supports population-level analysis but rules out following the same patient across two different sources.",
+      "gov": "Documenting a re-identification risk assessment that considers auxiliary data an adversary might realistically hold, and concluding the residual risk is low enough to treat the output as no longer personal data."
+    },
+    "label": "Anonymisation",
+    "purpose": "To remove identifiability permanently so that data can be shared or published with substantially fewer restrictions.",
+    "type": "definition",
+    "tags": [
+      "Safe Data",
+      "Safe Outputs",
+      "SATRE: Data Management"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "The transformation is irreversible: No key is retained, and the original values cannot be recovered.",
+        "tags": [
+          "Safe Data"
+        ]
+      },
+      {
+        "description": "Risk is judged in context: The assessment accounts for other data a recipient could reasonably combine with the release.",
+        "tags": [
+          "Safe Outputs",
+          "SATRE: Data Management"
+        ]
+      },
+      {
+        "description": "Detail is permanently lost: Generalisation and suppression constrain what analysis the data can afterwards support.",
+        "tags": [
+          "Safe Data"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Generalisation",
+        "definition": "Reducing the precision of a value, such as giving year of birth instead of full date, so that any single record describes more people and picks out fewer."
+      },
+      {
+        "term": "Suppression",
+        "definition": "Withholding values that would otherwise describe very few individuals, typically small cells in a published table."
+      }
+    ],
+    "more_information": [
+      {
+        "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+        "url": "https://doi.org/10.5281/zenodo.20269109",
+        "doi": "10.5281/zenodo.20269109",
+        "note": "Covers the anonymisation threshold and the privacy risk assessment expected before treating data as no longer personal."
+      }
+    ]
+  },
+  "synth_data": {
+    "id": "synth_data",
+    "definitions": {
+      "public": "Made-up data built to behave like the real thing. No row describes an actual person, but the overall patterns are similar enough to be useful for building and testing things.",
+      "tech": "Artificially generated records that reproduce the statistical properties and relationships of a source dataset without corresponding one-to-one to real individuals. Whether the output constitutes personal data depends on the generation method and residual re-identification risk.",
+      "researcher": "A stand-in dataset you can use to develop and test your analysis before applying for access to real records. It is excellent for getting code working, but findings from it are not findings about patients.",
+      "gov": "A technique offering strong privacy protection where the generation method is sound, though it does not automatically fall outside data protection law. Models that overfit can reproduce real records, so evaluation is required rather than assumed."
+    },
+    "examples": {
+      "public": "A training dataset of invented patients used to teach new staff how a system works, where nobody in it is real but the ages, conditions and treatments look realistic.",
+      "tech": "Fitting a generative model to a source cohort and emitting an artificial dataset with comparable distributions and correlations, then testing the output for records that sit implausibly close to a real individual.",
+      "researcher": "Writing and debugging your entire analysis pipeline against synthetic records while your access application is still being reviewed, so that the real run is quick once approval arrives.",
+      "gov": "Assessing whether a synthetic release carries residual risk before approving it for open publication, including whether the generating model memorised any unusual individual."
+    },
+    "label": "Synthetic Data",
+    "purpose": "To provide a shareable stand-in for real data, so that development, testing and training can happen without exposing anyone's records.",
+    "type": "solution",
+    "tags": [
+      "Safe Data",
+      "Accessible",
+      "Reusable",
+      "SATRE: Tech/Security"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Records are artificial: No row is intended to correspond to a specific real individual.",
+        "tags": [
+          "Safe Data"
+        ]
+      },
+      {
+        "description": "Statistical properties are preserved: Distributions and relationships resemble the source closely enough to be useful.",
+        "tags": [
+          "Reusable"
+        ]
+      },
+      {
+        "description": "Residual risk is evaluated, not assumed: The output is tested for leakage of real records before it is treated as safe to share.",
+        "tags": [
+          "SATRE: Tech/Security"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Fidelity",
+        "definition": "How closely synthetic data reproduces the patterns of the source. Higher fidelity is more useful analytically but tends to carry greater residual privacy risk."
+      },
+      {
+        "term": "Memorisation",
+        "definition": "Where a generative model reproduces a real record from its training data almost exactly, usually an unusual individual, undermining the privacy claim made for the output."
+      }
+    ],
+    "more_information": [
+      {
+        "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+        "url": "https://doi.org/10.5281/zenodo.20269109",
+        "doi": "10.5281/zenodo.20269109",
+        "note": "Notes that synthetic data may or may not be personal data depending on method and residual risk, and that evaluation frameworks are advisable."
+      }
+    ]
+  },
+  "data_min": {
+    "id": "data_min",
+    "definitions": {
+      "public": "Only using the data you actually need, and no more. If a study can answer its question with age bands rather than dates of birth, it should use the age bands.",
+      "tech": "Restricting processing to data that is adequate, relevant and limited to what is necessary for a stated purpose. It can be applied by reducing volume, lowering granularity, narrowing geographic or temporal scope, or constraining who may access what.",
+      "researcher": "Asking for the least data that will still answer your question. It is not an obstacle to good research; a tighter specification usually makes an application easier to approve and faster to fulfil.",
+      "gov": "A foundational principle applying across the whole data lifecycle, from preparation by the holder, through assessment by the access body, to use by the data user. It constrains every stage rather than being satisfied once."
+    },
+    "examples": {
+      "public": "A study about winter admissions asks only for the months it needs rather than ten years of records, and asks for the first part of a postcode rather than the full address.",
+      "tech": "Narrowing an extract to the specific fields named in the protocol, limiting the date range to the study window, and coarsening location to the level the analysis genuinely requires.",
+      "researcher": "Revising a data request after realising the research question needs admission month rather than exact admission date, which reduces the sensitivity of the extract without weakening the analysis.",
+      "gov": "Reviewing an access application field by field and asking the applicant to justify each one against the stated purpose, rather than approving a broad extract as submitted."
+    },
+    "label": "Data Minimisation",
+    "purpose": "To keep the data used in any project to what is genuinely necessary, reducing risk at every stage rather than relying on controls at the end.",
+    "type": "definition",
+    "tags": [
+      "Safe Data",
+      "Safe Projects",
+      "SATRE: Info Governance",
+      "PEDRI: Transparency"
+    ],
+    "essential_characteristics": [
+      {
+        "description": "Necessity is tested against a stated purpose: Each field is justified by what the project is actually trying to answer.",
+        "tags": [
+          "Safe Projects"
+        ]
+      },
+      {
+        "description": "It applies across the lifecycle: Preparation, access assessment and use are each constrained, not just the initial request.",
+        "tags": [
+          "SATRE: Info Governance"
+        ]
+      },
+      {
+        "description": "Reduction can take several forms: Volume, granularity, scope and access breadth can each be narrowed.",
+        "tags": [
+          "Safe Data"
+        ]
+      },
+      {
+        "description": "Decisions are explainable: What was requested and why can be shown to participants and the public.",
+        "tags": [
+          "PEDRI: Transparency"
+        ]
+      }
+    ],
+    "related_terms": [
+      {
+        "term": "Granularity",
+        "definition": "How precise a value is. Lowering granularity, such as giving an age band instead of a date of birth, is often the simplest way to reduce risk while keeping the data useful."
+      },
+      {
+        "term": "Proportionality",
+        "definition": "Whether the data sought is justified by the benefit the project expects to deliver. It is the judgement that sits behind most minimisation decisions."
+      }
+    ],
+    "more_information": [
+      {
+        "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+        "url": "https://doi.org/10.5281/zenodo.20269109",
+        "doi": "10.5281/zenodo.20269109",
+        "note": "Frames minimisation across five dimensions (who, what, when, where, how) and across the full lifecycle from data holder to access body to data user."
       }
     ]
   }
