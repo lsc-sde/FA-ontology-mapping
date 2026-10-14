@@ -39,14 +39,19 @@ const edgeTypes = {
 };
 
 // Layout constants
-const PIE_RADIUS = 500;
-const LAYER2_RADIUS = 320;       // What (green) inner hexagon
-const LAYER2B_RADIUS = 410;      // What sub-concepts (governance, infra, data protection)
-const LAYER3_RADIUS = 500;       // How (purple) — anchored at pie circle edge
-const LAYER3B_RADIUS = 570;      // How sub-children (SDC children)
-const SAFES_RING_INNER = 640;    // Six Safes ring inner edge
-const SAFES_RING_OUTER = 693;    // Six Safes ring outer edge (~53px = 1/3 of LAYER2_SIZE)
-const LAYER4_RADIUS = 840;       // Who (providers) — clean outer ring past the Safes ring
+//
+// Radii are deliberately generous relative to node size: the canvas is navigated
+// Miro-style (scroll to pan, ctrl/pinch to zoom), so there is no need to fit the
+// whole graph on screen at 100%. Spreading the rings out keeps labels legible and
+// stops the 34 concepts colliding. Node sizes below are intentionally unchanged.
+const PIE_RADIUS = 900;
+const LAYER2_RADIUS = 580;       // What (green) inner hexagon
+const LAYER2B_RADIUS = 760;      // What sub-concepts (governance, infra, data protection)
+const LAYER3_RADIUS = 1000;      // How (purple) — anchored at pie circle edge
+const LAYER3B_RADIUS = 1180;     // How sub-children (SDC children)
+const SAFES_RING_INNER = 1300;   // Six Safes ring inner edge
+const SAFES_RING_OUTER = 1400;   // Six Safes ring outer edge
+const LAYER4_RADIUS = 1580;      // Who (providers) — clean outer ring past the Safes ring
 const CENTER_SIZE = 240;
 const LAYER2_SIZE = 160;
 const MID_NODE_SIZE = 120;        // What sub-concepts on the LAYER2B ring
@@ -176,22 +181,22 @@ function buildNodes(): Node[] {
     }[] = [
         // Moved off the centre point: it previously shared its centre with
         // fed_ecosystem as a "halo", which read as an overlap bug.
-        { id: 'dacs', parentId: 'access_process', clockAngle: 50 },
-        { id: 'access_process', parentId: 'fed_gov', clockAngle: 10 },
-        { id: 'data_min', parentId: 'fed_gov', clockAngle: 350 },
-        { id: 'pseudonym', parentId: 'data_protect', clockAngle: 110 },
+        { id: 'dacs', parentId: 'access_process', clockAngle: 40 },
+        { id: 'access_process', parentId: 'fed_gov', clockAngle: 15 },
+        { id: 'data_min', parentId: 'fed_gov', clockAngle: 348 },
+        { id: 'pseudonym', parentId: 'data_protect', clockAngle: 112 },
         { id: 'anonymise', parentId: 'data_protect', clockAngle: 130 },
-        { id: 'synth_data', parentId: 'data_protect', clockAngle: 170 },
-        { id: 'intermediate_outputs', parentId: 'research_outputs', clockAngle: 290 },
-        { id: 'final_outputs', parentId: 'research_outputs', clockAngle: 300 },
+        { id: 'synth_data', parentId: 'data_protect', clockAngle: 148 },
+        { id: 'intermediate_outputs', parentId: 'research_outputs', clockAngle: 285 },
+        { id: 'final_outputs', parentId: 'research_outputs', clockAngle: 303 },
         // Midpoint angles between green parents → clean dodecagonal interleave
-        { id: 'remote_vm', parentId: 'fed_infra', clockAngle: 70 },
+        { id: 'remote_vm', parentId: 'fed_infra', clockAngle: 68 },
         { id: 'phy_access', parentId: 'fed_infra', clockAngle: 90 },
-        { id: 'decentralised_storage', parentId: 'fed_storage', clockAngle: 150 }, // midpoint 120°–180°
-        { id: 'central_storage', parentId: 'fed_storage', clockAngle: 200 },    // sector 180°–240°
-        { id: 'ds_simul', parentId: 'fed_analytics', clockAngle: 220 },         // sector 180°–240°
-        { id: 'sep_analysis', parentId: 'fed_analytics', clockAngle: 270 },     // midpoint 240°–300°
-        { id: 'sdc_output', parentId: 'fed_outputs', clockAngle: 330 },         // midpoint 300°–360°
+        { id: 'decentralised_storage', parentId: 'fed_storage', clockAngle: 168 },
+        { id: 'central_storage', parentId: 'fed_storage', clockAngle: 190 },
+        { id: 'ds_simul', parentId: 'fed_analytics', clockAngle: 215 },
+        { id: 'sep_analysis', parentId: 'fed_analytics', clockAngle: 255 },
+        { id: 'sdc_output', parentId: 'fed_outputs', clockAngle: 325 },
         // SDC sub-children on intermediate ring
         { id: 'auto_sdc', parentId: 'sdc_output', clockAngle: 310, radius: LAYER3B_RADIUS, nodeSize: HOW_SUB_SIZE },
         { id: 'semi_auto_sdc', parentId: 'sdc_output', clockAngle: 350, radius: LAYER3B_RADIUS, nodeSize: HOW_SUB_SIZE },
@@ -483,8 +488,19 @@ export default function GraphViewer({ activeFilter, onNodeSelect, searchQuery, o
                 edgeTypes={edgeTypes}
                 nodesDraggable={isDraggable}
                 fitView
-                fitViewOptions={{ padding: 0.3 }}
-                minZoom={0.2}
+                fitViewOptions={{ padding: 0.15 }}
+                minZoom={0.05}
+                maxZoom={2.5}
+                /* Miro-style navigation: scroll/trackpad pans, ctrl+scroll (or
+                   pinch) zooms, and dragging the empty canvas pans. */
+                panOnScroll
+                panOnScrollSpeed={0.8}
+                zoomOnScroll={false}
+                zoomOnPinch
+                zoomOnDoubleClick={false}
+                panOnDrag
+                selectionOnDrag={false}
+                preventScrolling
             >
                 <Background variant={BackgroundVariant.Dots} gap={24} size={2} color="#e2e8f0" />
                 <Controls className="bg-white border-slate-200 fill-slate-500 shadow-md" />
