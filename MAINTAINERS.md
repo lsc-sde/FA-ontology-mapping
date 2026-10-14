@@ -3,18 +3,16 @@
 This file documents how to **run** this project, as distinct from
 [`CONTRIBUTING.md`](CONTRIBUTING.md), which covers how to contribute to it.
 
-This repository was orphaned once already when its original author moved on. The
-purpose of this document is to make sure that cannot happen silently again.
-
 ---
 
 ## Current maintainers
 
 | Name | Affiliation | Role |
 |---|---|---|
-| Ian Farr | Lancashire Teaching Hospitals NHS Foundation Trust | Lead maintainer, repository admin |
+| Ian Farr | Lancashire Teaching Hospitals NHS Foundation Trust | Repository admin |
+| Artur Zinnurov | Lancashire Teaching Hospitals NHS Foundation Trust | Senior Research Software Engineer |
 
-Admin rights sit with the `lsc-sde` GitHub organisation. If the lead maintainer
+Admin rights sit with the `lsc-sde` GitHub organisation. If a maintainer
 becomes unavailable, an organisation owner can reassign them — no individual
 account is a single point of failure.
 
@@ -56,6 +54,24 @@ prefixed with the repository name. Local dev and Vercel serve from the root.
 Other places the repository name appears: `package.json` (`name`,
 `repository.url`), `package-lock.json`, `data/schema/ontology.schema.json`
 (`$id`), `CITATION.cff` (`repository-code`), and `CONTRIBUTING.md`.
+
+---
+
+## Held decisions
+
+Changes that have been considered and **deliberately deferred**. Recorded here so
+they are not silently re-litigated or accidentally applied.
+
+| Decision | Status | Condition for revisiting |
+|---|---|---|
+| Rename the on-screen title from "Language Road Map" | **Held** | The `<h1>` in `src/components/Sidebar.tsx` still reads "Language Road Map", while `index.html`, `README.md`, `CITATION.cff`, `data/README.md` and `NOTICE` all say "Federated Analytics Ontology". This inconsistency is known. "Ontology" is accurate but not public-facing; a friendlier display name (e.g. "Federation Atlas") is under consideration. Note that name is already in use by a downstream fork at `jonaaeva.github.io/federation-atlas/`, so settle it with them first. |
+| Remove the prototype disclaimers from the tool | **Actioned** | Removed from the sidebar, the tabular view and the top placeholder bar. Note the in-app warnings are now gone while the definitions themselves have still not been through stakeholder review — the only remaining signals of draft status are the "Drafting" watermark in `src/App.tsx` and the prototype note in `README.md`. |
+| Remove the bottom survey banner from `src/App.tsx` | **Actioned** | The linked MS Form was confirmed closed and the banner removed. |
+| Choice of public contribution channel | **Open** | The footer now links to `CONTRIBUTING.md` on GitHub as an interim measure, but GitHub is a poor destination for public and patient contributors — the audience this project most needs to hear from. Options considered: a replacement MS Form, a `mailto:` to a shared mailbox, or GitHub Issue Forms (`.github/ISSUE_TEMPLATE/`). A new form only helps if someone owns triage; the previous survey expired and was not replaced. Decide the owner before adding a form. |
+
+A downstream fork has applied some of these changes already. That is not a
+precedent for this repository, which carries NHS attribution and a CC BY 4.0
+content licence the fork does not.
 
 ---
 
@@ -122,7 +138,9 @@ These live in GitHub settings and are lost if the repo is recreated:
 - **Dev-only audit advisories.** `npm audit` reports issues in development
   tooling only; `npm audit --omit=dev` is clean. These are not shipped to users.
 - **Prototype status.** Definitions are under active review and are not settled.
-  Keep the prototype warning in `README.md` until that changes.
+  The in-app disclaimers have been removed, so the prototype warning in
+  `README.md` and the "Drafting" watermark are now the only signals of draft
+  status. Keep both until the definitions are reviewed and signed off.
 
 ---
 

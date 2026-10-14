@@ -58,16 +58,60 @@ npm run dev
 
 ### Editing the ontology
 
-Edit the JSON in [`/data`](data/), then run `npm run validate:data`. The
-validator checks that tags are recognised, `id` matches its key, `children`
+Edit the JSON in [`/data`](data/), then **regenerate the files the app reads**:
+
+```bash
+npm run extract:data   # regenerates src/data/*.ts from /data/*.json
+npm run validate:data  # checks the result is structurally sound
+```
+
+> ⚠️ **Do not skip `extract:data`, and do not hand-edit `src/data/*.ts`.**
+> `/data` is canonical, but the React app imports the *generated* TypeScript in
+> `src/data/`. If you edit the JSON and skip this step, `validate:data`, `lint`
+> and `build` will all still pass and your change simply will not appear in the
+> app. Any manual edit to `src/data/*.ts` is overwritten by the next extraction.
+
+Commit both the `/data` change and the regenerated `src/data/` files together.
+
+The validator checks that tags are recognised, `id` matches its key, `children`
 resolve to real nodes, and tag reasons reference nodes that exist.
+
+#### The shape of a node
+
+Each entry in `data/ontology.json` is keyed by its `id` and must repeat that
+`id` in the body. All four audiences are required for both `definitions` and
+`examples`:
+
+```json
+"fed_people": {
+  "id": "fed_people",
+  "label": "Federation of People",
+  "type": "concept",
+  "definitions": {
+    "public": "Plain English, no jargon.",
+    "tech": "Technical and architectural detail.",
+    "researcher": "What it means for doing research.",
+    "gov": "Governance, legal and IG framing."
+  },
+  "examples": {
+    "public": "…", "tech": "…", "researcher": "…", "gov": "…"
+  },
+  "characteristics": ["Observable or measurable statement"],
+  "tags": ["Safe People", "PEDRI: Transparency"],
+  "children": ["some_other_node_id"]
+}
+```
+
+#### Adding a new node
+
+A new node is only reachable if an existing node lists it in `children`. Add the
+node, then add its `id` to the `children` array of its parent — otherwise it
+will never appear in the graph view, only in the tabular view. `validate:data`
+reports unreachable nodes on every run; please don't add to that list.
 
 If you add a framework tag to a node, please also add a corresponding entry in
 `tag-reasons.json` explaining **why** it applies. Unexplained tags are hard for
 others to trust or challenge.
-
-Every node must define all four audiences (`public`, `tech`, `researcher`,
-`gov`) for both `definitions` and `examples`.
 
 ---
 

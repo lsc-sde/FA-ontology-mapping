@@ -4,9 +4,9 @@
 > **CC BY 4.0** (see [`LICENSE-DATA.txt`](LICENSE-DATA.txt)) — **not** the
 > Apache-2.0 licence that covers the application code in `/src`.
 
-This directory is the **canonical, machine-readable source** of the Federation
-Ontology Mapping vocabulary. The React application in `/src` imports these files;
-it does not hold its own copy.
+This directory is the **canonical, machine-readable source** of the Federated
+Analytics Ontology vocabulary. The React application in `/src` imports these
+files; it does not hold its own copy.
 
 ## Files
 
