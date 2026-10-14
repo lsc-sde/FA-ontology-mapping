@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for your interest in the Federation Ontology Mapping project. This is
+Thank you for your interest in the Federated Analytics Ontology project. This is
 a **consensus-building project about language**, so contributions about wording
 and meaning are just as valuable as code — arguably more so.
 
@@ -36,8 +36,8 @@ You will be credited for accepted contributions unless you ask not to be.
 ### Getting set up
 
 ```bash
-git clone https://github.com/lsc-sde/FA-ontology-mapping.git
-cd FA-ontology-mapping
+git clone https://github.com/lsc-sde/federated-analytics-ontology.git
+cd federated-analytics-ontology
 npm ci
 npm run dev
 ```

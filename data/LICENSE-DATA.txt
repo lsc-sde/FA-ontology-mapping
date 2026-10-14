@@ -1,4 +1,4 @@
-Federation Ontology Mapping — ontology content
+Federated Analytics Ontology — ontology content
 Copyright 2026 Lancashire Teaching Hospitals NHS Foundation Trust and contributors
 
 This directory (`/data`) contains the ontology content and is licensed under the
@@ -24,9 +24,11 @@ Human-readable summary:
 
 ATTRIBUTION
 -----------
-When using this data, please attribute the collaboration between
-Lancashire Teaching Hospitals NHS Foundation Trust (project lead),
-the University of Liverpool, the University of Nottingham,
-and DARE UK (Data and Analytics Research Environments UK).
+When using this data, please attribute:
+
+  Led by:              Lancashire Teaching Hospitals NHS Foundation Trust
+  In collaboration with: the University of Liverpool and
+                         the University of Nottingham
+  Supported by:        DARE UK (Data and Analytics Research Environments UK)
 
 For academic citation, please use the metadata in /CITATION.cff.

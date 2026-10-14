@@ -1,8 +1,8 @@
-# Federation Ontology Mapping
+# Federated Analytics Ontology
 
 **An interactive map of the language used to describe the federation of data within UK health data research systems.**
 
-Led by **Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with the University of Liverpool, the University of Nottingham, and DARE UK.
+Led by **Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with the University of Liverpool and the University of Nottingham, and supported by DARE UK.
 
 > ⚠️ **Prototype.** This is a working prototype intended to support discussion. Definitions are under active review and should not yet be treated as settled or authoritative.
 
@@ -72,6 +72,12 @@ If a definition is unclear, wrong, or missing, that is exactly the kind of feedb
 
 Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) to get started.
 
+## Maintaining this project
+
+If you are taking over or helping run this repository, see
+[`MAINTAINERS.md`](MAINTAINERS.md) for the release process, deployment notes and
+known issues.
+
 ## Acknowledgements
 
 This work has been shaped by extensive public engagement and by contributions from advisory groups committed to ethical, transparent and accountable health data research — in particular the **Lancashire and South Cumbria Data into Impact Programme (SDE) Public Advisory Group** and the **North West Secure Data Environment Public Advisory and Accountability Group**.
@@ -87,6 +93,6 @@ This repository uses a dual-license structure to accommodate both software and d
 * **Source Code:** All application code, build configuration and scripts are licensed under the [Apache License 2.0](LICENSE).
 * **Data and Ontologies:** All datasets, mappings and ontology files in the [`data/`](data/) directory are licensed under a [Creative Commons Attribution 4.0 International License (CC BY 4.0)](data/LICENSE-DATA.txt).
 
-When utilizing the data or ontologies, please attribute the collaboration between **Lancashire Teaching Hospitals NHS Foundation Trust**, **the University of Liverpool**, **the University of Nottingham**, and **DARE UK**.
+When utilizing the data or ontologies, please attribute the work as **led by Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with **the University of Liverpool** and **the University of Nottingham**, and supported by **DARE UK**.
 
 > ℹ️ Licensing is subject to confirmation by Lancashire Teaching Hospitals NHS Foundation Trust R&D / IP.

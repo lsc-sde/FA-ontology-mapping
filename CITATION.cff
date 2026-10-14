@@ -1,47 +1,69 @@
-# This CITATION.cff file was generated for the Federation Ontology Mapping project.
+# This CITATION.cff file describes the Federated Analytics Ontology project.
 # https://citation-file-format.github.io/
 
 cff-version: 1.2.0
-title: "FA Ontology Mapping"
-repository-code: "https://github.com/lsc-sde/FA-ontology-mapping"
+title: "Federated Analytics Ontology"
+repository-code: "https://github.com/lsc-sde/federated-analytics-ontology"
 message: >-
   If you use this work, please cite it using the metadata
   from this file.
-type: dataset
+# The repository is an application (Apache-2.0) that contains a separately
+# licensed ontology dataset in /data (CC BY 4.0). Both licences are listed.
+type: software
+version: "0.2.0"
 authors:
+  - family-names: Farr
+    given-names: Ian
+    orcid: "https://orcid.org/0000-0001-8786-6613"
+    affiliation: "Lancashire Teaching Hospitals NHS Foundation Trust"
+  - family-names: Zinnurov
+    given-names: Artur
+    affiliation: "Lancashire Teaching Hospitals NHS Foundation Trust"
+  - family-names: Soc
+    given-names: Maria
+    affiliation: "Lancashire Teaching Hospitals NHS Foundation Trust"
   - family-names: Kirkwood
     given-names: Dale
     orcid: "https://orcid.org/0009-0002-4622-6198"
     affiliation: "Lancashire Teaching Hospitals NHS Foundation Trust"
-  - family-names: Wilson
-    given-names: Becca
-    orcid: "https://orcid.org/0000-0003-2294-593X"
-    affiliation: "University of Liverpool"
   - family-names: Eva
     given-names: Jonaa
     orcid: "https://orcid.org/0009-0003-2422-9360"
-    affiliation: "University of Nottingham, DARE UK"
+    affiliation: "University of Nottingham"
   - family-names: Waind
     given-names: Elizabeth
     orcid: "https://orcid.org/0009-0007-0011-4605"
     affiliation: "Data and Analytics Research Environments UK (DARE UK)"
+  - family-names: Wilson
+    given-names: Becca
+    orcid: "https://orcid.org/0000-0003-2294-593X"
+    affiliation: "University of Liverpool"
 abstract: >-
-  Federation Ontology Mapping – a collaborative effort to
-  develop shared ontological frameworks for federated
-  research environments. This work has been shaped by
-  extensive public engagement and contributions from
-  advisory groups committed to ethical, transparent, and
-  accountable health data research.
+  The Federated Analytics Ontology is a collaborative effort to
+  develop shared language for federated analytics in UK health
+  data research. It defines 29 concepts for four audiences —
+  public, technical, researcher and governance — and maps each
+  against the Five Safes, FAIR, PEDRI and SATRE frameworks. This
+  work has been shaped by extensive public engagement and
+  contributions from advisory groups committed to ethical,
+  transparent, and accountable health data research.
 keywords:
   - federation
+  - federated-analytics
   - ontology
-  - mapping
+  - controlled-vocabulary
   - federated-research
+  - trusted-research-environment
+  - secure-data-environment
   - DARE UK
   - health-data
   - public-involvement
-license: CC-BY-4.0
-date-released: "2026-05-06"
+# Dual-licensed: Apache-2.0 for the application code, CC BY 4.0 for the
+# ontology dataset in /data. See README.md and NOTICE for the split.
+license:
+  - Apache-2.0
+  - CC-BY-4.0
+date-released: "2026-10-14"
 
 # ---------------------------------------------------------------------------
 # Contributors and Acknowledgements
