@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { OntologyNode, FrameworkTag, frameworkCategories } from '../data/ontology';
 import { tagReasons } from '../data/tagReasons';
 import { frameworkTagDefinitions } from '../data/frameworkTagDefinitions';
-import { SlidersHorizontal, Settings, BookOpen, Fingerprint, ChevronDown, ChevronRight, Search, X, AlertTriangle } from 'lucide-react';
+import { SlidersHorizontal, Settings, BookOpen, Fingerprint, ChevronDown, ChevronRight, Search, X } from 'lucide-react';
 
 interface SidebarProps {
     perspective: 'public' | 'tech' | 'researcher' | 'gov';
@@ -64,19 +64,6 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                 </button>
             </div>
 
-            {/* Disclaimer Warning Box */}
-            <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl shadow-sm">
-                <div className="flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                    <div>
-                        <h4 className="font-semibold text-amber-900 text-sm mb-1">Disclaimer: Prototype Content</h4>
-                        <p className="text-xs text-amber-800 leading-relaxed">
-                            The definitions and examples provided in this prototype are AI-generated placeholders intended for illustrative purposes only. This site is a preliminary design developed to facilitate engagement with public and professional stakeholders, who will collaboratively refine and establish the final, agreed-upon content.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
             {/* Search Bar */}
             <div className="mb-6 relative">
                 <div className="relative">
@@ -133,27 +120,31 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                     />
                     <button
                         onClick={() => setPerspective('public')}
-                        className={`flex-1 py-2 text-sm font-medium z-10 transition-colors ${perspective === 'public' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`flex-1 py-2 px-1 z-10 transition-colors ${perspective === 'public' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
                     >
-                        Public
+                        <span className="block text-sm font-medium">Public</span>
+                        <span className="block text-[10px] leading-tight opacity-70">Why it matters</span>
                     </button>
                     <button
                         onClick={() => setPerspective('tech')}
-                        className={`flex-1 py-2 text-sm font-medium z-10 transition-colors ${perspective === 'tech' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`flex-1 py-2 px-1 z-10 transition-colors ${perspective === 'tech' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
                     >
-                        Technical
+                        <span className="block text-sm font-medium">Technical</span>
+                        <span className="block text-[10px] leading-tight opacity-70">How it works</span>
                     </button>
                     <button
                         onClick={() => setPerspective('researcher')}
-                        className={`flex-1 py-2 text-sm font-medium z-10 transition-colors ${perspective === 'researcher' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`flex-1 py-2 px-1 z-10 transition-colors ${perspective === 'researcher' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
                     >
-                        Researcher
+                        <span className="block text-sm font-medium">Researcher</span>
+                        <span className="block text-[10px] leading-tight opacity-70">What I can do</span>
                     </button>
                     <button
                         onClick={() => setPerspective('gov')}
-                        className={`flex-1 py-2 text-sm font-medium z-10 transition-colors ${perspective === 'gov' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
+                        className={`flex-1 py-2 px-1 z-10 transition-colors ${perspective === 'gov' ? 'text-blue-700' : 'text-slate-400 hover:text-slate-600'}`}
                     >
-                        Governance
+                        <span className="block text-sm font-medium">Governance</span>
+                        <span className="block text-[10px] leading-tight opacity-70">Who&apos;s accountable</span>
                     </button>
                 </div>
             </div>
