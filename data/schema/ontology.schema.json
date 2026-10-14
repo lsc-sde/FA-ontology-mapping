@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/lsc-sde/FA-ontology-mapping/data/schema/ontology.schema.json",
-  "title": "Federation Ontology Mapping — ontology",
+  "$id": "https://github.com/lsc-sde/federated-analytics-ontology/data/schema/ontology.schema.json",
+  "title": "Federated Analytics Ontology — ontology",
   "description": "A map of concepts used in federated health data research. Each concept is defined for four audiences and mapped to the Five Safes, FAIR, PEDRI and SATRE frameworks.",
   "type": "object",
   "additionalProperties": { "$ref": "#/$defs/ontologyNode" },

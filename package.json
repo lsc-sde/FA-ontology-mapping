@@ -1,13 +1,13 @@
 {
-  "name": "fa-ontology-mapping",
+  "name": "federated-analytics-ontology",
   "private": true,
   "version": "0.2.0",
-  "description": "An interactive map of definitions related to the federation of data within UK health data research systems. Led by Lancashire Teaching Hospitals NHS Foundation Trust.",
+  "description": "An interactive ontology of the language used to describe federated analytics in UK health data research. Led by Lancashire Teaching Hospitals NHS Foundation Trust.",
   "license": "Apache-2.0",
   "author": "Lancashire Teaching Hospitals NHS Foundation Trust and contributors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lsc-sde/FA-ontology-mapping.git"
+    "url": "https://github.com/lsc-sde/federated-analytics-ontology.git"
   },
   "keywords": [
     "ontology",
