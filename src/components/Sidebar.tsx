@@ -64,9 +64,9 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                 <div>
                     <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-700 to-teal-600 bg-clip-text text-transparent mb-2 flex items-center gap-3">
                         <Fingerprint className="w-8 h-8 text-blue-600" />
-                        Language Road Map
+                        Federation Atlas
                     </h1>
-                    <p className="text-sm text-slate-500">Federated Data &amp; Framework Analysis</p>
+                    <p className="text-sm text-slate-500">An interactive view of the Federated Analytics Ontology</p>
                 </div>
                 <button
                     onClick={() => {

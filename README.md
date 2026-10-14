@@ -4,6 +4,8 @@
 
 Led by **Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with the University of Liverpool and the University of Nottingham, and supported by DARE UK.
 
+> **On naming:** the **Federated Analytics Ontology** is the work — the vocabulary itself, this repository, and the thing you cite. **Federation Atlas** is the name of the interactive tool used to explore it.
+
 > ⚠️ **Prototype.** This is a working prototype intended to support discussion. Definitions are under active review and should not yet be treated as settled or authoritative.
 
 ---
