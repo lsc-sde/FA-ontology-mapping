@@ -139,13 +139,15 @@ These live in GitHub settings and are lost if the repo is recreated:
 
 ## Known issues and technical debt
 
-- **Orphan nodes.** `fed_access`, `sdc_output` and `fed_outputs` are not reachable
-  from the graph root, so they never appear in the graph view. They are valid
-  and do appear in the tabular view. Tracked as an open issue.
+- ~~**Orphan nodes.**~~ Resolved. `fed_access` and `fed_outputs` were unreachable
+  from the graph root. They are now attached as children of `fed_people` and
+  `fed_analytics` respectively, matching the positions they already occupied in
+  the `GraphViewer` ring layout. `sdc_output` was already reachable via
+  `data_protect`; the note listing it was out of date.
 - **Untyped relations.** `children` currently expresses several different
   relationships at once — "is a kind of", "is implemented by" and "is part of".
   Splitting these into named relation types is the main prerequisite for a
-  SKOS/RDF export, and would likely resolve the orphan nodes too.
+  SKOS/RDF export.
 - **Dev-only audit advisories.** `npm audit` reports issues in development
   tooling only; `npm audit --omit=dev` is clean. These are not shipped to users.
   `npm audit fix` was last run on 14 Oct 2026, clearing 13 of 22 advisories.

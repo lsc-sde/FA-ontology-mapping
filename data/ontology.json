@@ -134,7 +134,8 @@
     "purpose": "To enable individuals or groups to work together around shared goals without losing their own identity, voice, autonomy, or local responsibility.",
     "type": "definition",
     "children": [
-      "fed_gov"
+      "fed_gov",
+      "fed_access"
     ],
     "tags": [
       "Safe People",
@@ -433,7 +434,8 @@
     "children": [
       "ds_simul",
       "smpc",
-      "sep_analysis"
+      "sep_analysis",
+      "fed_outputs"
     ],
     "tags": [
       "Reusable",
