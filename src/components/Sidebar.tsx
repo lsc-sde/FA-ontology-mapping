@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { OntologyNode, FrameworkTag, frameworkCategories } from '../data/ontology';
 import { tagReasons } from '../data/tagReasons';
 import { frameworkTagDefinitions } from '../data/frameworkTagDefinitions';
@@ -34,6 +34,22 @@ function getFrameworkForTag(tag: FrameworkTag): string | null {
 export default function Sidebar({ perspective, setPerspective, activeFilter, setActiveFilter, selectedNode, setSelectedNode, searchQuery, setSearchQuery, currentView, setCurrentView }: SidebarProps) {
     const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
     const [expandedTag, setExpandedTag] = useState<string | null>(null);
+    const [filtersOpen, setFiltersOpen] = useState(true);
+    const detailsRef = useRef<HTMLDivElement>(null);
+
+    // When a node is selected, collapse the filters and bring the details panel
+    // into view. Without this the panel sits below the fold and the user has to
+    // scroll to find the content they just asked for.
+    useEffect(() => {
+        if (!selectedNode) return;
+        setFiltersOpen(false);
+        // Wait for the collapse to paint before scrolling, otherwise we scroll
+        // to the pre-collapse position.
+        const frame = requestAnimationFrame(() => {
+            detailsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        return () => cancelAnimationFrame(frame);
+    }, [selectedNode]);
 
     const toggleCategory = (category: string) => {
         setOpenCategories(prev => ({ ...prev, [category]: !prev[category] }));
@@ -152,10 +168,20 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
             {/* Framework Filters */}
             <div className="mb-8">
                 <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-base font-semibold flex items-center gap-2 text-slate-700">
+                    <button
+                        onClick={() => setFiltersOpen(o => !o)}
+                        className="flex items-center gap-2 text-base font-semibold text-slate-700 hover:text-slate-900 transition-colors"
+                        aria-expanded={filtersOpen}
+                    >
                         <Settings className="w-5 h-5" />
                         Framework Filters
-                    </h3>
+                        {filtersOpen ? <ChevronDown className="w-4 h-4 text-slate-400" /> : <ChevronRight className="w-4 h-4 text-slate-400" />}
+                        {!filtersOpen && activeFilter && (
+                            <span className="px-2 py-0.5 text-[10px] font-medium rounded-full bg-blue-50 border border-blue-300 text-blue-700">
+                                1 active
+                            </span>
+                        )}
+                    </button>
                     <button
                         onClick={() => setActiveFilter(null)}
                         className={`px-3 py-1 text-xs rounded-full border transition-all ${activeFilter === null
@@ -166,6 +192,7 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                         Clear Filter
                     </button>
                 </div>
+                {filtersOpen && (
                 <div className="flex flex-col gap-2">
                     {Object.entries(frameworkCategories).map(([categoryName, tags]) => (
                         <div key={categoryName} className="border border-slate-200 rounded-lg shadow-sm">
@@ -202,10 +229,11 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                         </div>
                     ))}
                 </div>
+                )}
             </div>
 
             {/* Details Panel */}
-            <div className="flex-1 border-t border-slate-200 pt-6 pb-4">
+            <div ref={detailsRef} className="flex-1 border-t border-slate-200 pt-6 pb-4 scroll-mt-4">
                 <h3 className="text-base font-semibold flex items-center gap-2 text-slate-700 mb-6">
                     <BookOpen className="w-5 h-5" />
                     Details Panel
