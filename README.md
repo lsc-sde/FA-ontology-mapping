@@ -64,6 +64,14 @@ npm run dev
 
 Built with React, TypeScript, Vite, Tailwind CSS and React Flow (`@xyflow/react`).
 
+## How the definitions were produced
+
+> **The definitions in this ontology were AI-generated as a starting point and
+> are drafts under review.** They have not yet been through stakeholder review
+> and should not be treated as authoritative or quoted as settled terminology.
+> They are published openly precisely so that people can correct them — see
+> Contributing below.
+
 ## Contributing
 
 **Contributions are welcome — including from people who don't write code.**

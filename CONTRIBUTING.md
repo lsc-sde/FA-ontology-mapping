@@ -28,9 +28,9 @@ English" definition isn't plain to you, that is a bug and we want to hear it.
 **Contributions are anonymous by default.** The form asks whether you'd like to
 be thanked by name, and how you'd like to be named — leave it blank and we won't
 record one. Accepted contributions are listed in
-[`CONTRIBUTORS.md`](CONTRIBUTORS.md), where anonymous ones are counted rather
-than named. Being listed there is thanks rather than authorship; see the note on
-authorship in that file.
+[`CONTRIBUTORS.md`](CONTRIBUTORS.md), where anonymous ones are thanked
+collectively rather than named. Being listed there is thanks rather than
+authorship; see the note on authorship in that file.
 
 ---
 

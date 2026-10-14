@@ -7,8 +7,7 @@ community speaks.
 **Most of that feedback is anonymous, by choice.** Contributors are anonymous by
 default: our [feedback form](.github/ISSUE_TEMPLATE/definition-feedback.yml) only
 asks for a name if you want one recorded. Anonymous contributions are valued
-exactly as much as named ones, and are counted below so the scale of that help
-stays visible.
+exactly as much as named ones.
 
 ---
 
@@ -20,7 +19,8 @@ People who asked to be thanked by name, listed as they asked to be named.
 | ----------- | ------------ | ----- |
 | _No named contributions recorded yet._ | | |
 
-**Anonymous accepted contributions: 0**
+...and all of our anonymous contributors, whose feedback counts just as much and
+makes up most of what we receive.
 
 ---
 

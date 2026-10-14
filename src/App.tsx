@@ -58,13 +58,17 @@ function App() {
       </div>
 
       {/* Contribute link */}
-      <div className="bg-slate-50 border-t border-slate-200 text-slate-500 px-4 py-2 text-center text-xs z-40 shrink-0">
-        Spotted a definition that doesn&apos;t fit?{' '}
+      <div className="bg-slate-50 border-t border-slate-200 text-slate-400 px-4 py-1.5 text-center text-[11px] z-40 shrink-0">
+        <span className="text-slate-400">
+          Definitions are AI-generated drafts under review and are not
+          authoritative.
+        </span>
+        <span className="mx-2 text-slate-300">·</span>
         <a
           href="https://github.com/lsc-sde/federated-analytics-ontology/blob/main/CONTRIBUTING.md"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+          className="text-slate-500 hover:text-blue-600 hover:underline"
         >
           Suggest a change
         </a>

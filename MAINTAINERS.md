@@ -67,11 +67,42 @@ they are not silently re-litigated or accidentally applied.
 | Rename the on-screen title from "Language Road Map" | **Held** | The `<h1>` in `src/components/Sidebar.tsx` still reads "Language Road Map", while `index.html`, `README.md`, `CITATION.cff`, `data/README.md` and `NOTICE` all say "Federated Analytics Ontology". This inconsistency is known. "Ontology" is accurate but not public-facing; a friendlier display name (e.g. "Federation Atlas") is under consideration. Note that name is already in use by a downstream fork at `jonaaeva.github.io/federation-atlas/`, so settle it with them first. |
 | Remove the prototype disclaimers from the tool | **Actioned** | Removed from the sidebar, the tabular view and the top placeholder bar. Note the in-app warnings are now gone while the definitions themselves have still not been through stakeholder review — the only remaining signals of draft status are the "Drafting" watermark in `src/App.tsx` and the prototype note in `README.md`. |
 | Remove the bottom survey banner from `src/App.tsx` | **Actioned** | The linked MS Form was confirmed closed and the banner removed. |
-| Choice of public contribution channel | **Open** | The footer now links to `CONTRIBUTING.md` on GitHub as an interim measure, but GitHub is a poor destination for public and patient contributors — the audience this project most needs to hear from. Options considered: a replacement MS Form, a `mailto:` to a shared mailbox, or GitHub Issue Forms (`.github/ISSUE_TEMPLATE/`). A new form only helps if someone owns triage; the previous survey expired and was not replaced. Decide the owner before adding a form. |
+| Choice of public contribution channel | **Actioned** | A GitHub Issue Form now exists at `.github/ISSUE_TEMPLATE/definition-feedback.yml`, linked from `CONTRIBUTING.md` and the app footer. Triage sits with the `lsc-sde` organisation rather than a named individual, so no one person is a single point of failure — but an organisation cannot receive a notification. Issues only surface to someone who is **watching the repository**, so at least one maintainer must watch it for the form to be answered. See "Issue triage" below. |
+| Disclose that definitions are AI-generated | **Actioned** | The app footer, `README.md` and `data/README.md` now state that definition text was AI-generated and is a draft under review. This matters because `/data` is CC BY 4.0 and may be reused downstream. |
 
 A downstream fork has applied some of these changes already. That is not a
 precedent for this repository, which carries NHS attribution and a CC BY 4.0
 content licence the fork does not.
+
+---
+
+## Issue triage
+
+Public feedback arrives as GitHub issues via
+[`.github/ISSUE_TEMPLATE/definition-feedback.yml`](.github/ISSUE_TEMPLATE/definition-feedback.yml).
+
+**Triage is an organisation responsibility, not an individual's.** Any
+`lsc-sde` maintainer can pick up an issue, and organisation owners can add or
+remove maintainers without the channel breaking.
+
+There is one practical catch worth understanding: **GitHub does not notify an
+organisation.** Issues only reach a human if at least one person is *watching*
+the repository. If nobody watches it, the form will sit unanswered while
+appearing, to the contributor, to be a live channel.
+
+- At least one maintainer must **Watch → All Activity** on this repository.
+- Treat that as a handover item: if the last watcher leaves, someone else
+  must take it on.
+
+When accepting a contribution:
+
+1. Make the change in `/data` (never in `src/data/` — see
+   [`CONTRIBUTING.md`](CONTRIBUTING.md)), then run `npm run extract:data`.
+2. If the contributor asked to be thanked by name, add a row to
+   [`CONTRIBUTORS.md`](CONTRIBUTORS.md) **using the wording they gave**, linking
+   the issue number. If they left the credit field blank, they are covered by
+   the collective thanks line — do not name them.
+3. Close the issue with a short note on what changed.
 
 ---
 

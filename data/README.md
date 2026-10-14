@@ -8,6 +8,10 @@ This directory is the **canonical, machine-readable source** of the Federated
 Analytics Ontology vocabulary. The React application in `/src` imports these
 files; it does not hold its own copy.
 
+> **Provenance:** the definition text in `ontology.json` was **AI-generated** as
+> a drafting starting point and has not yet completed stakeholder review. Treat
+> it as a draft under active revision, not as authoritative terminology.
+
 ## Files
 
 | File | Contents |
