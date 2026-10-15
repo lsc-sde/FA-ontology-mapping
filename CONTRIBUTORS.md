@@ -31,6 +31,7 @@ This work has been shaped by sustained public engagement, in particular:
 - The Lancashire and South Cumbria Data into Impact Programme (SDE) Public
   Advisory Group
 - The North West Secure Data Environment Public Advisory and Accountability Group
+- The Federated Research Community Group
 
 ---
 

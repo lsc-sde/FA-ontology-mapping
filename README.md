@@ -97,7 +97,7 @@ known issues.
 
 ## Acknowledgements
 
-This work has been shaped by extensive public engagement and by contributions from advisory groups committed to ethical, transparent and accountable health data research — in particular the **Lancashire and South Cumbria Data into Impact Programme (SDE) Public Advisory Group** and the **North West Secure Data Environment Public Advisory and Accountability Group**.
+This work has been shaped by extensive public engagement and by contributions from advisory groups committed to ethical, transparent and accountable health data research — in particular the **Lancashire and South Cumbria Data into Impact Programme (SDE) Public Advisory Group**, the **North West Secure Data Environment Public Advisory and Accountability Group**, and the **Federated Research Community Group**.
 
 ## Citation
 
