@@ -1,0 +1,68 @@
+name: CI
+
+# Quality checks run on pull requests as well as pushes, so problems are
+# caught before merge rather than at deploy time. The deploy workflow keeps
+# its own copies of these steps so a broken build can never reach Pages.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate ontology data
+        run: npm run validate:data
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck and build
+        run: npm run build
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Only runtime dependencies can reach a visitor's browser, so those are
+      # what gate a merge. Build-chain advisories (vite, esbuild, tailwind)
+      # matter for a maintainer's laptop, not for the published static site,
+      # and are left to Dependabot rather than blocking work.
+      - name: Audit runtime dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+      # Reported for visibility only. Expected to be non-empty while the
+      # build chain carries known advisories awaiting major-version bumps.
+      - name: Audit build dependencies (advisory only)
+        if: always()
+        continue-on-error: true
+        run: npm audit --audit-level=high

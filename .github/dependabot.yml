@@ -1,0 +1,28 @@
+version: 2
+
+updates:
+  # Application and build dependencies.
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+    groups:
+      # Patch and minor bumps are low risk and noisy individually, so batch
+      # them into a single PR. Majors still arrive separately for review.
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+
+  # The GitHub Actions used by the workflows in this directory.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "ci"

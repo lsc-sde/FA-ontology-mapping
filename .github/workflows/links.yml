@@ -1,0 +1,49 @@
+name: Check external links
+
+# The ontology cites external sources in `additional_resources` (per node) and
+# `resources.json` (project-level). Dead links in a reference work are a real
+# quality problem, so check them on a schedule rather than only when touched.
+on:
+  schedule:
+    # 09:00 on the first of each month.
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/**"
+      - "**/*.md"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check links in data and documentation
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --accept 200,206,429,403
+            --max-retries 2
+            --timeout 30
+            data/resources.json
+            data/ontology.json
+            './*.md'
+            './data/*.md'
+          # Report rather than fail: link rot is usually the far end going
+          # down, which should not block work in this repository.
+          fail: false
+          output: lychee-report.md
+
+      - name: Upload link report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lychee-report
+          path: lychee-report.md
+          if-no-files-found: ignore
