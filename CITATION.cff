@@ -41,12 +41,12 @@ authors:
 abstract: >-
   The Federated Analytics Ontology is a collaborative effort to
   develop shared language for federated analytics in UK health
-  data research. It defines 29 concepts for four audiences —
-  public, technical, researcher and governance — and maps each
-  against the Five Safes, FAIR, PEDRI and SATRE frameworks. This
-  work has been shaped by extensive public engagement and
-  contributions from advisory groups committed to ethical,
-  transparent, and accountable health data research.
+  data research. It defines concepts for a range of audiences —
+  including public, technical, researcher and governance — and
+  maps each against the Five Safes, FAIR, PEDRI and SATRE
+  frameworks. This work has been shaped by extensive public
+  engagement and contributions from advisory groups committed to
+  ethical, transparent, and accountable health data research.
 keywords:
   - federation
   - federated-analytics
