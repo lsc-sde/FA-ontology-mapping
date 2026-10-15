@@ -213,16 +213,37 @@ These live in GitHub settings and are lost if the repo is recreated:
   relationships at once — "is a kind of", "is implemented by" and "is part of".
   Splitting these into named relation types is the main prerequisite for a
   SKOS/RDF export.
-- **Dev-only audit advisories.** `npm audit` reports issues in development
-  tooling only; `npm audit --omit=dev` is clean. These are not shipped to users.
-  `npm audit fix` was last run on 14 Oct 2026, clearing 13 of 22 advisories.
-  The remaining 9 (3 moderate, 6 high) sit in `vite` and `postcss-selector-parser`
-  and can only be resolved by `npm audit fix --force`, which would install
-  `tailwindcss@4` and `vite@8` — both breaking major upgrades. They are
-  deliberately left outstanding; revisit them as part of a planned Vite/Tailwind
-  upgrade rather than forcing majors into a working build for issues that never
-  reach a browser. GitHub's Dependabot count is higher than npm's because it
-  uses a broader advisory database; neither is wrong.
+- **Dev-only audit advisories.** Outstanding advisories sit in the build chain
+  (`vite`, `postcss-selector-parser` and their dependencies), not in anything
+  shipped to a visitor's browser. This is a deliberate, standing position rather
+  than a backlog item.
+
+  Deliberately **no counts are recorded here**, because they change every time
+  Dependabot opens a grouped update and would be stale within the week. Check
+  the live sources instead:
+
+  ```bash
+  npm audit --omit=dev     # runtime only — this is the one that must stay clean
+  npm audit                # whole build chain — expected to be non-empty
+  ```
+
+  - **Dependabot alerts:** Security → Dependabot alerts
+    ([open the live list](https://github.com/lsc-sde/federated-analytics-ontology/security/dependabot))
+  - **Open update PRs:** [`deps` / `deps-dev` pull requests](https://github.com/lsc-sde/federated-analytics-ontology/pulls?q=is%3Apr+is%3Aopen+label%3Adependencies)
+
+  Dependabot's count is normally higher than npm's because it draws on a broader
+  advisory database and does not distinguish runtime from development
+  dependencies. Neither figure is wrong; they answer different questions.
+
+  **The rule, which does not drift:** `npm audit --omit=dev` must be clean, and
+  CI enforces that — the `audit` job in
+  [`ci.yml`](.github/workflows/ci.yml) fails on a high-severity runtime
+  advisory, while the whole-chain audit is reported `continue-on-error` for
+  visibility only. Build-chain advisories are cleared by `npm audit fix`, or
+  left outstanding where the only remedy is `npm audit fix --force`, which
+  installs breaking majors (`tailwindcss@4`, `vite@8`). Revisit those as a
+  planned Vite/Tailwind upgrade, not by forcing majors into a working build to
+  silence issues that never reach a browser.
 - **Prototype status.** Definitions are under active review and are not settled.
   The in-app disclaimers have been removed, so the prototype warning in
   `README.md` and the "Drafting" watermark are now the only signals of draft
