@@ -1,0 +1,39 @@
+[
+  {
+    "id": "tehdas2-d7-2",
+    "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
+    "url": "https://doi.org/10.5281/zenodo.20269109",
+    "doi": "10.5281/zenodo.20269109",
+    "publisher": "TEHDAS2 Joint Action",
+    "note": "European guidance grouping the main data protection techniques together. Written for the EHDS, but the underlying concepts are GDPR-based and apply in the UK."
+  },
+  {
+    "id": "five-safes",
+    "label": "The Five Safes: data privacy at ONS",
+    "url": "https://blog.ons.gov.uk/2017/01/27/the-five-safes-data-privacy-at-ons/",
+    "publisher": "Office for National Statistics",
+    "note": "The origin of Safe People, Projects, Settings, Data and Outputs — the framework behind many of the tags used in this ontology."
+  },
+  {
+    "id": "satre",
+    "label": "SATRE — Standard Architecture for Trusted Research Environments",
+    "url": "https://satre-specification.readthedocs.io/",
+    "publisher": "DARE UK",
+    "note": "A community specification for what a trusted research environment should provide, organised around information governance, technical security, data management and supporting capabilities."
+  },
+  {
+    "id": "fair",
+    "label": "The FAIR Guiding Principles for scientific data management and stewardship",
+    "url": "https://doi.org/10.1038/sdata.2016.18",
+    "doi": "10.1038/sdata.2016.18",
+    "publisher": "Scientific Data",
+    "note": "The original paper defining Findable, Accessible, Interoperable and Reusable."
+  },
+  {
+    "id": "pedri",
+    "label": "PEDRI — Public Engagement in Data Research Initiative",
+    "url": "https://pedri.org.uk/",
+    "publisher": "PEDRI",
+    "note": "Standards for transparent and inclusive public engagement and involvement in data research."
+  }
+]

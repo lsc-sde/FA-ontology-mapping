@@ -44,11 +44,25 @@ Two optional fields let a node carry context without adding clutter to the graph
   vocabulary that is worth explaining next to a concept but does not warrant a
   node of its own (for example *re-identification risk*). Rendered in both the
   sidebar and the tabular view.
-- **`more_information`** — an array of `{ label, url, doi?, note? }`. Further
+- **`additional_resources`** — an array of `{ label, url, doi?, note? }`. Further
   reading and source material. `label` and `url` are required; `url` must be
   absolute. Use `note` to say why the link is worth following. Being listed is
   not an endorsement, and linked works may use terms differently to this
   ontology.
+
+## Project-level further reading
+
+`resources.json` holds reading that applies to the ontology **as a whole**
+rather than to one concept. Each entry is `{ id, label, url, doi?, publisher?,
+note? }`; `id` is kebab-case and unique, `url` must be absolute. It is rendered
+in the sidebar's collapsible **Find out more** panel, which is visible whether
+or not a node is selected.
+
+Use `resources.json` for framework sources and general background; use a node's
+`additional_resources` for reading that only makes sense next to that concept. The
+same work may legitimately appear in both, with a concept-specific `note` on the
+node. As with `additional_resources`, listing is not an endorsement, and linked
+works may use terms differently to this ontology.
 
 ## Known gaps
 

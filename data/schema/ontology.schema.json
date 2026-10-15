@@ -70,7 +70,7 @@
             "additionalProperties": false
           }
         },
-        "more_information": {
+        "additional_resources": {
           "type": "array",
           "description": "Further reading for this concept. A place for source material and adjacent work that does not itself belong in the ontology.",
           "items": {

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/federated-analytics-ontology/data/schema/resources.schema.json",
+  "title": "Project-level further reading",
+  "description": "A flat list of sources relevant to the ontology as a whole, shown in the sidebar's \"Find out more\" section. Listing is not an endorsement, and linked works may use terms differently to this ontology. Per-node reading lives in the node's own additional_resources field.",
+  "type": "array",
+  "items": { "$ref": "#/$defs/resource" },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": ["id", "label", "url"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Stable kebab-case identifier, unique within the file."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Title of the work, as the reader would recognise it."
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https?://",
+          "description": "Absolute URL. Prefer a DOI-resolving URL where one exists."
+        },
+        "doi": {
+          "type": "string",
+          "description": "Bare DOI, without the https://doi.org/ prefix."
+        },
+        "publisher": {
+          "type": "string",
+          "description": "Publishing body or journal, shown as context next to the link."
+        },
+        "note": {
+          "type": "string",
+          "description": "Why this source is worth following."
+        }
+      }
+    }
+  }
+}

@@ -77,7 +77,7 @@ export interface OntologyNode {
     }[];
     // Further reading. Somewhere to put source material and adjacent work that
     // does not itself warrant a node in the ontology.
-    more_information?: {
+    additional_resources?: {
         label: string;
         url: string;
         doi?: string;

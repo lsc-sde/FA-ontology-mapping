@@ -1280,7 +1280,7 @@
         "definition": "A structured review of how likely re-identification is for a particular dataset and release, and of what could be inferred about people even where they are not directly identified."
       }
     ],
-    "more_information": [
+    "additional_resources": [
       {
         "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
         "url": "https://doi.org/10.5281/zenodo.20269109",
@@ -1349,7 +1349,7 @@
         "definition": "Joining records that belong to the same person across different datasets or time points, which consistent pseudonyms make possible without revealing identity."
       }
     ],
-    "more_information": [
+    "additional_resources": [
       {
         "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
         "url": "https://doi.org/10.5281/zenodo.20269109",
@@ -1411,7 +1411,7 @@
         "definition": "Withholding values that would otherwise describe very few individuals, typically small cells in a published table."
       }
     ],
-    "more_information": [
+    "additional_resources": [
       {
         "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
         "url": "https://doi.org/10.5281/zenodo.20269109",
@@ -1473,7 +1473,7 @@
         "definition": "Where a generative model reproduces a real record from its training data almost exactly, usually an unusual individual, undermining the privacy claim made for the output."
       }
     ],
-    "more_information": [
+    "additional_resources": [
       {
         "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
         "url": "https://doi.org/10.5281/zenodo.20269109",
@@ -1541,7 +1541,7 @@
         "definition": "Whether the data sought is justified by the benefit the project expects to deliver. It is the judgement that sits behind most minimisation decisions."
       }
     ],
-    "more_information": [
+    "additional_resources": [
       {
         "label": "TEHDAS2 D7.2 — Guideline on data minimisation, pseudonymisation, anonymisation and synthetic data",
         "url": "https://doi.org/10.5281/zenodo.20269109",

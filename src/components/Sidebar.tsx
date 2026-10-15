@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { OntologyNode, FrameworkTag, frameworkCategories } from '../data/ontology';
 import { tagReasons } from '../data/tagReasons';
 import { frameworkTagDefinitions } from '../data/frameworkTagDefinitions';
+import { resources } from '../data/resources';
 import { SlidersHorizontal, Settings, BookOpen, Fingerprint, ChevronDown, ChevronRight, Search, X, ExternalLink } from 'lucide-react';
 
 interface SidebarProps {
@@ -35,6 +36,7 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
     const [openCategories, setOpenCategories] = useState<Record<string, boolean>>({});
     const [expandedTag, setExpandedTag] = useState<string | null>(null);
     const [filtersOpen, setFiltersOpen] = useState(true);
+    const [resourcesOpen, setResourcesOpen] = useState(false);
     const detailsRef = useRef<HTMLDivElement>(null);
 
     // When a node is selected, collapse the filters and bring the details panel
@@ -361,16 +363,16 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                             </div>
                         )}
 
-                        {/* More Information */}
-                        {selectedNode.more_information && selectedNode.more_information.length > 0 && (
+                        {/* Additional resources */}
+                        {selectedNode.additional_resources && selectedNode.additional_resources.length > 0 && (
                             <div className="mt-2">
-                                <h5 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">More Information</h5>
+                                <h5 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Additional resources</h5>
                                 <div className="bg-amber-50/50 p-4 rounded-xl border-l-4 border-l-amber-500 border-y border-r border-slate-200 shadow-sm">
                                     <p className="text-xs text-slate-500 mb-3 italic">
                                         Further reading and source material. Listed for context — being linked here is not an endorsement, and these works may use terms differently.
                                     </p>
                                     <ul className="space-y-3">
-                                        {selectedNode.more_information.map((ref, i) => (
+                                        {selectedNode.additional_resources.map((ref, i) => (
                                             <li key={i} className="text-sm">
                                                 <a
                                                     href={ref.url}
@@ -400,6 +402,51 @@ export default function Sidebar({ perspective, setPerspective, activeFilter, set
                     </div>
                 )}
             </div>
+
+            {/* Find out more — project-level reading, always available regardless of selection */}
+            {resources.length > 0 && (
+                <div className="px-4 pb-4">
+                    <button
+                        onClick={() => setResourcesOpen(!resourcesOpen)}
+                        className="w-full flex items-center justify-between gap-2 text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2 hover:text-slate-700 transition-colors"
+                        aria-expanded={resourcesOpen}
+                    >
+                        <span>Find out more</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform flex-shrink-0 ${resourcesOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {resourcesOpen && (
+                        <div className="bg-amber-50/50 p-4 rounded-xl border-l-4 border-l-amber-500 border-y border-r border-slate-200 shadow-sm animate-in fade-in slide-in-from-top-1 duration-200">
+                            <p className="text-xs text-slate-500 mb-3 italic">
+                                Listed for context — being linked here is not an endorsement, and these works may use terms differently.
+                            </p>
+                            <ul className="space-y-3">
+                                {resources.map((res) => (
+                                    <li key={res.id} className="text-sm">
+                                        <a
+                                            href={res.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="font-semibold text-blue-700 hover:text-blue-900 hover:underline inline-flex items-start gap-1"
+                                        >
+                                            <span>{res.label}</span>
+                                            <ExternalLink className="w-3 h-3 mt-1 flex-shrink-0" />
+                                        </a>
+                                        {res.publisher && (
+                                            <p className="text-xs text-slate-500 mt-1">{res.publisher}</p>
+                                        )}
+                                        {res.note && (
+                                            <p className="text-slate-600 mt-1">{res.note}</p>
+                                        )}
+                                        {res.doi && (
+                                            <p className="text-xs text-slate-400 mt-1">DOI: {res.doi}</p>
+                                        )}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            )}
 
             {/* Partner Logos */}
             <div className="logo-bar">

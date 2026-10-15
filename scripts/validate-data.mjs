@@ -21,6 +21,7 @@ const tagDefs = read('framework-tag-definitions.json');
 const tagReasons = read('tag-reasons.json');
 const initial = read('initial-visible-nodes.json');
 const schema = read('schema/ontology.schema.json');
+const resources = read('resources.json');
 
 const validTags = new Set(schema.$defs.frameworkTag.enum);
 const validTypes = new Set(schema.$defs.ontologyNode.properties.type.enum);
@@ -63,12 +64,12 @@ for (const [key, node] of Object.entries(ontology)) {
             err(key, `related_term "${rt.term ?? '?'}" missing "definition"`);
         }
     }
-    for (const ref of node.more_information ?? []) {
-        if (!ref.label || !String(ref.label).trim()) err(key, 'more_information entry missing "label"');
+    for (const ref of node.additional_resources ?? []) {
+        if (!ref.label || !String(ref.label).trim()) err(key, 'additional_resources entry missing "label"');
         if (!ref.url || !String(ref.url).trim()) {
-            err(key, `more_information entry "${ref.label ?? '?'}" missing "url"`);
+            err(key, `additional_resources entry "${ref.label ?? '?'}" missing "url"`);
         } else if (!/^https?:\/\//.test(ref.url)) {
-            err(key, `more_information "${ref.label}" url must start with http:// or https://`);
+            err(key, `additional_resources "${ref.label}" url must start with http:// or https://`);
         }
     }
 }
@@ -90,6 +91,32 @@ for (const nodeId of initial) {
     if (!ids.has(nodeId)) errors.push(`initial-visible-nodes.json: "${nodeId}" is not an ontology node`);
 }
 
+// Project-level further reading. Same link rules as a node's additional_resources,
+// plus a unique id so entries can be referred to unambiguously.
+const resourceIds = new Set();
+if (!Array.isArray(resources)) {
+    errors.push('resources.json: must be an array');
+} else {
+    for (const r of resources) {
+        const name = r.id ?? r.label ?? '?';
+        if (!r.id || !/^[a-z0-9-]+$/.test(r.id)) {
+            errors.push(`resources.json: "${name}" needs a kebab-case "id"`);
+        } else if (resourceIds.has(r.id)) {
+            errors.push(`resources.json: duplicate id "${r.id}"`);
+        } else {
+            resourceIds.add(r.id);
+        }
+        if (!r.label || !String(r.label).trim()) {
+            errors.push(`resources.json: "${name}" missing "label"`);
+        }
+        if (!r.url || !String(r.url).trim()) {
+            errors.push(`resources.json: "${name}" missing "url"`);
+        } else if (!/^https?:\/\//.test(r.url)) {
+            errors.push(`resources.json: "${name}" url must start with http:// or https://`);
+        }
+    }
+}
+
 // Report
 const orphans = new Set(ids);
 for (const node of Object.values(ontology)) {
@@ -97,7 +124,7 @@ for (const node of Object.values(ontology)) {
 }
 for (const i of initial) orphans.delete(i);
 
-console.log(`Ontology: ${ids.size} nodes, ${validTags.size} framework tags.`);
+console.log(`Ontology: ${ids.size} nodes, ${validTags.size} framework tags, ${resourceIds.size} further-reading resources.`);
 if (orphans.size) console.log(`Unreachable from a root node: ${[...orphans].join(', ')}`);
 for (const w of warnings) console.log(`WARNING  ${w}`);
 
