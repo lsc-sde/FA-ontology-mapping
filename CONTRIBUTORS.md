@@ -36,11 +36,11 @@ This work has been shaped by sustained public engagement, in particular:
 
 ## A note on authorship
 
-Being listed here is **thanks, not authorship**. Commenting on a term, flagging
-confusing wording, or suggesting an alternative phrase is genuinely valuable —
-it is why this project works — but it does not by itself amount to authorship of
-the ontology.
+This page is where we say thank you. Commenting on a term, flagging confusing
+wording, or suggesting a better phrase genuinely shapes the ontology — it is why
+this project works, and we are grateful for every bit of it.
 
-Authorship in [`CITATION.cff`](CITATION.cff) is reserved for sustained
-contribution to the work as a whole, and is a decision for the maintainers. If
-you believe your involvement has reached that point, please raise it with us.
+Formal authorship in [`CITATION.cff`](CITATION.cff) is a slightly different
+thing: it reflects sustained involvement in the work as a whole, and the
+maintainers keep that list. If you feel your contribution has grown into that,
+please do say so — we would much rather you asked than wondered.
