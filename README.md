@@ -111,5 +111,3 @@ This repository uses a dual-license structure to accommodate both software and d
 * **Data and Ontologies:** All datasets, mappings and ontology files in the [`data/`](data/) directory are licensed under a [Creative Commons Attribution 4.0 International License (CC BY 4.0)](data/LICENSE-DATA.txt).
 
 When utilizing the data or ontologies, please attribute the work as **led by Lancashire Teaching Hospitals NHS Foundation Trust**, in collaboration with **the University of Liverpool** and **the University of Nottingham**, and supported by **DARE UK**.
-
-> ℹ️ Licensing is subject to confirmation by Lancashire Teaching Hospitals NHS Foundation Trust R&D / IP.

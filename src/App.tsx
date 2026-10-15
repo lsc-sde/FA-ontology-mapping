@@ -57,8 +57,8 @@ function App() {
         </main>
       </div>
 
-      {/* Contribute link */}
-      <div className="bg-slate-50 border-t border-slate-200 text-slate-400 px-4 py-1.5 text-center text-[11px] z-40 shrink-0">
+      {/* Contribute link, copyright and licensing */}
+      <footer className="bg-slate-50 border-t border-slate-200 text-slate-400 px-4 py-1.5 text-center text-[11px] z-40 shrink-0 flex flex-wrap items-center justify-center gap-x-1">
         <span className="text-slate-400">
           Definitions are AI-generated drafts under review and are not
           authoritative.
@@ -72,7 +72,29 @@ function App() {
         >
           Suggest a change
         </a>
-      </div>
+        <span className="mx-2 text-slate-300">·</span>
+        <span className="text-slate-400">
+          © 2026 Lancashire Teaching Hospitals NHS Foundation Trust
+        </span>
+        <span className="mx-2 text-slate-300">·</span>
+        <a
+          href="https://github.com/lsc-sde/federated-analytics-ontology/blob/main/LICENSE"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-slate-500 hover:text-blue-600 hover:underline"
+        >
+          Code: Apache-2.0
+        </a>
+        <span className="mx-2 text-slate-300">·</span>
+        <a
+          href="https://github.com/lsc-sde/federated-analytics-ontology/blob/main/data/LICENSE-DATA.txt"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-slate-500 hover:text-blue-600 hover:underline"
+        >
+          Content: CC BY 4.0
+        </a>
+      </footer>
     </div>
   );
 }
