@@ -32,32 +32,131 @@ record one. Accepted contributions are listed in
 collectively rather than named. Being listed there is thanks rather than
 authorship; see the note on authorship in that file.
 
+> **The Developer Certificate of Origin does not apply to this route.** It
+> covers pull requests only. Giving feedback through the form requires no
+> sign-off, no name and no email address.
+
 ---
 
 ## 2. Contribute code or data changes
 
-### Getting set up
-
-```bash
-git clone https://github.com/lsc-sde/federated-analytics-ontology.git
-cd federated-analytics-ontology
-npm ci
-npm run dev
-```
-
 ### Making a change
 
-1. Fork the repository and create a branch from `main`.
-2. Make your change.
-   - **Ontology content** lives in [`/data`](data/) as JSON — not in `/src`.
-   - **Application code** lives in `/src`.
-3. Validate and build:
-   ```bash
-   npm run validate:data
-   npm run lint
-   npm run build
-   ```
-4. Open a pull request describing what changed and why.
+**1. Fork the repository and install dependencies.**
+
+With the [GitHub CLI](https://cli.github.com/), this forks, clones, and sets
+`upstream` to the original repository in one step:
+
+```bash
+gh repo fork lsc-sde/federated-analytics-ontology --clone
+cd federated-analytics-ontology
+npm ci
+```
+
+Without the CLI, fork the repository on GitHub first, then clone **your fork**
+and add the original as `upstream`:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/federated-analytics-ontology.git
+cd federated-analytics-ontology
+git remote add upstream https://github.com/lsc-sde/federated-analytics-ontology.git
+npm ci
+```
+
+> Maintainers with write access can skip the fork and branch directly in the
+> canonical repository.
+
+**2. Create a branch from `main`.**
+
+```bash
+git switch -c my-change main
+```
+
+**3. Make your change.**
+
+- **Ontology content** lives in [`/data`](data/) as JSON — not in `/src`.
+  See [Editing the ontology](#editing-the-ontology) below.
+- **Application code** lives in `/src`.
+
+Preview it locally with `npm run dev`.
+
+**4. Validate and build.**
+
+```bash
+npm run validate:data
+npm run lint
+npm run build
+```
+
+**5. Commit with a sign-off** — see [Signing your work](#signing-your-work).
+
+```bash
+git commit -s -m "A descriptive commit message"
+```
+
+**6. Push and open a pull request** describing what changed and why.
+
+```bash
+git push -u origin my-change
+```
+
+If your fork has fallen behind while you worked, update it before opening the
+pull request:
+
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+
+### Signing your work
+
+All commits in a pull request must carry a `Signed-off-by` line certifying the
+[Developer Certificate of Origin](DCO.md) (DCO). Git adds it for you with the
+`-s` flag:
+
+```bash
+git commit -s -m "Your descriptive commit message"
+```
+
+That appends a trailer to the commit message, e.g.:
+
+```
+Signed-off-by: Jane Doe <jane.doe@university.ac.uk>
+```
+
+To sign off every commit in this repository automatically:
+
+```bash
+git config format.signoff true
+```
+
+If you have already committed without signing off, amend the last commit:
+
+```bash
+git commit --amend -s
+```
+
+Or sign off the last `N` commits on your branch, then force-push:
+
+```bash
+git rebase --signoff HEAD~N
+```
+
+Use your real name, or a name you are identifiable by. The line must match the
+commit author.
+
+#### Sign-off and your email address
+
+**A sign-off puts the email address in `user.email` into the public commit
+history, permanently.** If you would rather not publish a personal or
+institutional address, enable **Settings → Emails → Keep my email address
+private** on GitHub and set git to use the address it gives you:
+
+```bash
+git config user.email "12345678+yourusername@users.noreply.github.com"
+```
+
+Do this **before** you commit. Changing it afterwards means rewriting history.
 
 ### Editing the ontology
 
@@ -120,14 +219,36 @@ others to trust or challenge.
 
 ## Licensing of contributions
 
-This repository is dual-licensed:
+This repository is dual-licensed, and which licence applies depends on what you
+changed:
 
-- Code contributions are accepted under the **Apache License 2.0**.
-- Ontology/content contributions are accepted under **CC BY 4.0**.
+- **Application code** (`/src`, build config, scripts) — **Apache License 2.0**
+  (see [`LICENSE`](LICENSE)).
+- **Ontology content** (`/data`) — **CC BY 4.0**
+  (see [`data/LICENSE-DATA.txt`](data/LICENSE-DATA.txt)).
 
-By submitting a contribution you confirm you have the right to do so, and agree
-to it being released under the relevant licence above. If you are contributing
-on behalf of an employer, please make sure you have their approval.
+The DCO refers to "the open source license indicated in the file"; for this
+repository that means the mapping above. If a pull request touches both, each
+part is accepted under its own licence.
+
+If you are contributing on behalf of an employer, please make sure you have
+their approval — the DCO asks you to certify that you have the right to submit
+the work.
+
+---
+
+## Pull request process
+
+1. Make sure every commit is signed off (see
+   [Signing your work](#signing-your-work)).
+2. Make sure your change meets the project's formatting and quality standards:
+   `npm run validate:data`, `npm run lint` and `npm run build` should all pass.
+3. Open your pull request.
+
+Sign-off is checked when your pull request is reviewed, and an automated `DCO`
+status check runs on pull requests. If a commit is missing its sign-off, the fix
+is `git commit --amend -s` (or `git rebase --signoff HEAD~N`) followed by a
+force-push.
 
 ---
 

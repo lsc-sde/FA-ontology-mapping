@@ -84,6 +84,11 @@ If a definition is unclear, wrong, or missing, that is exactly the kind of feedb
 
 Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) to get started.
 
+Code and data changes submitted as pull requests are covered by the
+[Developer Certificate of Origin](DCO.md), which means commits need a
+`Signed-off-by` line (`git commit -s`). This does **not** apply to issue
+feedback, which stays anonymous by default.
+
 ## Maintaining this project
 
 If you are taking over or helping run this repository, see

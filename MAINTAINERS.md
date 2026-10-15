@@ -84,6 +84,46 @@ When accepting a contribution:
    the collective thanks line — do not name them.
 3. Close the issue with a short note on what changed.
 
+### Pull requests and the DCO
+
+Contributions arriving as pull requests are covered by the
+[Developer Certificate of Origin](DCO.md) — see
+[`CONTRIBUTING.md`](CONTRIBUTING.md). Every commit must carry a
+`Signed-off-by` trailer matching the commit author.
+
+- **Do not merge a pull request with an unsigned commit.** Ask the contributor
+  to run `git commit --amend -s` (or `git rebase --signoff HEAD~N` for several
+  commits) and force-push. This is far easier before the merge than after.
+- A sign-off may use a GitHub `users.noreply.github.com` address; that is
+  normal and should not be challenged.
+- The DCO applies to pull requests only. **Issue-form feedback is not covered**
+  and must stay anonymous by default — never ask an issue contributor to sign
+  off or to supply a name or email.
+
+---
+
+### Why a DCO rather than a CLA
+
+In academic and NHS settings, a Contributor Licence Agreement usually has to be
+reviewed and signed by a legal or IP department, which can delay a contribution
+by weeks or months. A CLA transfers or licenses rights to an organisation, and
+it is that transfer which triggers the review.
+
+The [DCO](DCO.md) asks for something lighter: contributors certify that they
+wrote the contribution, or otherwise have the right to submit it under the
+project's licences. No rights are transferred, so in most cases there is nothing
+for a legal team to sign. It is the same mechanism used by the Linux kernel and
+most CNCF projects, and it is the usual choice for public-sector and academic
+open source.
+
+> ℹ️ **State this plainly if R&D / IP ask.** A DCO certifies *provenance*; it is
+> not a rights transfer. It grants no relicensing rights and no patent grant
+> beyond what Apache-2.0 already provides. If the project ever needed to
+> relicense or dual-license commercially, contributors would have to be
+> contacted individually. For a public-good ontology under Apache-2.0 and
+> CC BY 4.0 this is not a practical constraint, but it should not be presented
+> as equivalent to a CLA.
+
 ---
 
 ## Release process
@@ -134,6 +174,16 @@ These live in GitHub settings and are lost if the repo is recreated:
 - Actions: enabled, with read/write permission for the Pages deployment
 - Description, homepage URL and topics
 - Branch protection on `main`, if adopted
+- **DCO status check** — provided by the official
+  [DCO GitHub App](https://github.com/apps/dco), installed at the `lsc-sde`
+  organisation and scoped to this repository. Installing it requires an
+  **organisation owner**; repository admin is not sufficient.
+  > ⚠️ **Status: pending installation.** The
+  > [DCO](DCO.md) itself is already in force — the certification is the
+  > `Signed-off-by` trailer in each commit, not the check. Until an owner
+  > installs the app, no `DCO` check appears on pull requests and sign-off must
+  > be confirmed by eye at review. Nothing needs to change in the repository
+  > when it is installed; it becomes active on the next pull request.
 
 ---
 
