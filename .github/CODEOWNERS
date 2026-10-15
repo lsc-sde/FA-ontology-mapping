@@ -1,0 +1,24 @@
+# Code owners for this repository.
+#
+# Listed owners are requested for review automatically on every pull request
+# that touches a matching path. This is a routing mechanism, not a permission:
+# it decides who is *asked*, while the branch ruleset on `main` decides what is
+# *required*.
+#
+# Ownership currently rests with a single maintainer. Once a `lsc-sde` team
+# exists with the right membership, replace `@iwfarr` with that team handle
+# (e.g. `@lsc-sde/ontology-maintainers`) so review does not stall if one person
+# is unavailable. See MAINTAINERS.md.
+
+# Default owner for everything in the repository.
+* @iwfarr
+
+# The ontology itself. Changes here alter published definitions, so they
+# warrant maintainer review even when the diff looks small.
+/data/ @iwfarr
+
+# Build, deployment and policy configuration. A mistake in `deploy.yml` or
+# `vite.config.ts` can take the public site down without failing CI.
+/.github/ @iwfarr
+/vite.config.ts @iwfarr
+/package.json @iwfarr

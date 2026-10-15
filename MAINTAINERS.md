@@ -173,7 +173,22 @@ These live in GitHub settings and are lost if the repo is recreated:
 - Pages: enabled, source `build_type: workflow`
 - Actions: enabled, with read/write permission for the Pages deployment
 - Description, homepage URL and topics
-- Branch protection on `main`, if adopted
+- **Branch ruleset on `main`** (Settings → Rules → Rulesets). Adopted
+  configuration, recorded here because rulesets are not stored in git:
+  - Target: default branch. Enforcement: active.
+  - Bypass list: **Repository admin** — maintainers can still push directly to
+    `main` for small or urgent changes without opening a pull request.
+  - Restrict deletions; block force pushes; require linear history.
+  - Require a pull request before merging, 0 approvals, dismiss stale
+    approvals, require conversation resolution. This binds outside
+    contributors; admins bypass it.
+  - Require status checks to pass, branches up to date. Required checks:
+    `check`, `audit` (from `ci.yml`) and `analyze` (from `codeql.yml`).
+  > ⚠️ Do **not** add the Pages deploy job as a required check. `deploy.yml`
+  > triggers on `push` to `main`, not on `pull_request`, so it never reports a
+  > status on a pull request and would block every merge indefinitely. For the
+  > same reason the `links` job is not required: `links.yml` sets `fail: false`
+  > by design, so it always passes and carries no signal.
 - **DCO status check** — provided by the official
   [DCO GitHub App](https://github.com/apps/dco), installed at the `lsc-sde`
   organisation and scoped to this repository. Installing it requires an
